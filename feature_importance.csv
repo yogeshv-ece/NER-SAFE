@@ -1,0 +1,11 @@
+feature_name,gini_importance_mdi,permutation_importance_mean,permutation_importance_std,rank
+elevation,0.2656,0.1344,0.0109,1
+slope,0.141,0.0456,0.0037,2
+ndwi_imputed,0.1181,0.0456,0.0047,3
+aspect_cos,0.0675,0.025,0.0046,4
+aspect_sin,0.0709,0.0246,0.0044,5
+profile_curvature,0.0648,0.0245,0.0041,6
+twi,0.0988,0.0218,0.0065,7
+sentinel_observed_flag,0.0091,0.0143,0.0026,8
+ndmi_imputed,0.087,0.012,0.0051,9
+ndvi_imputed,0.0771,0.0094,0.0035,10

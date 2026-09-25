@@ -1,0 +1,256 @@
+{
+  "audit_metadata": {
+    "title": "NER-SAFE Clean Live Data Reset and Automatic Acquisition Startup Audit",
+    "timestamp_utc": "2026-09-21T19:24:00+00:00",
+    "project_root": "E:\\landslide - Copy\\landslide - Copy",
+    "backup_drive_policy": "G:\\ UNTOUCHED (ZERO MOUNT, ZERO READ, ZERO WRITE)",
+    "certified_model_sha256": "45544c7f5823879315c5caf244ebdaa85b964fe14a51dafe01c910f50a0acc6c",
+    "model_name": "Calibrated XGBoost v1.1 ONLY (No Random Forest / No Alternative Fallback)"
+  },
+  "cleanup_summary": {
+    "mock_data_cleanup": "COMPLETE",
+    "synthetic_records_removed": 499,
+    "genuine_data_retained": true,
+    "records_removed_by_table": {
+      "live_assessments": 201,
+      "citizen_reports": 182,
+      "citizen_videos": 11,
+      "citizen_abuse_flags": 42,
+      "live_multimodal_features": 61,
+      "prediction_outcomes": 2
+    },
+    "retained_baseline_evidence": {
+      "observations": 113,
+      "external_warnings": 50,
+      "external_landslide_events": 194,
+      "canonical_osint_events": 13,
+      "osint_observations": 153,
+      "osint_event_linkages": 12,
+      "external_event_sources": 8389,
+      "smap_nrt_observations": 3,
+      "insar_scenes": 3,
+      "insar_pairs": 3,
+      "insar_deformation_products": 1,
+      "prediction_validation_metrics": 6,
+      "legitimate_prospective_outcomes": 18,
+      "users": 11
+    },
+    "quarantine_video_files_removed": 22,
+    "current_assessment_json_reset": "NOT_AVAILABLE (No qualifying live assessment generated yet)"
+  },
+  "frontend_cleanup": {
+    "status": "COMPLETE",
+    "files_updated": [
+      "ner_safe_live_dashboard.html",
+      "ner_safe_live_dashboard_extended.html",
+      "ner_safe_citizen_app.html"
+    ],
+    "placeholders_replaced": [
+      {
+        "file": "ner_safe_live_dashboard.html",
+        "element": "src-rain-freshness",
+        "before": "Updated: 18 min ago (Live Stream)",
+        "after": "WAITING FOR LIVE SOURCE"
+      },
+      {
+        "file": "ner_safe_live_dashboard.html",
+        "element": "src-soil-freshness",
+        "before": "Updated: 3 hours ago (Daily Cycle)",
+        "after": "WAITING FOR LIVE SOURCE"
+      },
+      {
+        "file": "ner_safe_live_dashboard.html",
+        "element": "valCurrentRiskDisplay",
+        "before": "0.6481",
+        "after": "NOT AVAILABLE"
+      },
+      {
+        "file": "ner_safe_live_dashboard.html",
+        "element": "valCurrentTierDisplay",
+        "before": "HIGH HAZARD",
+        "after": "NO CURRENT LIVE ASSESSMENT"
+      },
+      {
+        "file": "ner_safe_live_dashboard.html",
+        "element": "valPrecipPrimary",
+        "before": "Primary: NASA GPM IMERG V07 (Operational)",
+        "after": "Primary: JAXA GSMaP_NOW (Operational)"
+      },
+      {
+        "file": "ner_safe_citizen_app.html",
+        "element": "INITIAL_REPORTS",
+        "before": "13 SYNTHETIC_DEMONSTRATION reports (24 KB)",
+        "after": "[] (Empty baseline)"
+      },
+      {
+        "file": "ner_safe_citizen_app.html",
+        "element": "inputRoad",
+        "before": "NH-06 Khliehriat Cut",
+        "after": "Empty string"
+      }
+    ]
+  },
+  "startup_audit": {
+    "http_server_process": "py server.py / py live_sensor_server_extension.py (ThreadingHTTPServer)",
+    "live_ingestion_process": "LiveMonitoringController worker thread / py nersafe_autonomous_scheduler.py",
+    "scheduler_start": "MANUAL / CONTROLLER_DRIVEN",
+    "server_starts_live_ingestion": "PARTIAL",
+    "scheduler_automatically_started_on_server_boot": false,
+    "is_separate_process": "Supported (dual mode: in-process worker thread or standalone CLI daemon)",
+    "is_windows_service": false,
+    "windows_task_scheduler_required": false,
+    "live_monitoring_controller_manual_start_required": true,
+    "start_live_monitoring_launches_acquisition": true,
+    "server_purely_serves_apis_until_started": true,
+    "exact_action_required": "POST /api/live-monitoring/start with authenticated operational credentials (ADMIN / FIELD_OFFICER / ANALYST), or execute 'py nersafe_autonomous_scheduler.py'",
+    "startup_flow": "BOOT -> SERVER (ThreadingHTTPServer on PORT 8000/8027) -> LIVE CONTROLLER (State OFF by default) -> AUTH START (POST /api/live-monitoring/start) -> SCHEDULER (AutonomousScheduler thread spawned) -> SOURCE POLL (GSMaP_NOW primary / GPM fallback / SMAP / S1 / S2 / GSI / SACHET / OSINT) -> INGESTION (QC / SHA-256 / Freshness) -> RISK (Calibrated XGBoost V1.1 + Locked 40/30/20/10 Fusion) -> DATABASE (Persist to live_assessments & live_assessment_current.json) -> DASHBOARD (SSE/REST Polling updates UI with ASM-LIVE-...)"
+  },
+  "source_acquisition_matrix": [
+    {
+      "source": "GSMaP_NOW",
+      "product": "gsmap_now.05_AsiaSS (hourly/half-hourly)",
+      "remote_endpoint": "ftp://hokusai.eorc.jaxa.jp/now/txt/hourly/",
+      "authentication_method": "JAXA FTP Basic Authentication (GSMAP_FTP_USER / GSMAP_FTP_PASSWORD)",
+      "polling_interval_sec": 1800,
+      "new_data_detection": "Filename timestamp and UTC interval comparison against last observation hash",
+      "processing_module": "gsmap_now_engine.GSMaPNowEngine / live_assessment_service.py",
+      "database_destination": "live_assessments (rainfall_source='GSMAP_PRIMARY')",
+      "dashboard_endpoint": "/api/assessment/current, /api/monitoring/sources/health",
+      "role": "PRIMARY LIVE RAINFALL"
+    },
+    {
+      "source": "GPM Early NRT",
+      "product": "3IMERGHHE.07 (Half-Hourly)",
+      "remote_endpoint": "https://cmr.earthdata.nasa.gov/search/granules.umm_json?short_name=GPM_3IMERGHHE -> GES DISC HTTPS",
+      "authentication_method": "NASA Earthdata Login (.netrc / HTTP Basic Auth)",
+      "polling_interval_sec": 1800,
+      "new_data_detection": "CMR -start_date Granule UR check against last_observation_hashes",
+      "processing_module": "live_assessment_service.LiveAssessmentService.discover_and_acquire_gpm_nrt",
+      "database_destination": "live_assessments (rainfall_source='GPM_FALLBACK')",
+      "dashboard_endpoint": "/api/assessment/current",
+      "role": "DATA-SOURCE FALLBACK ONLY (when GSMaP unavailable or >120m stale)"
+    },
+    {
+      "source": "SMAP NRT",
+      "product": "SPL2SMP_NRT.107",
+      "remote_endpoint": "https://cmr.earthdata.nasa.gov -> https://n5eil01u.ecs.nsidc.org/RESTRICTED/SMAP/",
+      "authentication_method": "NASA Earthdata Login (.netrc / HTTP Basic Auth)",
+      "polling_interval_sec": 3600,
+      "new_data_detection": "Granule ID and SHA-256 deduplication against smap_nrt_observations table",
+      "processing_module": "smap_nrt_engine.SMAPNRTEngine",
+      "database_destination": "smap_nrt_observations, observations (NASA_SMAP_SPL2SMP_NRT)",
+      "dashboard_endpoint": "/api/smap/latest, /api/monitoring/sources/health",
+      "role": "OPERATIONAL SOIL SATURATION INDEX (0.20 weight)"
+    },
+    {
+      "source": "Sentinel-1 SAR",
+      "product": "IW Level-1 GRD / SLC (Track 150 Descending)",
+      "remote_endpoint": "https://catalogue.dataspace.copernicus.eu/odata/v1/Products -> zipper.dataspace.copernicus.eu",
+      "authentication_method": "Copernicus CDSE OAuth2 (CDSE_CLIENT_ID / CDSE_CLIENT_SECRET)",
+      "polling_interval_sec": 21600,
+      "new_data_detection": "CDSE product ID & MD5 checksum check against insar_scenes and observations",
+      "processing_module": "sentinel1_sar_engine.py / sentinel1_slc_live_engine.py",
+      "database_destination": "observations (ESA_SENTINEL1_GRD), insar_scenes, insar_pairs, insar_deformation_products",
+      "dashboard_endpoint": "/api/sar/status, /api/insar/status",
+      "role": "SURFACE RADAR CHANGE (0.10 weight fallback) / InSAR SBAS RESEARCH ONLY"
+    },
+    {
+      "source": "Sentinel-2 MSI",
+      "product": "S2MSI2A (Level-2A Bottom-of-Atmosphere)",
+      "remote_endpoint": "https://catalogue.dataspace.copernicus.eu/odata/v1/Products (Collection SENTINEL-2)",
+      "authentication_method": "Copernicus CDSE OAuth2",
+      "polling_interval_sec": 21600,
+      "new_data_detection": "CDSE Scene ID and acquisition timestamp",
+      "processing_module": "live_ingestion.py / source_ingestion_manager.py",
+      "database_destination": "observations (ESA_SENTINEL2_MSIL2A)",
+      "dashboard_endpoint": "/api/monitoring/status",
+      "role": "SURFACE OPTICAL CHANGE (0.10 weight primary when cloud-free)"
+    },
+    {
+      "source": "GSI Bhukosh",
+      "product": "National Landslide Susceptibility Mapping (NLSM) Inventory",
+      "remote_endpoint": "https://bhukosh.gsi.gov.in / GSI REST & local mirror",
+      "authentication_method": "Public GeoJSON / Departmental API key",
+      "polling_interval_sec": 86400,
+      "new_data_detection": "Event ID deduplication against external_landslide_events",
+      "processing_module": "external_data_engine.ExternalDataEngine.sync_gsi_events",
+      "database_destination": "external_landslide_events",
+      "dashboard_endpoint": "/api/external/landslides/current",
+      "role": "HISTORICAL BASELINE INVENTORY"
+    },
+    {
+      "source": "NDMA SACHET",
+      "product": "Common Alerting Protocol (CAP v1.2 XML)",
+      "remote_endpoint": "https://sachet.ndma.gov.in/feed / CAP RSS",
+      "authentication_method": "Public CAP XML Feed / HTTP Header",
+      "polling_interval_sec": 900,
+      "new_data_detection": "CAP Alert Identifier deduplication against external_warnings",
+      "processing_module": "external_data_engine.ExternalDataEngine.sync_sachet_warnings",
+      "database_destination": "external_warnings",
+      "dashboard_endpoint": "/api/external/warnings/current",
+      "role": "STATUTORY ADVISORY RECONCILIATION"
+    },
+    {
+      "source": "OSINT / OSIRIS",
+      "product": "USGS Quakes, GDACS Disaster Feeds, ReliefWeb Regional Alerts",
+      "remote_endpoint": "USGS GeoJSON API, GDACS RSS feed, ReliefWeb API",
+      "authentication_method": "Public REST API / Bearer Token",
+      "polling_interval_sec": 1800,
+      "new_data_detection": "GUID / URL hashing against osint_observations",
+      "processing_module": "osint_intelligence_engine.OSINTIntelligenceEngine / osiris_adapter.OsirisAdapter",
+      "database_destination": "osint_sources, osint_observations, canonical_osint_events, osint_event_linkages",
+      "dashboard_endpoint": "/api/osint/events/current, /api/osint/sources/health",
+      "role": "SECONDARY VALIDATION & INDEPENDENT GROUND TRUTH"
+    },
+    {
+      "source": "Outcome Ingestion",
+      "product": "Prospective Validation Cross-Reference Matrix",
+      "remote_endpoint": "Internal spatial-temporal cross-reference engine",
+      "authentication_method": "Internal SQLite Query",
+      "polling_interval_sec": 3600,
+      "new_data_detection": "Evaluation of unvalidated past predictions within 72-hour forecast window",
+      "processing_module": "osint_intelligence_engine.OSINTIntelligenceEngine.evaluate_prediction_outcomes",
+      "database_destination": "prediction_outcomes, prediction_validation_metrics, prediction_outcomes_audit_history",
+      "dashboard_endpoint": "/api/osint/validation/outcomes, /api/osint/validation/metrics",
+      "role": "PROSPECTIVE SCIENTIFIC VALIDATION EVIDENCE"
+    }
+  ],
+  "first_clean_live_run": {
+    "execution_status": "SUCCESS",
+    "timestamp_utc": "2026-09-21T19:23:29+00:00",
+    "assessment_id": "ASM-LIVE-20260921192335-c4b731d0",
+    "triggering_source": "JAXA_GSMAP_NOW_01",
+    "rainfall_source": "GSMAP_PRIMARY",
+    "rainfall_granule": "gsmap_now.20260921.1800_1859.05_AsiaSS.csv.zip",
+    "rainfall_observation_time": "2026-09-21T18:00:00+00:00",
+    "rainfall_sha256": "947d2b61f54d86ecc0458480bc842590f1dfd3df12ab424c945a34db902b84a1",
+    "rainfall_anomaly": 1.0,
+    "smap_soil_anomaly": 0.7863,
+    "production_model": "CALIBRATED XGBOOST V1.1 ONLY",
+    "production_model_sha256": "45544c7f5823879315c5caf244ebdaa85b964fe14a51dafe01c910f50a0acc6c",
+    "model_fallback": "NONE",
+    "max_risk_score": 0.6573,
+    "risk_formula_weights": {
+      "susceptibility": 0.40,
+      "rainfall_anomaly": 0.30,
+      "soil_moisture_anomaly": 0.20,
+      "satellite_change": 0.10
+    },
+    "risk_thresholds": {
+      "critical": ">= 0.65",
+      "high": "0.48 - 0.65",
+      "moderate": "0.32 - 0.48",
+      "watch": "< 0.32"
+    },
+    "database_row_id": 202,
+    "dashboard_endpoint_tested": "/api/assessment/current",
+    "dashboard_auto_update": "PASS",
+    "total_execution_latency_seconds": 17.48
+  },
+  "security_verification": {
+    "status": "PASS",
+    "env_file_protected": true,
+    "credentials_scrubbed_from_logs": true,
+    "drive_g_status": "UNTOUCHED"
+  }
+}

@@ -1,0 +1,82 @@
+{
+  "network_id": "NET_T150_DESC_20260918",
+  "generated_at_utc": "2026-09-18T15:12:58.388422+00:00",
+  "relative_orbit": 150,
+  "orbit_direction": "DESCENDING",
+  "swath": "IW1",
+  "polarization": "VV",
+  "stack_size_scenes": 3,
+  "candidate_pairs_total": 3,
+  "eligible_pairs_count": 3,
+  "pair_selection_limits": {
+    "max_temporal_baseline_days": 36.0,
+    "max_perpendicular_baseline_m": 180.0
+  },
+  "sbas_status": "SBAS_INITIAL_STACK_FORMED",
+  "psi_status": "INSUFFICIENT_SLC_STACK_FOR_PSI",
+  "scientific_status": "RESEARCH_ONLY",
+  "nodes": [
+    {
+      "scene_id": "S1D_IW_SLC__1SDV_20260820T235450_20260820T235517_004216_007BCA_7A43",
+      "sensing_start_utc": "2026-08-20T23:53:43.175623",
+      "relative_orbit": 150,
+      "orbit_direction": "DESCENDING",
+      "polarization": "VV"
+    },
+    {
+      "scene_id": "S1D_IW_SLC__1SDV_20260901T235450_20260901T235517_004391_0081E8_631B",
+      "sensing_start_utc": "2026-09-01T23:53:43.686843",
+      "relative_orbit": 150,
+      "orbit_direction": "DESCENDING",
+      "polarization": "VV"
+    },
+    {
+      "scene_id": "S1D_IW_SLC__1SDV_20260913T235451_20260913T235518_004566_008803_FBA2",
+      "sensing_start_utc": "2026-09-13T23:53:48.958456",
+      "relative_orbit": 150,
+      "orbit_direction": "DESCENDING",
+      "polarization": "VV"
+    }
+  ],
+  "edges": [
+    {
+      "pair_id": "PAIR_20260901_20260820",
+      "master_scene_id": "S1D_IW_SLC__1SDV_20260901T235450_20260901T235517_004391_0081E8_631B",
+      "slave_scene_id": "S1D_IW_SLC__1SDV_20260820T235450_20260820T235517_004216_007BCA_7A43",
+      "master_time_utc": "2026-09-01T23:53:43.686843",
+      "slave_time_utc": "2026-08-20T23:53:43.175623",
+      "temporal_baseline_days": 12.0,
+      "perpendicular_baseline_m": 27.94,
+      "spatial_baseline_m": 46.03,
+      "relative_orbit": 150,
+      "orbit_direction": "DESCENDING",
+      "status": "ELIGIBLE"
+    },
+    {
+      "pair_id": "PAIR_20260913_20260820",
+      "master_scene_id": "S1D_IW_SLC__1SDV_20260913T235451_20260913T235518_004566_008803_FBA2",
+      "slave_scene_id": "S1D_IW_SLC__1SDV_20260820T235450_20260820T235517_004216_007BCA_7A43",
+      "master_time_utc": "2026-09-13T23:53:48.958456",
+      "slave_time_utc": "2026-08-20T23:53:43.175623",
+      "temporal_baseline_days": 24.0,
+      "perpendicular_baseline_m": 145.0,
+      "spatial_baseline_m": 2625.54,
+      "relative_orbit": 150,
+      "orbit_direction": "DESCENDING",
+      "status": "ELIGIBLE"
+    },
+    {
+      "pair_id": "PAIR_20260913_20260901",
+      "master_scene_id": "S1D_IW_SLC__1SDV_20260913T235451_20260913T235518_004566_008803_FBA2",
+      "slave_scene_id": "S1D_IW_SLC__1SDV_20260901T235450_20260901T235517_004391_0081E8_631B",
+      "master_time_utc": "2026-09-13T23:53:48.958456",
+      "slave_time_utc": "2026-09-01T23:53:43.686843",
+      "temporal_baseline_days": 12.0,
+      "perpendicular_baseline_m": 117.11,
+      "spatial_baseline_m": 2588.97,
+      "relative_orbit": 150,
+      "orbit_direction": "DESCENDING",
+      "status": "ELIGIBLE"
+    }
+  ]
+}

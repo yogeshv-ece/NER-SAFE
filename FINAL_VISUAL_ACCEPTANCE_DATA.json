@@ -1,0 +1,143 @@
+{
+  "executionTimestamp": "2026-09-23T08:20:04.417Z",
+  "consistencyCheck": {
+    "api": {
+      "eventId": "EVT-MEG-012",
+      "coords": [
+        92.027083,
+        25.185694
+      ],
+      "score": 0.7716,
+      "tier": "CRITICAL"
+    },
+    "leaflet2D": {
+      "found": true,
+      "coords": [
+        92.027083,
+        25.185694
+      ],
+      "score": 0.7716,
+      "tier": "CRITICAL"
+    }
+  },
+  "scene1Report": {
+    "viewerExists": true,
+    "terrainProviderName": "aZ",
+    "camera": {
+      "lon": 92.022,
+      "lat": 25.145,
+      "height_m": 4200,
+      "heading_deg": 360,
+      "pitch_deg": -28
+    },
+    "centerPickTerrain": {
+      "lon": 92.022,
+      "lat": 25.21139,
+      "height_m": 294
+    },
+    "tileCount": 31,
+    "maxLevel": 13,
+    "tilesLoaded": true,
+    "entities": {
+      "total": 4113,
+      "roads": 2865,
+      "buildings": 1200,
+      "hotspots": 48
+    },
+    "hotspot012In3D": {
+      "found": true,
+      "coords": [
+        92.027083,
+        25.185694
+      ],
+      "winPos": {
+        "x": 726,
+        "y": 636
+      }
+    }
+  },
+  "scene2Report": {
+    "camera": {
+      "lon": 92.02708,
+      "lat": 25.17869,
+      "height_m": 850,
+      "heading_deg": 0,
+      "pitch_deg": -45
+    },
+    "canvas": {
+      "width": 1263,
+      "height": 686
+    },
+    "selectedHotspot": {
+      "eventId": "EVT-MEG-012",
+      "winPos": {
+        "x": 632,
+        "y": 393
+      },
+      "inViewport": true,
+      "sidebarSelected": true,
+      "inspectorVisible": true
+    },
+    "visibleRoadsInView": 5,
+    "sampleVisibleRoads": [
+      {
+        "name": "Road: Unnamed Road",
+        "x": 1174,
+        "y": 558
+      },
+      {
+        "name": "Road: Unnamed Road",
+        "x": 516,
+        "y": 489
+      },
+      {
+        "name": "Road: Unnamed Road",
+        "x": 17,
+        "y": 125
+      },
+      {
+        "name": "Road: Unnamed Road",
+        "x": 59,
+        "y": 145
+      },
+      {
+        "name": "Road: Unnamed Road",
+        "x": 556,
+        "y": 386
+      }
+    ],
+    "visibleBuildingsInView": 10,
+    "sampleVisibleBuildings": [
+      {
+        "name": "Building: Footprint",
+        "x": 557,
+        "y": 483
+      },
+      {
+        "name": "Building: Footprint",
+        "x": 571,
+        "y": 477
+      },
+      {
+        "name": "Building: Footprint",
+        "x": 592,
+        "y": 475
+      },
+      {
+        "name": "Building: Footprint",
+        "x": 599,
+        "y": 468
+      },
+      {
+        "name": "Building: Footprint",
+        "x": 551,
+        "y": 467
+      }
+    ]
+  },
+  "browserErrorsCount": 0,
+  "browserErrors": [],
+  "localNetworkRequestsCount": 269,
+  "failedNetworkRequestsCount": 0,
+  "failedNetworkRequests": []
+}

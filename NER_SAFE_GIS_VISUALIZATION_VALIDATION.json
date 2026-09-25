@@ -1,0 +1,86 @@
+{
+  "timestamp": "2026-09-22T15:53:00Z",
+  "base_url": "http://localhost:8000",
+  "checks": [
+    {
+      "name": "Live Dashboard HTTP 200",
+      "passed": true,
+      "details": "HTTP 200, Length: 323130 bytes"
+    },
+    {
+      "name": "Real 3D Elevation Terrain Tile",
+      "passed": true,
+      "details": "Size: 16900 bytes (65x65 Float32), Min: 49.5m, Max: 1890.4m, Relief: 1841.0m"
+    },
+    {
+      "name": "DEM Metadata & Coverage (Meghalaya + Mizoram)",
+      "passed": true,
+      "details": "Source: USGS SRTM 1 Arc-Second (30m) Global DEM, Bounds: W:89.0 E:94.00027777777778 S:20.99972222222222 N:27.0"
+    },
+    {
+      "name": "OSM 3D Roads with Terrain Clamping",
+      "passed": true,
+      "details": "Features: 2865, Clamped to Ground: True, Risk Weight: 0.0"
+    },
+    {
+      "name": "OSM 3D Buildings Footprints & Height Rule",
+      "passed": true,
+      "details": "Count: 100, Rule: VISUALIZATION HEIGHT (NOT SURVEYED HEIGHT), Extrusion: 10.0m"
+    },
+    {
+      "name": "2D Population Exposure Layer (Census 2011)",
+      "passed": true,
+      "details": "Districts: 22, Census: 2011, Operational Risk Weight: 0.0, Sample: South Garo Hills (142,334 persons)"
+    },
+    {
+      "name": "Live Hotspots Shared API Source",
+      "passed": true,
+      "details": "Total Hotspots: 48, Sample ID: EVT-MIZ-018, Tier: HIGH, Score: 0.6481, Coords: [92.954583, 22.402083]"
+    },
+    {
+      "name": "Live Current Assessment State",
+      "passed": true,
+      "details": "Mode: OPERATIONAL, Status: CURRENT_ASSESSMENT_ACTIVE, Current Risk Available: True, Timestamp: 2026-09-23T08:16:16.409499+00:00"
+    },
+    {
+      "name": "Dashboard 3D Terrain Provider Wiring",
+      "passed": true,
+      "details": "Cesium.CustomHeightmapTerrainProvider connected to /api/gis/terrain/tile"
+    },
+    {
+      "name": "Dashboard 3D Roads & Buildings Draying/Extrusions",
+      "passed": true,
+      "details": "loadCesiumRoads (clamped) and loadCesiumBuildings (labeled) implemented"
+    },
+    {
+      "name": "Dashboard 2D Population Layer & Toggle",
+      "passed": true,
+      "details": "chkPopulation toggle, choropleth rendering, and popup logic present"
+    },
+    {
+      "name": "Dashboard WebGL Fallback Retaining 2D Map",
+      "passed": true,
+      "details": "cesiumFallbackNotice present with explicit 2D fallback notification"
+    },
+    {
+      "name": "UX4G Zero-Emoji Compliance",
+      "passed": true,
+      "details": "Strictly zero emojis found in ner_safe_live_dashboard.html"
+    },
+    {
+      "name": "Calibrated XGBoost V1.1 Model SHA-256",
+      "passed": true,
+      "details": "Hash: 45544c7f5823879315c5caf244ebdaa85b964fe14a51dafe01c910f50a0acc6c"
+    },
+    {
+      "name": "Drive G:\\ Invariance",
+      "passed": true,
+      "details": "Drive G:\\ is untouched and never referenced as operational path"
+    }
+  ],
+  "summary": {
+    "passed": 15,
+    "total": 15,
+    "all_passed": true
+  }
+}

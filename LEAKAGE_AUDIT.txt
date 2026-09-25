@@ -1,0 +1,39 @@
+================================================================================
+NER-SAFE — AI-BASED LANDSLIDE EARLY WARNING & RISK MONITORING SYSTEM
+COMPONENT 10: AUTOMATED TARGET LEAKAGE AUDIT REPORT
+================================================================================
+OVERALL LEAKAGE AUDIT VERDICT: PASS
+Total Leakage Rules Evaluated: 8
+Total Leakage Rules Passed   : 8
+Total Leakage Rules Failed   : 0
+--------------------------------------------------------------------------------
+EVALUATION OF SCIENTIFIC INTEGRITY RULES:
+ [PASS] LEAKAGE_RULE_01       : NO_TARGET_PRESENCE_IN_PREDICTORS
+        Details: Verified: landslide_presence_30m and target labels are strictly excluded from predictor matrix.
+ [PASS] LEAKAGE_RULE_02       : NO_DISTANCE_FEATURE_IN_PREDICTORS
+        Details: Verified: distance_to_landslide_m was utilized solely as a spatial negative-buffer exclusion mask.
+ [PASS] LEAKAGE_RULE_03       : NO_INVENTORY_METADATA_IN_PREDICTORS
+        Details: Verified: Event IDs, sample IDs, and geographic coordinates are excluded from training predictors.
+ [PASS] LEAKAGE_RULE_04       : EXPOSURE_INFRASTRUCTURE_SEPARATION
+        Details: Verified: Exposure layers (roads, buildings, settlements, population) are zeroed out of hazard/susceptibility modeling.
+ [PASS] LEAKAGE_RULE_05       : TEMPORAL_SUPERVISION_INTEGRITY
+        Details: Verified: Historical events (2007-2023) are modeled strictly for static terrain susceptibility. Operational 2024-2025 dynamic triggers are uncoupled from historical training.
+ [PASS] LEAKAGE_RULE_06       : SPATIAL_BLOCK_CROSS_VALIDATION
+        Details: Verified: 5-Fold Geographic Spatial Block Cross-Validation enforced; zero random pixel splitting used.
+ [PASS] LEAKAGE_RULE_07       : NEGATIVE_SAMPLE_BUFFER_EXCLUSION
+        Details: Verified: All 624 pseudo-absence negative samples were filtered to be >1000m from all documented landslide occurrences.
+ [PASS] LEAKAGE_RULE_08       : NO_POST_EVENT_DERIVED_VARIABLES
+        Details: Verified: All predictors represent static pre-event terrain and baseline biophysical indices.
+================================================================================
+PREDICTOR FEATURE SET ENFORCED (ZERO LEAKAGE):
+ - elevation             : USGS SRTM 1-Arcsecond DEM (m)
+ - slope                 : Topographic slope in degrees
+ - aspect_sin            : Sin component of circular aspect vector decomposition
+ - aspect_cos            : Cos component of circular aspect vector decomposition
+ - profile_curvature     : Topographic profile curvature (m^-1)
+ - twi                   : Topographic Wetness Index (TWI)
+ - ndvi_imputed          : Sentinel-2 NDVI with median baseline imputation
+ - ndwi_imputed          : Sentinel-2 NDWI with median baseline imputation
+ - ndmi_imputed          : Sentinel-2 NDMI with median baseline imputation
+ - sentinel_observed_flag: Binary indicator for valid optical scene observation
+================================================================================

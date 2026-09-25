@@ -1,0 +1,4 @@
+model_name,oof_spatial_roc_auc,oof_spatial_pr_auc,oof_spatial_recall,oof_spatial_precision,oof_spatial_f1,brier_score_raw,brier_score_calibrated,true_positives,false_positives,true_negatives,false_negatives,selection_verdict
+Logistic_Regression,0.531,0.2653,0.4327,0.2894,0.3468,0.2562,0.207,90,221,403,118,"BASELINE_BENCHMARK (Linear model, lower PR-AUC)"
+Random_Forest,0.5654,0.3151,0.3462,0.309,0.3265,0.2218,0.2035,72,161,463,136,"SELECTED_PRIMARY_MODEL (Superior PR-AUC, high recall, robust spatial generalizability)"
+Extra_Trees,0.5081,0.2803,0.2933,0.2664,0.2792,0.231,0.208,61,168,456,147,"ALTERNATIVE_CANDIDATE (Comparable performance, slightly lower PR-AUC)"

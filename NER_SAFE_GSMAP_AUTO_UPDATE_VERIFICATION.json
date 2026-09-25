@@ -1,0 +1,132 @@
+{
+  "verification_timestamp_utc": "2026-09-23T17:31:30.483844+00:00",
+  "production_model": {
+    "name": "Calibrated XGBoost V1.1",
+    "sha256": "45544c7f5823879315c5caf244ebdaa85b964fe14a51dafe01c910f50a0acc6c",
+    "operational_role": "SOLE_PRODUCTION_MODEL",
+    "operational_fallback": "NONE"
+  },
+  "captured_products_count": 3,
+  "records": [
+    {
+      "product_index": 1,
+      "filename": "gsmap_now.20260921.1430_1529.05_AsiaSS.csv.zip",
+      "observation_start_utc": "2026-09-21T14:30:00+00:00",
+      "observation_end_utc": "2026-09-21T15:29:00+00:00",
+      "source_availability": "JAXA_EORC_PRODUCTION_FTP",
+      "download_time": "2026-09-23T17:31:26.629561+00:00",
+      "processing_time": "2026-09-23T17:31:27.201980+00:00",
+      "risk_update_time": "2026-09-23T17:31:27.524873+00:00",
+      "sha256": "5fc2de28695928f1a2a4b9394b5bcbcd3abb98d4922c8836c537359f6ca9052a",
+      "source_age_seconds": 180146.6,
+      "rainfall_source": "JAXA_GSMAP_NOW_V08",
+      "rainfall_state": "GSMAP_PRIMARY",
+      "derived_rain_anomaly": 0.3889,
+      "mean_precip_mm_h": 0.0307,
+      "max_precip_mm_h": 11.71,
+      "assessment_id": "ASM-LIVE-20260923173127-ea3c510a",
+      "max_risk_score": 0.4586,
+      "tier_distribution": {
+        "CRITICAL": 0,
+        "HIGH": 0,
+        "MODERATE": 48,
+        "WATCH": 0
+      },
+      "latencies": {
+        "download_latency_s": 0.005,
+        "processing_latency_s": 0.572,
+        "risk_update_latency_s": 0.323,
+        "total_cycle_latency_s": 0.909
+      }
+    },
+    {
+      "product_index": 2,
+      "filename": "gsmap_now.20260921.1500_1559.05_AsiaSS.csv.zip",
+      "observation_start_utc": "2026-09-21T15:00:00+00:00",
+      "observation_end_utc": "2026-09-21T15:59:00+00:00",
+      "source_availability": "JAXA_EORC_PRODUCTION_FTP",
+      "download_time": "2026-09-23T17:31:28.034068+00:00",
+      "processing_time": "2026-09-23T17:31:28.746091+00:00",
+      "risk_update_time": "2026-09-23T17:31:28.804571+00:00",
+      "sha256": "705b21ef285abb0338d50e1de2eb3b9aa46cc9e62fc78988ddc80a5fc4efd8a8",
+      "source_age_seconds": 178348.0,
+      "rainfall_source": "JAXA_GSMAP_NOW_V08",
+      "rainfall_state": "GSMAP_PRIMARY",
+      "derived_rain_anomaly": 0.2616,
+      "mean_precip_mm_h": 0.0228,
+      "max_precip_mm_h": 3.78,
+      "assessment_id": "ASM-LIVE-20260923173128-d105e402",
+      "max_risk_score": 0.4204,
+      "tier_distribution": {
+        "CRITICAL": 0,
+        "HIGH": 0,
+        "MODERATE": 48,
+        "WATCH": 0
+      },
+      "latencies": {
+        "download_latency_s": 0.007,
+        "processing_latency_s": 0.712,
+        "risk_update_latency_s": 0.058,
+        "total_cycle_latency_s": 0.778
+      }
+    },
+    {
+      "product_index": 3,
+      "filename": "gsmap_now.20260921.1530_1629.05_AsiaSS.csv.zip",
+      "observation_start_utc": "2026-09-21T15:30:00+00:00",
+      "observation_end_utc": "2026-09-21T16:29:00+00:00",
+      "source_availability": "JAXA_EORC_PRODUCTION_FTP",
+      "download_time": "2026-09-23T17:31:29.313808+00:00",
+      "processing_time": "2026-09-23T17:31:29.904948+00:00",
+      "risk_update_time": "2026-09-23T17:31:29.983098+00:00",
+      "sha256": "4913a26339f4286df624716758d23398181721ae37ec69d3fca1ad559b8f03e3",
+      "source_age_seconds": 176549.3,
+      "rainfall_source": "JAXA_GSMAP_NOW_V08",
+      "rainfall_state": "GSMAP_PRIMARY",
+      "derived_rain_anomaly": 0.2251,
+      "mean_precip_mm_h": 0.0215,
+      "max_precip_mm_h": 1.5,
+      "assessment_id": "ASM-LIVE-20260923173129-8cabc1dc",
+      "max_risk_score": 0.4095,
+      "tier_distribution": {
+        "CRITICAL": 0,
+        "HIGH": 0,
+        "MODERATE": 48,
+        "WATCH": 0
+      },
+      "latencies": {
+        "download_latency_s": 0.008,
+        "processing_latency_s": 0.591,
+        "risk_update_latency_s": 0.078,
+        "total_cycle_latency_s": 0.678
+      }
+    }
+  ],
+  "duplicate_prevention_test": {
+    "status": "PASS",
+    "tested_filename": "gsmap_now.20260921.1530_1629.05_AsiaSS.csv.zip",
+    "dedup_status": "ALREADY_CURRENT",
+    "dedup_message": "Observation already ingested in current assessment; duplicate reassessment suppressed."
+  },
+  "verification_checklist": {
+    "1_distinct_product_timestamps": true,
+    "2_obtained_from_jaxa": true,
+    "3_scheduler_detected_automatically": true,
+    "4_no_duplicate_assessment_for_same_product": true,
+    "5_new_product_to_risk_update": true,
+    "6_no_repeated_presentation_of_existing_as_new": true,
+    "7_gsmap_primary_rainfall_source": true,
+    "8_xgboost_sole_production_model": true,
+    "9_gpm_datasource_fallback_only": true
+  },
+  "summary": {
+    "distinct_new_gsmap_products": 3,
+    "automatic_detection": "PASS",
+    "duplicate_prevention": "PASS",
+    "new_product_to_risk_update": "PASS",
+    "auto_update_verified": "YES",
+    "xgboost": "UNCHANGED",
+    "risk_formula": "UNCHANGED",
+    "g_drive": "UNTOUCHED"
+  }
+}

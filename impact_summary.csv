@@ -1,0 +1,10 @@
+state,district,total_events,critical_events,high_events,moderate_events,low_events,total_buildings_exposed,total_road_length_m_exposed,total_pop_exposed,mean_risk_score
+Meghalaya,East Jaintia Hills,6,4,0,0,2,0,354.2,0,0.508
+Meghalaya,East Khasi Hills,6,0,1,5,0,0,727.6,0,0.581
+Meghalaya,South West Khasi Hills,6,0,0,1,5,0,67.7,0,0.539
+Meghalaya,West Jaintia Hills,6,1,1,0,4,11,749.2,51,0.546
+Mizoram,Kolasib,4,2,0,0,2,0,176.6,0,0.403
+Mizoram,Lawngtlai,6,0,0,0,6,0,0.0,0,0.44
+Mizoram,Lunglei,2,1,0,0,1,0,61.3,0,0.403
+Mizoram,Mamit,6,0,0,0,6,0,0.0,0,0.449
+Mizoram,Saiha,6,2,0,0,4,19,138.4,87,0.434

@@ -1,0 +1,70 @@
+{
+  "system": "NER-SAFE Operational Environmental Risk Engine",
+  "validation_phase": "PHASE_4A_CONTROLLED_IMPLEMENTATION",
+  "status": "LIVE_VERIFIED",
+  "timestamp_utc": "2026-09-21T14:27:59.017179+00:00",
+  "rainfall_provenance": {
+    "active_source": "GSMAP_PRIMARY",
+    "provider": "JAXA Earth Observation Research Center (EORC)",
+    "product_filename": "gsmap_now.20260921.1300_1359.05_AsiaSS.csv.zip",
+    "file_size_bytes": 340393,
+    "sha256_hash": "7d06342672cc84b5df46bb0813a57502063ac857c7879324319cc56f129b8e6e",
+    "observation_start_utc": "2026-09-21T13:00:00+00:00",
+    "observation_end_utc": "2026-09-21T13:59:00+00:00",
+    "source_age_minutes": 87.72,
+    "freshness_state": "FRESH",
+    "regional_precipitation": {
+      "mean_precip_mm_h": 0.0719,
+      "max_precip_mm_h": 10.52,
+      "p90_precip_mm_h": 0.0,
+      "meghalaya_cells_covered": 360,
+      "mizoram_cells_covered": 208,
+      "derived_rainfall_anomaly": 0.3719
+    }
+  },
+  "failover_architecture": {
+    "primary_feed": "JAXA GSMaP_NOW Version 8 (/now/txt/05_AsiaSS)",
+    "secondary_fallback": "NASA GPM IMERG Early NRT (GPM_3IMERGHHE.07)",
+    "historical_baseline": "NASA GPM IMERG Final Daily V07 (Static Climatology Baseline)",
+    "degraded_mode": "RAIN_DEGRADED (Holding last valid observation without synthetic fabrication)"
+  },
+  "latency_telemetry": {
+    "T_source": "2026-09-21T13:00:00+00:00",
+    "T_available": "2026-09-21T13:59:00+00:00",
+    "T_download": "2026-09-21T14:27:43.459025+00:00",
+    "T_processed": "2026-09-21T14:27:43.459025+00:00",
+    "T_risk_updated": "2026-09-21T14:27:43.459157+00:00",
+    "T_dashboard_updated": "2026-09-21T14:27:59.017145+00:00",
+    "source_age_minutes": 87.72,
+    "download_latency_seconds": 0.0,
+    "processing_latency_seconds": 3.399,
+    "end_to_end_latency_seconds": 18.96
+  },
+  "live_assessment_record": {
+    "assessment_id": "ASM-LIVE-20260921142743-dda6c5ab",
+    "triggering_source": "JAXA_GSMAP_NOW_01",
+    "rainfall_source": "GSMAP_PRIMARY",
+    "rainfall_product": "gsmap_now.20260921.1300_1359.05_AsiaSS.csv.zip",
+    "risk_formula": "0.40*susceptibility + 0.30*rainfall_anomaly + 0.20*soil_moisture_anomaly + 0.10*satellite_change_flag",
+    "severity_distribution": {
+      "CRITICAL": 0,
+      "HIGH": 48,
+      "MODERATE": 0,
+      "WATCH": 0
+    },
+    "max_risk_score": 0.5769
+  },
+  "production_invariants_verification": {
+    "xgboost_model_hash": "45544c7f5823879315c5caf244ebdaa85b964fe14a51dafe01c910f50a0acc6c",
+    "hash_verified": true,
+    "risk_formula_unchanged": true,
+    "severity_thresholds_unchanged": true,
+    "external_drive_g_untouched": true,
+    "synthetic_data_fabricated": false,
+    "research_weights_zero": {
+      "cnn": 0.0,
+      "insar": 0.0,
+      "c15": 0.0
+    }
+  }
+}

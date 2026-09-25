@@ -1,0 +1,1740 @@
+{
+  "type": "FeatureCollection",
+  "name": "NER_SAFE_Phase1_Landslide_Initiation_Points",
+  "crs": {
+    "type": "name",
+    "properties": {
+      "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
+    }
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "id": "EVT-MEG-001",
+      "properties": {
+        "event_id": "EVT-MEG-001",
+        "state": "Meghalaya",
+        "district": "East Khasi Hills",
+        "latitude": 25.187083,
+        "longitude": 91.621806,
+        "elevation_init_m": 101.0,
+        "elevation_end_m": 28.0,
+        "elevation_drop_m": 73.0,
+        "slope_init_deg": 18.3,
+        "avg_slope_deg": 15.3,
+        "combined_risk_score": 0.5846,
+        "risk_class": 4,
+        "susceptibility": 0.6869,
+        "dynamic_trigger": 0.8015,
+        "uncertainty": 0.7622,
+        "path_length_m": 267.4,
+        "runout_area_m2": 29264.6,
+        "vertex_count": 8,
+        "stopping_reason": "slope_flattening_deposition",
+        "flow_path_confidence": 0.75,
+        "runout_confidence": 0.87,
+        "nearest_settlement": "Shella",
+        "settlement_distance_km": 1.9
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          91.621806,
+          25.187083
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "EVT-MEG-002",
+      "properties": {
+        "event_id": "EVT-MEG-002",
+        "state": "Meghalaya",
+        "district": "East Khasi Hills",
+        "latitude": 25.182361,
+        "longitude": 91.578472,
+        "elevation_init_m": 125.0,
+        "elevation_end_m": 82.0,
+        "elevation_drop_m": 43.0,
+        "slope_init_deg": 20.5,
+        "avg_slope_deg": 13.8,
+        "combined_risk_score": 0.5842,
+        "risk_class": 4,
+        "susceptibility": 0.692,
+        "dynamic_trigger": 0.7923,
+        "uncertainty": 0.7572,
+        "path_length_m": 174.7,
+        "runout_area_m2": 21438.5,
+        "vertex_count": 5,
+        "stopping_reason": "local_pit_depression",
+        "flow_path_confidence": 0.66,
+        "runout_confidence": 0.88,
+        "nearest_settlement": "Nonglait",
+        "settlement_distance_km": 3.8
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          91.578472,
+          25.182361
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "EVT-MEG-003",
+      "properties": {
+        "event_id": "EVT-MEG-003",
+        "state": "Meghalaya",
+        "district": "East Khasi Hills",
+        "latitude": 25.223472,
+        "longitude": 91.628472,
+        "elevation_init_m": 81.0,
+        "elevation_end_m": 53.0,
+        "elevation_drop_m": 28.0,
+        "slope_init_deg": 25.9,
+        "avg_slope_deg": 17.8,
+        "combined_risk_score": 0.5837,
+        "risk_class": 4,
+        "susceptibility": 0.6846,
+        "dynamic_trigger": 0.8034,
+        "uncertainty": 0.7644,
+        "path_length_m": 87.4,
+        "runout_area_m2": 14397.0,
+        "vertex_count": 3,
+        "stopping_reason": "local_pit_depression",
+        "flow_path_confidence": 0.59,
+        "runout_confidence": 0.89,
+        "nearest_settlement": "Dewsaw",
+        "settlement_distance_km": 1.6
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          91.628472,
+          25.223472
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "EVT-MEG-004",
+      "properties": {
+        "event_id": "EVT-MEG-004",
+        "state": "Meghalaya",
+        "district": "East Khasi Hills",
+        "latitude": 25.186528,
+        "longitude": 91.644028,
+        "elevation_init_m": 135.0,
+        "elevation_end_m": 93.0,
+        "elevation_drop_m": 42.0,
+        "slope_init_deg": 19.5,
+        "avg_slope_deg": 12.0,
+        "combined_risk_score": 0.5788,
+        "risk_class": 4,
+        "susceptibility": 0.6801,
+        "dynamic_trigger": 0.8014,
+        "uncertainty": 0.7686,
+        "path_length_m": 198.1,
+        "runout_area_m2": 23336.6,
+        "vertex_count": 7,
+        "stopping_reason": "local_pit_depression",
+        "flow_path_confidence": 0.66,
+        "runout_confidence": 0.88,
+        "nearest_settlement": "Shella",
+        "settlement_distance_km": 1.1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          91.644028,
+          25.186528
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "EVT-MEG-005",
+      "properties": {
+        "event_id": "EVT-MEG-005",
+        "state": "Meghalaya",
+        "district": "East Khasi Hills",
+        "latitude": 25.178472,
+        "longitude": 91.680694,
+        "elevation_init_m": 68.0,
+        "elevation_end_m": 35.0,
+        "elevation_drop_m": 33.0,
+        "slope_init_deg": 28.8,
+        "avg_slope_deg": 13.6,
+        "combined_risk_score": 0.5767,
+        "risk_class": 4,
+        "susceptibility": 0.6844,
+        "dynamic_trigger": 0.7901,
+        "uncertainty": 0.7646,
+        "path_length_m": 136.4,
+        "runout_area_m2": 18395.7,
+        "vertex_count": 5,
+        "stopping_reason": "local_pit_depression",
+        "flow_path_confidence": 0.62,
+        "runout_confidence": 0.89,
+        "nearest_settlement": "Mawlong",
+        "settlement_distance_km": 4.1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          91.680694,
+          25.178472
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "EVT-MEG-006",
+      "properties": {
+        "event_id": "EVT-MEG-006",
+        "state": "Meghalaya",
+        "district": "East Khasi Hills",
+        "latitude": 25.179306,
+        "longitude": 91.696806,
+        "elevation_init_m": 148.0,
+        "elevation_end_m": 60.0,
+        "elevation_drop_m": 88.0,
+        "slope_init_deg": 21.2,
+        "avg_slope_deg": 10.4,
+        "combined_risk_score": 0.5765,
+        "risk_class": 4,
+        "susceptibility": 0.6867,
+        "dynamic_trigger": 0.786,
+        "uncertainty": 0.7624,
+        "path_length_m": 478.3,
+        "runout_area_m2": 46544.1,
+        "vertex_count": 14,
+        "stopping_reason": "slope_flattening_deposition",
+        "flow_path_confidence": 0.87,
+        "runout_confidence": 0.85,
+        "nearest_settlement": "Mawlong",
+        "settlement_distance_km": 3.7
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          91.696806,
+          25.179306
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "EVT-MEG-007",
+      "properties": {
+        "event_id": "EVT-MEG-007",
+        "state": "Meghalaya",
+        "district": "West Jaintia Hills",
+        "latitude": 25.289583,
+        "longitude": 91.998472,
+        "elevation_init_m": 186.0,
+        "elevation_end_m": 145.0,
+        "elevation_drop_m": 41.0,
+        "slope_init_deg": 29.9,
+        "avg_slope_deg": 19.1,
+        "combined_risk_score": 0.5549,
+        "risk_class": 4,
+        "susceptibility": 0.6783,
+        "dynamic_trigger": 0.7575,
+        "uncertainty": 0.7703,
+        "path_length_m": 118.3,
+        "runout_area_m2": 16899.0,
+        "vertex_count": 4,
+        "stopping_reason": "local_pit_depression",
+        "flow_path_confidence": 0.63,
+        "runout_confidence": 0.89,
+        "nearest_settlement": "Nongkwai",
+        "settlement_distance_km": 3.6
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          91.998472,
+          25.289583
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "EVT-MEG-008",
+      "properties": {
+        "event_id": "EVT-MEG-008",
+        "state": "Meghalaya",
+        "district": "West Jaintia Hills",
+        "latitude": 25.206806,
+        "longitude": 92.020694,
+        "elevation_init_m": 143.0,
+        "elevation_end_m": 16.0,
+        "elevation_drop_m": 127.0,
+        "slope_init_deg": 24.6,
+        "avg_slope_deg": 13.4,
+        "combined_risk_score": 0.5549,
+        "risk_class": 4,
+        "susceptibility": 0.6822,
+        "dynamic_trigger": 0.7513,
+        "uncertainty": 0.7667,
+        "path_length_m": 532.6,
+        "runout_area_m2": 51682.3,
+        "vertex_count": 17,
+        "stopping_reason": "local_pit_depression",
+        "flow_path_confidence": 0.95,
+        "runout_confidence": 0.85,
+        "nearest_settlement": "Unnamed Settlement",
+        "settlement_distance_km": 0.1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          92.020694,
+          25.206806
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "EVT-MEG-009",
+      "properties": {
+        "event_id": "EVT-MEG-009",
+        "state": "Meghalaya",
+        "district": "South West Khasi Hills",
+        "latitude": 25.305139,
+        "longitude": 91.520694,
+        "elevation_init_m": 1403.0,
+        "elevation_end_m": 1358.0,
+        "elevation_drop_m": 45.0,
+        "slope_init_deg": 21.0,
+        "avg_slope_deg": 15.5,
+        "combined_risk_score": 0.5504,
+        "risk_class": 4,
+        "susceptibility": 0.6654,
+        "dynamic_trigger": 0.7697,
+        "uncertainty": 0.7817,
+        "path_length_m": 161.9,
+        "runout_area_m2": 20507.3,
+        "vertex_count": 5,
+        "stopping_reason": "slope_flattening_deposition",
+        "flow_path_confidence": 0.65,
+        "runout_confidence": 0.88,
+        "nearest_settlement": "Phlangkynshi",
+        "settlement_distance_km": 0.2
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          91.520694,
+          25.305139
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "EVT-MEG-010",
+      "properties": {
+        "event_id": "EVT-MEG-010",
+        "state": "Meghalaya",
+        "district": "South West Khasi Hills",
+        "latitude": 25.330694,
+        "longitude": 91.547639,
+        "elevation_init_m": 706.0,
+        "elevation_end_m": 700.0,
+        "elevation_drop_m": 6.0,
+        "slope_init_deg": 19.5,
+        "avg_slope_deg": 11.0,
+        "combined_risk_score": 0.5487,
+        "risk_class": 4,
+        "susceptibility": 0.6502,
+        "dynamic_trigger": 0.7917,
+        "uncertainty": 0.7938,
+        "path_length_m": 30.9,
+        "runout_area_m2": 10405.8,
+        "vertex_count": 2,
+        "stopping_reason": "local_pit_depression",
+        "flow_path_confidence": 0.52,
+        "runout_confidence": 0.9,
+        "nearest_settlement": "Kenmynsaw",
+        "settlement_distance_km": 2.6
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          91.547639,
+          25.330694
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "EVT-MEG-011",
+      "properties": {
+        "event_id": "EVT-MEG-011",
+        "state": "Meghalaya",
+        "district": "West Jaintia Hills",
+        "latitude": 25.302083,
+        "longitude": 92.013194,
+        "elevation_init_m": 188.0,
+        "elevation_end_m": 167.0,
+        "elevation_drop_m": 21.0,
+        "slope_init_deg": 30.5,
+        "avg_slope_deg": 18.8,
+        "combined_risk_score": 0.5481,
+        "risk_class": 4,
+        "susceptibility": 0.6746,
+        "dynamic_trigger": 0.7499,
+        "uncertainty": 0.7736,
+        "path_length_m": 61.8,
+        "runout_area_m2": 12496.2,
+        "vertex_count": 3,
+        "stopping_reason": "local_pit_depression",
+        "flow_path_confidence": 0.57,
+        "runout_confidence": 0.89,
+        "nearest_settlement": "Nongryngkoh",
+        "settlement_distance_km": 2.3
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          92.013194,
+          25.302083
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "EVT-MEG-012",
+      "properties": {
+        "event_id": "EVT-MEG-012",
+        "state": "Meghalaya",
+        "district": "West Jaintia Hills",
+        "latitude": 25.185694,
+        "longitude": 92.027083,
+        "elevation_init_m": 68.0,
+        "elevation_end_m": 36.0,
+        "elevation_drop_m": 32.0,
+        "slope_init_deg": 24.3,
+        "avg_slope_deg": 13.2,
+        "combined_risk_score": 0.5476,
+        "risk_class": 4,
+        "susceptibility": 0.6779,
+        "dynamic_trigger": 0.7436,
+        "uncertainty": 0.7706,
+        "path_length_m": 136.4,
+        "runout_area_m2": 18387.7,
+        "vertex_count": 5,
+        "stopping_reason": "slope_flattening_deposition",
+        "flow_path_confidence": 0.62,
+        "runout_confidence": 0.89,
+        "nearest_settlement": "Dawki",
+        "settlement_distance_km": 0.6
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          92.027083,
+          25.185694
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "EVT-MEG-013",
+      "properties": {
+        "event_id": "EVT-MEG-013",
+        "state": "Meghalaya",
+        "district": "South West Khasi Hills",
+        "latitude": 25.319028,
+        "longitude": 91.551528,
+        "elevation_init_m": 643.0,
+        "elevation_end_m": 626.0,
+        "elevation_drop_m": 17.0,
+        "slope_init_deg": 23.5,
+        "avg_slope_deg": 10.4,
+        "combined_risk_score": 0.5407,
+        "risk_class": 4,
+        "susceptibility": 0.6439,
+        "dynamic_trigger": 0.7864,
+        "uncertainty": 0.7985,
+        "path_length_m": 92.7,
+        "runout_area_m2": 14943.7,
+        "vertex_count": 4,
+        "stopping_reason": "slope_flattening_deposition",
+        "flow_path_confidence": 0.57,
+        "runout_confidence": 0.89,
+        "nearest_settlement": "Kenbah",
+        "settlement_distance_km": 1.3
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          91.551528,
+          25.319028
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "EVT-MEG-014",
+      "properties": {
+        "event_id": "EVT-MEG-014",
+        "state": "Meghalaya",
+        "district": "South West Khasi Hills",
+        "latitude": 25.339583,
+        "longitude": 91.535417,
+        "elevation_init_m": 892.0,
+        "elevation_end_m": 845.0,
+        "elevation_drop_m": 47.0,
+        "slope_init_deg": 29.1,
+        "avg_slope_deg": 19.0,
+        "combined_risk_score": 0.5379,
+        "risk_class": 4,
+        "susceptibility": 0.6422,
+        "dynamic_trigger": 0.7835,
+        "uncertainty": 0.7997,
+        "path_length_m": 136.4,
+        "runout_area_m2": 18369.9,
+        "vertex_count": 5,
+        "stopping_reason": "local_pit_depression",
+        "flow_path_confidence": 0.65,
+        "runout_confidence": 0.89,
+        "nearest_settlement": "Kenbah",
+        "settlement_distance_km": 4.2
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          91.535417,
+          25.339583
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "EVT-MEG-015",
+      "properties": {
+        "event_id": "EVT-MEG-015",
+        "state": "Meghalaya",
+        "district": "South West Khasi Hills",
+        "latitude": 25.356528,
+        "longitude": 91.530417,
+        "elevation_init_m": 1061.0,
+        "elevation_end_m": 1045.0,
+        "elevation_drop_m": 16.0,
+        "slope_init_deg": 32.9,
+        "avg_slope_deg": 27.4,
+        "combined_risk_score": 0.5378,
+        "risk_class": 4,
+        "susceptibility": 0.6559,
+        "dynamic_trigger": 0.76,
+        "uncertainty": 0.7894,
+        "path_length_m": 30.9,
+        "runout_area_m2": 10398.4,
+        "vertex_count": 2,
+        "stopping_reason": "local_pit_depression",
+        "flow_path_confidence": 0.54,
+        "runout_confidence": 0.9,
+        "nearest_settlement": "Mawsdei Village",
+        "settlement_distance_km": 5.5
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          91.530417,
+          25.356528
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "EVT-MEG-016",
+      "properties": {
+        "event_id": "EVT-MEG-016",
+        "state": "Meghalaya",
+        "district": "West Jaintia Hills",
+        "latitude": 25.312361,
+        "longitude": 92.025972,
+        "elevation_init_m": 204.0,
+        "elevation_end_m": 189.0,
+        "elevation_drop_m": 15.0,
+        "slope_init_deg": 31.6,
+        "avg_slope_deg": 13.6,
+        "combined_risk_score": 0.5368,
+        "risk_class": 4,
+        "susceptibility": 0.6637,
+        "dynamic_trigger": 0.745,
+        "uncertainty": 0.783,
+        "path_length_m": 61.8,
+        "runout_area_m2": 12492.8,
+        "vertex_count": 3,
+        "stopping_reason": "local_pit_depression",
+        "flow_path_confidence": 0.55,
+        "runout_confidence": 0.89,
+        "nearest_settlement": "Nongryngkoh",
+        "settlement_distance_km": 1.9
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          92.025972,
+          25.312361
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "EVT-MEG-017",
+      "properties": {
+        "event_id": "EVT-MEG-017",
+        "state": "Meghalaya",
+        "district": "West Jaintia Hills",
+        "latitude": 25.314028,
+        "longitude": 92.056806,
+        "elevation_init_m": 287.0,
+        "elevation_end_m": 279.0,
+        "elevation_drop_m": 8.0,
+        "slope_init_deg": 21.1,
+        "avg_slope_deg": 14.5,
+        "combined_risk_score": 0.5317,
+        "risk_class": 4,
+        "susceptibility": 0.6628,
+        "dynamic_trigger": 0.7363,
+        "uncertainty": 0.7838,
+        "path_length_m": 30.9,
+        "runout_area_m2": 10407.3,
+        "vertex_count": 2,
+        "stopping_reason": "local_pit_depression",
+        "flow_path_confidence": 0.53,
+        "runout_confidence": 0.9,
+        "nearest_settlement": "Syntung",
+        "settlement_distance_km": 4.3
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          92.056806,
+          25.314028
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "EVT-MEG-018",
+      "properties": {
+        "event_id": "EVT-MEG-018",
+        "state": "Meghalaya",
+        "district": "South West Khasi Hills",
+        "latitude": 25.244583,
+        "longitude": 91.369583,
+        "elevation_init_m": 63.0,
+        "elevation_end_m": 45.0,
+        "elevation_drop_m": 18.0,
+        "slope_init_deg": 22.7,
+        "avg_slope_deg": 7.5,
+        "combined_risk_score": 0.5197,
+        "risk_class": 4,
+        "susceptibility": 0.6858,
+        "dynamic_trigger": 0.6771,
+        "uncertainty": 0.7632,
+        "path_length_m": 136.4,
+        "runout_area_m2": 18522.3,
+        "vertex_count": 5,
+        "stopping_reason": "slope_flattening_deposition",
+        "flow_path_confidence": 0.59,
+        "runout_confidence": 0.89,
+        "nearest_settlement": "Unnamed Settlement",
+        "settlement_distance_km": 0.8
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          91.369583,
+          25.244583
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "EVT-MEG-019",
+      "properties": {
+        "event_id": "EVT-MEG-019",
+        "state": "Meghalaya",
+        "district": "East Jaintia Hills",
+        "latitude": 25.049583,
+        "longitude": 92.405417,
+        "elevation_init_m": 65.0,
+        "elevation_end_m": 41.0,
+        "elevation_drop_m": 24.0,
+        "slope_init_deg": 18.1,
+        "avg_slope_deg": 12.8,
+        "combined_risk_score": 0.513,
+        "risk_class": 4,
+        "susceptibility": 0.6952,
+        "dynamic_trigger": 0.6505,
+        "uncertainty": 0.754,
+        "path_length_m": 105.5,
+        "runout_area_m2": 15742.6,
+        "vertex_count": 4,
+        "stopping_reason": "local_pit_depression",
+        "flow_path_confidence": 0.59,
+        "runout_confidence": 0.89,
+        "nearest_settlement": "Miklip\u0101r\u0101",
+        "settlement_distance_km": 2.5
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          92.405417,
+          25.049583
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "EVT-MEG-020",
+      "properties": {
+        "event_id": "EVT-MEG-020",
+        "state": "Meghalaya",
+        "district": "East Jaintia Hills",
+        "latitude": 25.032361,
+        "longitude": 92.456528,
+        "elevation_init_m": 111.0,
+        "elevation_end_m": 55.0,
+        "elevation_drop_m": 56.0,
+        "slope_init_deg": 20.4,
+        "avg_slope_deg": 16.2,
+        "combined_risk_score": 0.5111,
+        "risk_class": 4,
+        "susceptibility": 0.6939,
+        "dynamic_trigger": 0.6487,
+        "uncertainty": 0.7553,
+        "path_length_m": 192.8,
+        "runout_area_m2": 23043.1,
+        "vertex_count": 6,
+        "stopping_reason": "local_pit_depression",
+        "flow_path_confidence": 0.69,
+        "runout_confidence": 0.88,
+        "nearest_settlement": "Miklip\u0101r\u0101",
+        "settlement_distance_km": 3.6
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          92.456528,
+          25.032361
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "EVT-MEG-021",
+      "properties": {
+        "event_id": "EVT-MEG-021",
+        "state": "Meghalaya",
+        "district": "East Jaintia Hills",
+        "latitude": 25.072917,
+        "longitude": 92.366528,
+        "elevation_init_m": 119.0,
+        "elevation_end_m": 84.0,
+        "elevation_drop_m": 35.0,
+        "slope_init_deg": 20.1,
+        "avg_slope_deg": 9.4,
+        "combined_risk_score": 0.5068,
+        "risk_class": 4,
+        "susceptibility": 0.6903,
+        "dynamic_trigger": 0.6455,
+        "uncertainty": 0.7589,
+        "path_length_m": 210.9,
+        "runout_area_m2": 24381.6,
+        "vertex_count": 7,
+        "stopping_reason": "fahrboschung_energy_reach_limit",
+        "flow_path_confidence": 0.65,
+        "runout_confidence": 0.88,
+        "nearest_settlement": "Miklip\u0101r\u0101",
+        "settlement_distance_km": 7.4
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          92.366528,
+          25.072917
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "EVT-MEG-022",
+      "properties": {
+        "event_id": "EVT-MEG-022",
+        "state": "Meghalaya",
+        "district": "East Jaintia Hills",
+        "latitude": 25.12625,
+        "longitude": 92.387639,
+        "elevation_init_m": 102.0,
+        "elevation_end_m": 38.0,
+        "elevation_drop_m": 64.0,
+        "slope_init_deg": 20.1,
+        "avg_slope_deg": 16.0,
+        "combined_risk_score": 0.5063,
+        "risk_class": 4,
+        "susceptibility": 0.6902,
+        "dynamic_trigger": 0.6448,
+        "uncertainty": 0.759,
+        "path_length_m": 223.7,
+        "runout_area_m2": 25444.9,
+        "vertex_count": 7,
+        "stopping_reason": "local_pit_depression",
+        "flow_path_confidence": 0.72,
+        "runout_confidence": 0.88,
+        "nearest_settlement": "Khaddum",
+        "settlement_distance_km": 7.4
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          92.387639,
+          25.12625
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "EVT-MEG-023",
+      "properties": {
+        "event_id": "EVT-MEG-023",
+        "state": "Meghalaya",
+        "district": "East Jaintia Hills",
+        "latitude": 25.150417,
+        "longitude": 92.369028,
+        "elevation_init_m": 286.0,
+        "elevation_end_m": 206.0,
+        "elevation_drop_m": 80.0,
+        "slope_init_deg": 18.8,
+        "avg_slope_deg": 13.7,
+        "combined_risk_score": 0.5056,
+        "risk_class": 4,
+        "susceptibility": 0.6866,
+        "dynamic_trigger": 0.6484,
+        "uncertainty": 0.7625,
+        "path_length_m": 329.2,
+        "runout_area_m2": 34419.5,
+        "vertex_count": 10,
+        "stopping_reason": "slope_flattening_deposition",
+        "flow_path_confidence": 0.79,
+        "runout_confidence": 0.87,
+        "nearest_settlement": "Khaddum",
+        "settlement_distance_km": 8.7
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          92.369028,
+          25.150417
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "EVT-MEG-024",
+      "properties": {
+        "event_id": "EVT-MEG-024",
+        "state": "Meghalaya",
+        "district": "East Jaintia Hills",
+        "latitude": 25.042083,
+        "longitude": 92.44125,
+        "elevation_init_m": 281.0,
+        "elevation_end_m": 228.0,
+        "elevation_drop_m": 53.0,
+        "slope_init_deg": 23.0,
+        "avg_slope_deg": 11.2,
+        "combined_risk_score": 0.5052,
+        "risk_class": 4,
+        "susceptibility": 0.6819,
+        "dynamic_trigger": 0.6545,
+        "uncertainty": 0.767,
+        "path_length_m": 267.4,
+        "runout_area_m2": 28671.6,
+        "vertex_count": 8,
+        "stopping_reason": "local_pit_depression",
+        "flow_path_confidence": 0.71,
+        "runout_confidence": 0.87,
+        "nearest_settlement": "Miklip\u0101r\u0101",
+        "settlement_distance_km": 1.6
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          92.44125,
+          25.042083
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "EVT-MIZ-001",
+      "properties": {
+        "event_id": "EVT-MIZ-001",
+        "state": "Mizoram",
+        "district": "Mamit",
+        "latitude": 23.652083,
+        "longitude": 92.076806,
+        "elevation_init_m": 239.0,
+        "elevation_end_m": 218.0,
+        "elevation_drop_m": 21.0,
+        "slope_init_deg": 18.5,
+        "avg_slope_deg": 12.8,
+        "combined_risk_score": 0.4539,
+        "risk_class": 3,
+        "susceptibility": 0.6707,
+        "dynamic_trigger": 0.569,
+        "uncertainty": 0.7771,
+        "path_length_m": 92.7,
+        "runout_area_m2": 15143.0,
+        "vertex_count": 4,
+        "stopping_reason": "local_pit_depression",
+        "flow_path_confidence": 0.58,
+        "runout_confidence": 0.89,
+        "nearest_settlement": "Unnamed Settlement",
+        "settlement_distance_km": 28.6
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          92.076806,
+          23.652083
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "EVT-MIZ-002",
+      "properties": {
+        "event_id": "EVT-MIZ-002",
+        "state": "Mizoram",
+        "district": "Mamit",
+        "latitude": 23.689583,
+        "longitude": 92.052917,
+        "elevation_init_m": 166.0,
+        "elevation_end_m": 130.0,
+        "elevation_drop_m": 36.0,
+        "slope_init_deg": 21.2,
+        "avg_slope_deg": 12.2,
+        "combined_risk_score": 0.4502,
+        "risk_class": 3,
+        "susceptibility": 0.6654,
+        "dynamic_trigger": 0.5689,
+        "uncertainty": 0.7817,
+        "path_length_m": 167.2,
+        "runout_area_m2": 20619.5,
+        "vertex_count": 6,
+        "stopping_reason": "slope_flattening_deposition",
+        "flow_path_confidence": 0.64,
+        "runout_confidence": 0.88,
+        "nearest_settlement": "Unnamed Settlement",
+        "settlement_distance_km": 30.6
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          92.052917,
+          23.689583
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "EVT-MIZ-003",
+      "properties": {
+        "event_id": "EVT-MIZ-003",
+        "state": "Mizoram",
+        "district": "Mamit",
+        "latitude": 23.666806,
+        "longitude": 92.005694,
+        "elevation_init_m": 293.0,
+        "elevation_end_m": 257.0,
+        "elevation_drop_m": 36.0,
+        "slope_init_deg": 21.4,
+        "avg_slope_deg": 14.8,
+        "combined_risk_score": 0.4483,
+        "risk_class": 3,
+        "susceptibility": 0.6581,
+        "dynamic_trigger": 0.5749,
+        "uncertainty": 0.7876,
+        "path_length_m": 136.4,
+        "runout_area_m2": 18457.0,
+        "vertex_count": 5,
+        "stopping_reason": "local_pit_depression",
+        "flow_path_confidence": 0.63,
+        "runout_confidence": 0.89,
+        "nearest_settlement": "Unnamed Settlement",
+        "settlement_distance_km": 36.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          92.005694,
+          23.666806
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "EVT-MIZ-004",
+      "properties": {
+        "event_id": "EVT-MIZ-004",
+        "state": "Mizoram",
+        "district": "Mamit",
+        "latitude": 23.677361,
+        "longitude": 92.089306,
+        "elevation_init_m": 258.0,
+        "elevation_end_m": 189.0,
+        "elevation_drop_m": 69.0,
+        "slope_init_deg": 26.9,
+        "avg_slope_deg": 12.3,
+        "combined_risk_score": 0.4479,
+        "risk_class": 3,
+        "susceptibility": 0.6569,
+        "dynamic_trigger": 0.5759,
+        "uncertainty": 0.7886,
+        "path_length_m": 316.4,
+        "runout_area_m2": 33544.7,
+        "vertex_count": 10,
+        "stopping_reason": "local_pit_depression",
+        "flow_path_confidence": 0.76,
+        "runout_confidence": 0.87,
+        "nearest_settlement": "Unnamed Settlement",
+        "settlement_distance_km": 26.7
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          92.089306,
+          23.677361
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "EVT-MIZ-005",
+      "properties": {
+        "event_id": "EVT-MIZ-005",
+        "state": "Mizoram",
+        "district": "Mamit",
+        "latitude": 24.354583,
+        "longitude": 92.080694,
+        "elevation_init_m": 136.0,
+        "elevation_end_m": 110.0,
+        "elevation_drop_m": 26.0,
+        "slope_init_deg": 20.3,
+        "avg_slope_deg": 9.9,
+        "combined_risk_score": 0.4477,
+        "risk_class": 3,
+        "susceptibility": 0.6496,
+        "dynamic_trigger": 0.5856,
+        "uncertainty": 0.7943,
+        "path_length_m": 149.2,
+        "runout_area_m2": 19584.9,
+        "vertex_count": 5,
+        "stopping_reason": "slope_flattening_deposition",
+        "flow_path_confidence": 0.61,
+        "runout_confidence": 0.89,
+        "nearest_settlement": "Kanhmun",
+        "settlement_distance_km": 27.2
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          92.080694,
+          24.354583
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "EVT-MIZ-006",
+      "properties": {
+        "event_id": "EVT-MIZ-006",
+        "state": "Mizoram",
+        "district": "Mamit",
+        "latitude": 23.677917,
+        "longitude": 92.037917,
+        "elevation_init_m": 202.0,
+        "elevation_end_m": 126.0,
+        "elevation_drop_m": 76.0,
+        "slope_init_deg": 21.8,
+        "avg_slope_deg": 15.9,
+        "combined_risk_score": 0.4477,
+        "risk_class": 3,
+        "susceptibility": 0.6617,
+        "dynamic_trigger": 0.5688,
+        "uncertainty": 0.7847,
+        "path_length_m": 267.4,
+        "runout_area_m2": 29513.3,
+        "vertex_count": 8,
+        "stopping_reason": "slope_flattening_deposition",
+        "flow_path_confidence": 0.76,
+        "runout_confidence": 0.87,
+        "nearest_settlement": "Unnamed Settlement",
+        "settlement_distance_km": 32.3
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          92.037917,
+          23.677917
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "EVT-MIZ-007",
+      "properties": {
+        "event_id": "EVT-MIZ-007",
+        "state": "Mizoram",
+        "district": "Lawngtlai",
+        "latitude": 21.514028,
+        "longitude": 92.505694,
+        "elevation_init_m": 311.0,
+        "elevation_end_m": 217.0,
+        "elevation_drop_m": 94.0,
+        "slope_init_deg": 31.8,
+        "avg_slope_deg": 21.7,
+        "combined_risk_score": 0.4459,
+        "risk_class": 3,
+        "susceptibility": 0.6731,
+        "dynamic_trigger": 0.5499,
+        "uncertainty": 0.775,
+        "path_length_m": 236.5,
+        "runout_area_m2": 27332.6,
+        "vertex_count": 7,
+        "stopping_reason": "slope_flattening_deposition",
+        "flow_path_confidence": 0.78,
+        "runout_confidence": 0.88,
+        "nearest_settlement": "Reng Tlang",
+        "settlement_distance_km": 53.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          92.505694,
+          21.514028
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "EVT-MIZ-008",
+      "properties": {
+        "event_id": "EVT-MIZ-008",
+        "state": "Mizoram",
+        "district": "Saiha",
+        "latitude": 22.047639,
+        "longitude": 93.054028,
+        "elevation_init_m": 283.0,
+        "elevation_end_m": 267.0,
+        "elevation_drop_m": 16.0,
+        "slope_init_deg": 20.3,
+        "avg_slope_deg": 14.5,
+        "combined_risk_score": 0.4448,
+        "risk_class": 3,
+        "susceptibility": 0.6707,
+        "dynamic_trigger": 0.5508,
+        "uncertainty": 0.777,
+        "path_length_m": 61.8,
+        "runout_area_m2": 12818.7,
+        "vertex_count": 3,
+        "stopping_reason": "slope_flattening_deposition",
+        "flow_path_confidence": 0.56,
+        "runout_confidence": 0.89,
+        "nearest_settlement": "Laki",
+        "settlement_distance_km": 12.4
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          93.054028,
+          22.047639
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "EVT-MIZ-009",
+      "properties": {
+        "event_id": "EVT-MIZ-009",
+        "state": "Mizoram",
+        "district": "Lawngtlai",
+        "latitude": 22.054028,
+        "longitude": 92.776528,
+        "elevation_init_m": 118.0,
+        "elevation_end_m": 107.0,
+        "elevation_drop_m": 11.0,
+        "slope_init_deg": 18.1,
+        "avg_slope_deg": 10.1,
+        "combined_risk_score": 0.44,
+        "risk_class": 3,
+        "susceptibility": 0.6826,
+        "dynamic_trigger": 0.5261,
+        "uncertainty": 0.7663,
+        "path_length_m": 61.8,
+        "runout_area_m2": 12808.4,
+        "vertex_count": 3,
+        "stopping_reason": "local_pit_depression",
+        "flow_path_confidence": 0.55,
+        "runout_confidence": 0.89,
+        "nearest_settlement": "Sabualtlang",
+        "settlement_distance_km": 8.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          92.776528,
+          22.054028
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "EVT-MIZ-010",
+      "properties": {
+        "event_id": "EVT-MIZ-010",
+        "state": "Mizoram",
+        "district": "Lawngtlai",
+        "latitude": 21.570417,
+        "longitude": 92.523472,
+        "elevation_init_m": 706.0,
+        "elevation_end_m": 202.0,
+        "elevation_drop_m": 504.0,
+        "slope_init_deg": 20.4,
+        "avg_slope_deg": 15.9,
+        "combined_risk_score": 0.4398,
+        "risk_class": 3,
+        "susceptibility": 0.6691,
+        "dynamic_trigger": 0.5431,
+        "uncertainty": 0.7785,
+        "path_length_m": 1764.2,
+        "runout_area_m2": 158150.0,
+        "vertex_count": 49,
+        "stopping_reason": "slope_flattening_deposition",
+        "flow_path_confidence": 1.0,
+        "runout_confidence": 0.72,
+        "nearest_settlement": "Reng Tlang",
+        "settlement_distance_km": 46.5
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          92.523472,
+          21.570417
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "EVT-MIZ-011",
+      "properties": {
+        "event_id": "EVT-MIZ-011",
+        "state": "Mizoram",
+        "district": "Lawngtlai",
+        "latitude": 21.57875,
+        "longitude": 92.549583,
+        "elevation_init_m": 89.0,
+        "elevation_end_m": 76.0,
+        "elevation_drop_m": 13.0,
+        "slope_init_deg": 22.3,
+        "avg_slope_deg": 16.6,
+        "combined_risk_score": 0.4394,
+        "risk_class": 3,
+        "susceptibility": 0.6756,
+        "dynamic_trigger": 0.5339,
+        "uncertainty": 0.7728,
+        "path_length_m": 43.7,
+        "runout_area_m2": 11455.5,
+        "vertex_count": 2,
+        "stopping_reason": "local_pit_depression",
+        "flow_path_confidence": 0.54,
+        "runout_confidence": 0.9,
+        "nearest_settlement": "Reng Tlang",
+        "settlement_distance_km": 45.1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          92.549583,
+          21.57875
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "EVT-MIZ-012",
+      "properties": {
+        "event_id": "EVT-MIZ-012",
+        "state": "Mizoram",
+        "district": "Saiha",
+        "latitude": 22.040139,
+        "longitude": 93.04375,
+        "elevation_init_m": 346.0,
+        "elevation_end_m": 269.0,
+        "elevation_drop_m": 77.0,
+        "slope_init_deg": 21.2,
+        "avg_slope_deg": 20.1,
+        "combined_risk_score": 0.4382,
+        "risk_class": 3,
+        "susceptibility": 0.6648,
+        "dynamic_trigger": 0.5455,
+        "uncertainty": 0.7821,
+        "path_length_m": 210.9,
+        "runout_area_m2": 25514.3,
+        "vertex_count": 7,
+        "stopping_reason": "local_pit_depression",
+        "flow_path_confidence": 0.74,
+        "runout_confidence": 0.88,
+        "nearest_settlement": "Laki",
+        "settlement_distance_km": 12.8
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          93.04375,
+          22.040139
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "EVT-MIZ-013",
+      "properties": {
+        "event_id": "EVT-MIZ-013",
+        "state": "Mizoram",
+        "district": "Lawngtlai",
+        "latitude": 21.500694,
+        "longitude": 92.451528,
+        "elevation_init_m": 136.0,
+        "elevation_end_m": 114.0,
+        "elevation_drop_m": 22.0,
+        "slope_init_deg": 18.2,
+        "avg_slope_deg": 7.5,
+        "combined_risk_score": 0.4369,
+        "risk_class": 3,
+        "susceptibility": 0.6431,
+        "dynamic_trigger": 0.5725,
+        "uncertainty": 0.7991,
+        "path_length_m": 167.2,
+        "runout_area_m2": 21618.2,
+        "vertex_count": 6,
+        "stopping_reason": "local_pit_depression",
+        "flow_path_confidence": 0.61,
+        "runout_confidence": 0.88,
+        "nearest_settlement": "Reng Tlang",
+        "settlement_distance_km": 56.0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          92.451528,
+          21.500694
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "EVT-MIZ-014",
+      "properties": {
+        "event_id": "EVT-MIZ-014",
+        "state": "Mizoram",
+        "district": "Lawngtlai",
+        "latitude": 21.592083,
+        "longitude": 92.477361,
+        "elevation_init_m": 241.0,
+        "elevation_end_m": 207.0,
+        "elevation_drop_m": 34.0,
+        "slope_init_deg": 26.3,
+        "avg_slope_deg": 17.9,
+        "combined_risk_score": 0.4368,
+        "risk_class": 3,
+        "susceptibility": 0.6751,
+        "dynamic_trigger": 0.5294,
+        "uncertainty": 0.7732,
+        "path_length_m": 105.5,
+        "runout_area_m2": 16588.0,
+        "vertex_count": 4,
+        "stopping_reason": "slope_flattening_deposition",
+        "flow_path_confidence": 0.61,
+        "runout_confidence": 0.89,
+        "nearest_settlement": "Reng Tlang",
+        "settlement_distance_km": 45.4
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          92.477361,
+          21.592083
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "EVT-MIZ-015",
+      "properties": {
+        "event_id": "EVT-MIZ-015",
+        "state": "Mizoram",
+        "district": "Saiha",
+        "latitude": 22.35625,
+        "longitude": 92.87625,
+        "elevation_init_m": 99.0,
+        "elevation_end_m": 78.0,
+        "elevation_drop_m": 21.0,
+        "slope_init_deg": 19.4,
+        "avg_slope_deg": 9.6,
+        "combined_risk_score": 0.4322,
+        "risk_class": 3,
+        "susceptibility": 0.6933,
+        "dynamic_trigger": 0.4979,
+        "uncertainty": 0.7559,
+        "path_length_m": 123.6,
+        "runout_area_m2": 17859.6,
+        "vertex_count": 5,
+        "stopping_reason": "local_pit_depression",
+        "flow_path_confidence": 0.59,
+        "runout_confidence": 0.89,
+        "nearest_settlement": "Lohry (Laty)",
+        "settlement_distance_km": 3.6
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          92.87625,
+          22.35625
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "EVT-MIZ-016",
+      "properties": {
+        "event_id": "EVT-MIZ-016",
+        "state": "Mizoram",
+        "district": "Saiha",
+        "latitude": 22.418472,
+        "longitude": 92.947361,
+        "elevation_init_m": 239.0,
+        "elevation_end_m": 128.0,
+        "elevation_drop_m": 111.0,
+        "slope_init_deg": 19.6,
+        "avg_slope_deg": 18.9,
+        "combined_risk_score": 0.4308,
+        "risk_class": 3,
+        "susceptibility": 0.6874,
+        "dynamic_trigger": 0.5023,
+        "uncertainty": 0.7617,
+        "path_length_m": 323.9,
+        "runout_area_m2": 34323.2,
+        "vertex_count": 9,
+        "stopping_reason": "local_pit_depression",
+        "flow_path_confidence": 0.85,
+        "runout_confidence": 0.87,
+        "nearest_settlement": "Kaochao 'E'",
+        "settlement_distance_km": 2.1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          92.947361,
+          22.418472
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "EVT-MIZ-017",
+      "properties": {
+        "event_id": "EVT-MIZ-017",
+        "state": "Mizoram",
+        "district": "Saiha",
+        "latitude": 22.394306,
+        "longitude": 92.96375,
+        "elevation_init_m": 144.0,
+        "elevation_end_m": 130.0,
+        "elevation_drop_m": 14.0,
+        "slope_init_deg": 20.0,
+        "avg_slope_deg": 10.6,
+        "combined_risk_score": 0.4293,
+        "risk_class": 3,
+        "susceptibility": 0.6848,
+        "dynamic_trigger": 0.5025,
+        "uncertainty": 0.7642,
+        "path_length_m": 74.6,
+        "runout_area_m2": 13589.5,
+        "vertex_count": 3,
+        "stopping_reason": "slope_flattening_deposition",
+        "flow_path_confidence": 0.56,
+        "runout_confidence": 0.89,
+        "nearest_settlement": "Kaochao 'E'",
+        "settlement_distance_km": 1.2
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          92.96375,
+          22.394306
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "EVT-MIZ-018",
+      "properties": {
+        "event_id": "EVT-MIZ-018",
+        "state": "Mizoram",
+        "district": "Saiha",
+        "latitude": 22.402083,
+        "longitude": 92.954583,
+        "elevation_init_m": 187.0,
+        "elevation_end_m": 132.0,
+        "elevation_drop_m": 55.0,
+        "slope_init_deg": 19.0,
+        "avg_slope_deg": 13.8,
+        "combined_risk_score": 0.4292,
+        "risk_class": 3,
+        "susceptibility": 0.6826,
+        "dynamic_trigger": 0.5049,
+        "uncertainty": 0.7663,
+        "path_length_m": 223.7,
+        "runout_area_m2": 25983.7,
+        "vertex_count": 7,
+        "stopping_reason": "local_pit_depression",
+        "flow_path_confidence": 0.7,
+        "runout_confidence": 0.88,
+        "nearest_settlement": "Kaochao 'E'",
+        "settlement_distance_km": 0.1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          92.954583,
+          22.402083
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "EVT-MIZ-019",
+      "properties": {
+        "event_id": "EVT-MIZ-019",
+        "state": "Mizoram",
+        "district": "Kolasib",
+        "latitude": 24.109028,
+        "longitude": 92.691806,
+        "elevation_init_m": 890.0,
+        "elevation_end_m": 518.0,
+        "elevation_drop_m": 372.0,
+        "slope_init_deg": 23.8,
+        "avg_slope_deg": 13.8,
+        "combined_risk_score": 0.4041,
+        "risk_class": 3,
+        "susceptibility": 0.5239,
+        "dynamic_trigger": 0.6951,
+        "uncertainty": 0.9986,
+        "path_length_m": 1514.9,
+        "runout_area_m2": 135091.6,
+        "vertex_count": 43,
+        "stopping_reason": "local_pit_depression",
+        "flow_path_confidence": 1.0,
+        "runout_confidence": 0.75,
+        "nearest_settlement": "Bualpui",
+        "settlement_distance_km": 4.3
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          92.691806,
+          24.109028
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "EVT-MIZ-020",
+      "properties": {
+        "event_id": "EVT-MIZ-020",
+        "state": "Mizoram",
+        "district": "Lunglei",
+        "latitude": 22.580417,
+        "longitude": 92.870417,
+        "elevation_init_m": 1000.0,
+        "elevation_end_m": 677.0,
+        "elevation_drop_m": 323.0,
+        "slope_init_deg": 37.4,
+        "avg_slope_deg": 22.9,
+        "combined_risk_score": 0.4041,
+        "risk_class": 3,
+        "susceptibility": 0.6626,
+        "dynamic_trigger": 0.4799,
+        "uncertainty": 0.784,
+        "path_length_m": 763.8,
+        "runout_area_m2": 70823.2,
+        "vertex_count": 22,
+        "stopping_reason": "local_pit_depression",
+        "flow_path_confidence": 1.0,
+        "runout_confidence": 0.82,
+        "nearest_settlement": "Unnamed Settlement",
+        "settlement_distance_km": 2.6
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          92.870417,
+          22.580417
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "EVT-MIZ-021",
+      "properties": {
+        "event_id": "EVT-MIZ-021",
+        "state": "Mizoram",
+        "district": "Kolasib",
+        "latitude": 24.027917,
+        "longitude": 92.770417,
+        "elevation_init_m": 884.0,
+        "elevation_end_m": 592.0,
+        "elevation_drop_m": 292.0,
+        "slope_init_deg": 23.3,
+        "avg_slope_deg": 19.8,
+        "combined_risk_score": 0.4035,
+        "risk_class": 3,
+        "susceptibility": 0.528,
+        "dynamic_trigger": 0.6855,
+        "uncertainty": 0.9981,
+        "path_length_m": 812.8,
+        "runout_area_m2": 75145.0,
+        "vertex_count": 24,
+        "stopping_reason": "slope_flattening_deposition",
+        "flow_path_confidence": 1.0,
+        "runout_confidence": 0.82,
+        "nearest_settlement": "Twakzawl",
+        "settlement_distance_km": 8.3
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          92.770417,
+          24.027917
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "EVT-MIZ-022",
+      "properties": {
+        "event_id": "EVT-MIZ-022",
+        "state": "Mizoram",
+        "district": "Kolasib",
+        "latitude": 24.02625,
+        "longitude": 92.669306,
+        "elevation_init_m": 907.0,
+        "elevation_end_m": 515.0,
+        "elevation_drop_m": 392.0,
+        "slope_init_deg": 30.1,
+        "avg_slope_deg": 15.9,
+        "combined_risk_score": 0.4034,
+        "risk_class": 3,
+        "susceptibility": 0.5227,
+        "dynamic_trigger": 0.6956,
+        "uncertainty": 0.9987,
+        "path_length_m": 1373.2,
+        "runout_area_m2": 122752.3,
+        "vertex_count": 38,
+        "stopping_reason": "local_pit_depression",
+        "flow_path_confidence": 1.0,
+        "runout_confidence": 0.76,
+        "nearest_settlement": "Mualvum",
+        "settlement_distance_km": 0.7
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          92.669306,
+          24.02625
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "EVT-MIZ-023",
+      "properties": {
+        "event_id": "EVT-MIZ-023",
+        "state": "Mizoram",
+        "district": "Kolasib",
+        "latitude": 24.082083,
+        "longitude": 92.681528,
+        "elevation_init_m": 975.0,
+        "elevation_end_m": 420.0,
+        "elevation_drop_m": 555.0,
+        "slope_init_deg": 23.0,
+        "avg_slope_deg": 13.4,
+        "combined_risk_score": 0.4026,
+        "risk_class": 3,
+        "susceptibility": 0.5212,
+        "dynamic_trigger": 0.6966,
+        "uncertainty": 0.9989,
+        "path_length_m": 2327.7,
+        "runout_area_m2": 203369.5,
+        "vertex_count": 66,
+        "stopping_reason": "slope_flattening_deposition",
+        "flow_path_confidence": 1.0,
+        "runout_confidence": 0.67,
+        "nearest_settlement": "Bualpui",
+        "settlement_distance_km": 1.2
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          92.681528,
+          24.082083
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "EVT-MIZ-024",
+      "properties": {
+        "event_id": "EVT-MIZ-024",
+        "state": "Mizoram",
+        "district": "Lunglei",
+        "latitude": 22.612361,
+        "longitude": 92.002361,
+        "elevation_init_m": 64.0,
+        "elevation_end_m": 51.0,
+        "elevation_drop_m": 13.0,
+        "slope_init_deg": 18.1,
+        "avg_slope_deg": 9.9,
+        "combined_risk_score": 0.4013,
+        "risk_class": 3,
+        "susceptibility": 0.6561,
+        "dynamic_trigger": 0.4821,
+        "uncertainty": 0.7892,
+        "path_length_m": 74.6,
+        "runout_area_m2": 13562.8,
+        "vertex_count": 3,
+        "stopping_reason": "slope_flattening_deposition",
+        "flow_path_confidence": 0.56,
+        "runout_confidence": 0.89,
+        "nearest_settlement": "Borapansury",
+        "settlement_distance_km": 58.8
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          92.002361,
+          22.612361
+        ]
+      }
+    }
+  ]
+}

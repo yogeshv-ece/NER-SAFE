@@ -1,0 +1,116 @@
+{
+  "model_name": "NER_SAFE_Phase1_Landslide_Susceptibility_RandomForest",
+  "version": "1.0.0-MVP",
+  "component": "Component 10: Production-Grade Landslide Risk Modeling & Validation",
+  "created_timestamp": "2026-09-07T14:48:00+05:30",
+  "framework": "scikit-learn 1.9.0",
+  "algorithm": "RandomForestClassifier with Platt Sigmoid Probability Calibration",
+  "hyperparameters": {
+    "n_estimators": 150,
+    "max_depth": 8,
+    "min_samples_leaf": 3,
+    "class_weight": "balanced",
+    "random_state": 42
+  },
+  "spatial_grid": {
+    "crs": "EPSG:4326 (WGS84 Geographic)",
+    "resolution": "1 arc-second (~30.89 meters)",
+    "dimensions": [
+      18001,
+      21601
+    ],
+    "phase_1_aoi": "Meghalaya & Mizoram (21.0\u00b0N - 27.0\u00b0N, 89.0\u00b0E - 94.0\u00b0E)"
+  },
+  "training_dataset": {
+    "total_samples": 832,
+    "positive_landslides": 208,
+    "pseudo_absences": 624,
+    "sampling_ratio": "1:3.0",
+    "negative_exclusion_buffer_m": 1000.0,
+    "stratification": "Geographic slope and elevation bins"
+  },
+  "validation_protocol": {
+    "method": "5-Fold Spatial Block Cross-Validation",
+    "spatial_blocks": [
+      "North-West_Meghalaya (Garo Hills)",
+      "North-East_Meghalaya (Khasi & Jaintia Hills)",
+      "Central_Transition (Southern Border)",
+      "South-West_Mizoram",
+      "South-East_Mizoram"
+    ],
+    "metrics_oof": {
+      "spatial_roc_auc": 0.5654,
+      "spatial_pr_auc": 0.3151,
+      "baseline_prevalence": 0.25,
+      "spatial_recall": 0.3462,
+      "spatial_precision": 0.309,
+      "spatial_f1": 0.3265,
+      "brier_score_calibrated": 0.2035
+    }
+  },
+  "feature_ranking": [
+    {
+      "rank": 1,
+      "feature": "elevation",
+      "importance_perm": 0.1344
+    },
+    {
+      "rank": 2,
+      "feature": "slope",
+      "importance_perm": 0.0456
+    },
+    {
+      "rank": 3,
+      "feature": "ndwi_imputed",
+      "importance_perm": 0.0456
+    },
+    {
+      "rank": 4,
+      "feature": "aspect_cos",
+      "importance_perm": 0.025
+    },
+    {
+      "rank": 5,
+      "feature": "aspect_sin",
+      "importance_perm": 0.0246
+    },
+    {
+      "rank": 6,
+      "feature": "profile_curvature",
+      "importance_perm": 0.0245
+    },
+    {
+      "rank": 7,
+      "feature": "twi",
+      "importance_perm": 0.0218
+    },
+    {
+      "rank": 8,
+      "feature": "sentinel_observed_flag",
+      "importance_perm": 0.0143
+    },
+    {
+      "rank": 9,
+      "feature": "ndmi_imputed",
+      "importance_perm": 0.012
+    },
+    {
+      "rank": 10,
+      "feature": "ndvi_imputed",
+      "importance_perm": 0.0094
+    }
+  ],
+  "dynamic_trigger_module": {
+    "nature": "Data-derived Empirical Environmental Trigger Index [0, 1]",
+    "supervision_status": "Unsupervised empirical index (avoids false temporal supervision claims)",
+    "inputs": [
+      "GPM IMERG R3d, ARI, R14d accumulation",
+      "SMAP volumetric soil moisture dynamic saturation"
+    ],
+    "outage_handling": "2025-03-18 NASA satellite outage explicitly flagged; zero data fabrication"
+  },
+  "risk_formulation": {
+    "formula": "Combined_Risk = Susceptibility x (0.25 + 0.75 x Dynamic_Trigger)",
+    "exposure_separation": "Exposure infrastructure (roads, buildings, settlements, population) strictly reserved for downstream impact modeling"
+  }
+}

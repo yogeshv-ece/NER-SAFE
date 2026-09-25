@@ -1,0 +1,44 @@
+{
+  "grid_name": "NER_SAFE_Phase1_Master_Modeling_Grid_30m",
+  "primary_modeling_crs": "EPSG:4326",
+  "spatial_resolution": {
+    "angular_degrees": [
+      0.0002777777777777778,
+      0.0002777777777777778
+    ],
+    "nominal_metric_meters": 30.8875,
+    "note": "1 arc-second grid matching USGS SRTM 1 Arc-Second global DEM"
+  },
+  "dimensions": {
+    "columns": 18001,
+    "rows": 21601,
+    "total_cells": 388839601
+  },
+  "bounding_box": {
+    "min_longitude": 89.0,
+    "max_longitude": 94.00027777777778,
+    "min_latitude": 20.99972222222222,
+    "max_latitude": 27.0
+  },
+  "affine_transform": [
+    0.0002777777777777778,
+    0.0,
+    89.0,
+    0.0,
+    -0.0002777777777777778,
+    27.0
+  ],
+  "sub_domains": {
+    "UTM_Zone_45N": {
+      "epsg": "EPSG:32645",
+      "coverage": "Western Meghalaya border (Tile 45RYL)",
+      "native_sentinel_resolution_m": 10.0
+    },
+    "UTM_Zone_46N": {
+      "epsg": "EPSG:32646",
+      "coverage": "Central/Eastern Meghalaya & all of Mizoram (12 MGRS tiles)",
+      "native_sentinel_resolution_m": 10.0
+    }
+  },
+  "scientific_rationale": "The 1-arc-second (~30 m) SRTM-aligned grid serves as the continuous regional modeling backbone covering 100% of Phase 1 AOI (Meghalaya & Mizoram) without projection boundary distortions or seam-line discontinuities between UTM Zone 45N and 46N. Native Sentinel-2 10m indices, GPM ~10km rainfall, and SMAP ~9km soil moisture remain strictly preserved in their original resolutions, with aligned representations generated specifically for multi-factor model integration."
+}

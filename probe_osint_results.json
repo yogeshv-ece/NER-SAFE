@@ -1,0 +1,100 @@
+[
+  {
+    "id": "MEGHALAYA_SDMA_OFFICIAL",
+    "name": "Meghalaya State Disaster Management Authority",
+    "url": "https://msdma.gov.in/",
+    "status": 200,
+    "content_type": "text/html",
+    "bytes": 21273,
+    "elapsed_ms": 899,
+    "accessible": true
+  },
+  {
+    "id": "MEGHALAYA_GOV_PORTAL",
+    "name": "Government of Meghalaya Official Portal",
+    "url": "https://meghalaya.gov.in/",
+    "status": 200,
+    "content_type": "text/html; charset=UTF-8",
+    "bytes": 58235,
+    "elapsed_ms": 942,
+    "accessible": true
+  },
+  {
+    "id": "EAST_KHASI_HILLS_DISTRICT",
+    "name": "East Khasi Hills District Administration",
+    "url": "https://eastkhasihills.gov.in/",
+    "status": 200,
+    "content_type": "text/html; charset=UTF-8",
+    "bytes": 201979,
+    "elapsed_ms": 3848,
+    "accessible": true
+  },
+  {
+    "id": "MIZORAM_DIPR_OFFICIAL",
+    "name": "Directorate of Information & Public Relations (DIPR) Mizoram",
+    "url": "https://dipr.mizoram.gov.in/",
+    "status": 200,
+    "content_type": "text/html; charset=UTF-8",
+    "bytes": 108918,
+    "elapsed_ms": 1003,
+    "accessible": true
+  },
+  {
+    "id": "MIZORAM_DMR_OFFICIAL",
+    "name": "Disaster Management & Rehabilitation Department Mizoram",
+    "url": "https://dmr.mizoram.gov.in/",
+    "status": 200,
+    "content_type": "text/html; charset=UTF-8",
+    "bytes": 1389845,
+    "elapsed_ms": 969,
+    "accessible": true
+  },
+  {
+    "id": "AIZAWL_DISTRICT_OFFICIAL",
+    "name": "Aizawl District Administration Portal",
+    "url": "https://aizawl.nic.in/",
+    "status": 200,
+    "content_type": "text/html; charset=UTF-8",
+    "bytes": 205711,
+    "elapsed_ms": 5896,
+    "accessible": true
+  },
+  {
+    "id": "THE_SHILLONG_TIMES",
+    "name": "The Shillong Times",
+    "url": "https://theshillongtimes.com/",
+    "status": 200,
+    "content_type": "text/html; charset=UTF-8",
+    "bytes": 704551,
+    "elapsed_ms": 2867,
+    "accessible": true
+  },
+  {
+    "id": "EAST_MOJO_NEWS",
+    "name": "EastMojo Northeast India News",
+    "url": "https://www.eastmojo.com/",
+    "status": 403,
+    "error": "HTTP Error 403: Forbidden",
+    "elapsed_ms": 1655,
+    "accessible": false
+  },
+  {
+    "id": "NORTHEAST_TODAY",
+    "name": "Northeast Today",
+    "url": "https://northeasttoday.in/",
+    "status": 200,
+    "content_type": "text/html; charset=UTF-8",
+    "bytes": 171841,
+    "elapsed_ms": 1677,
+    "accessible": true
+  },
+  {
+    "id": "THE_MEGHALAYA_MONITOR",
+    "name": "The Meghalaya Monitor",
+    "url": "https://themeghalayamonitor.com/",
+    "status": 0,
+    "error": "<urlopen error [Errno 11001] getaddrinfo failed>",
+    "elapsed_ms": 105,
+    "accessible": false
+  }
+]

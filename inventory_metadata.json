@@ -1,0 +1,20 @@
+{
+  "title": "NER-SAFE Standardized Ground-Truth Landslide Inventory",
+  "record_count": 260,
+  "crs": "EPSG:4326 (WGS84 Geographic)",
+  "primary_sources": {
+    "NASA_GLC": 234,
+    "GSI_NLSM": 13,
+    "ISRO_BHUVAN_ATLAS": 13
+  },
+  "state_distribution": {
+    "Meghalaya": 48,
+    "Mizoram": 46,
+    "Regional_NER": 166
+  },
+  "data_leakage_safeguard": "Strict operational separation: Historical landslide locations and occurrences serve exclusively as training/evaluation ground-truth target labels. They are NOT used as continuous predictors for themselves, ensuring zero data leakage in empirical landslide-risk modeling.",
+  "derived_rasters": {
+    "landslide_presence_30m": "Binary 0/1 indicator raster on the 30m master grid",
+    "landslide_distance_meters_30m": "Euclidean metric distance in meters to nearest historical event point"
+  }
+}

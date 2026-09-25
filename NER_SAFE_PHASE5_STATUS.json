@@ -1,0 +1,115 @@
+{
+  "audit_timestamp_utc": "2026-09-21T17:15:00Z",
+  "audit_timestamp_ist": "2026-09-21T22:45:00+05:30",
+  "phase": "PHASE_5_FINAL_OPERATIONAL_READINESS",
+  "overall_status": "COMPLETE",
+  "production_model": {
+    "name": "Calibrated XGBoost V1.1",
+    "canonical_sha256": "45544c7f5823879315c5caf244ebdaa85b964fe14a51dafe01c910f50a0acc6c",
+    "operational_role": "SOLE_PRODUCTION_MODEL",
+    "rf_fallback": "NONE",
+    "other_ml_fallbacks": "NONE",
+    "status": "VALIDATED_AND_OPERATIONAL"
+  },
+  "rainfall_architecture": {
+    "primary_source": "JAXA GSMaP_NOW v8",
+    "primary_status": "AUTO_UPDATE_VERIFIED",
+    "fallback_source": "NASA GPM Early NRT v7",
+    "fallback_status": "DATA_SOURCE_FALLBACK_ONLY",
+    "historical_baseline": "NASA GPM Final Daily v7 P90",
+    "failover_verified": true,
+    "combining_sources_permitted": false
+  },
+  "risk_fusion_engine": {
+    "formula": "0.40 * Susceptibility + 0.30 * Rainfall Anomaly + 0.20 * Soil Moisture Anomaly + 0.10 * Satellite Change Flag",
+    "status": "LIVE_VERIFIED_AND_AUTO_UPDATE_VERIFIED",
+    "hotspots_evaluated": 48,
+    "thresholds": {
+      "CRITICAL": 0.65,
+      "HIGH": 0.48,
+      "MODERATE": 0.32,
+      "WATCH": 0.00
+    },
+    "formula_unchanged": true,
+    "thresholds_unchanged": true
+  },
+  "research_components": {
+    "cnn_shadow_model": {
+      "role": "RESEARCH_SHADOW_ONLY",
+      "operational_weight": 0.00
+    },
+    "insar_deformation": {
+      "role": "RESEARCH_EVIDENCE_ONLY",
+      "operational_weight": 0.00
+    },
+    "c15_hydrologic_forecast": {
+      "role": "RESEARCH_FORECAST_ONLY",
+      "operational_weight": 0.00
+    },
+    "citizen_video_forensics": {
+      "role": "CONTEXTUAL_EVIDENCE_ONLY",
+      "operational_weight": 0.00
+    }
+  },
+  "capability_summary": {
+    "RAIN_PRIMARY": "AUTO_UPDATE_VERIFIED",
+    "RAIN_FALLBACK": "LIVE_VERIFIED",
+    "SOIL_MOISTURE": "LIVE_VERIFIED",
+    "SATELLITE": "LIVE_VERIFIED",
+    "TERRAIN": "VALIDATED",
+    "LANDSLIDE_INVENTORY": "VALIDATED",
+    "AI_ML": "VALIDATED",
+    "CURRENT_RISK": "AUTO_UPDATE_VERIFIED",
+    "FORECAST": "RESEARCH_ONLY",
+    "GIS_2D": "VALIDATED",
+    "GIS_3D_TERRAIN": "VALIDATED",
+    "ROADS": "VALIDATED",
+    "SETTLEMENTS": "VALIDATED",
+    "BUILDINGS": "VALIDATED",
+    "CITIZEN_PHOTO": "VALIDATED",
+    "CITIZEN_VIDEO": "VALIDATED",
+    "ALERTS": "VALIDATED",
+    "CAP": "VALIDATED",
+    "MULTILINGUAL": "VALIDATED",
+    "OFFLINE": "VALIDATED",
+    "OUTCOME_INGESTION": "VALIDATED",
+    "PROSPECTIVE_VALIDATION": "VALIDATED",
+    "GROUND_SENSORS": "ACCESS_PENDING",
+    "IMD_API": "ACCESS_PENDING",
+    "SMS": "ACCESS_PENDING",
+    "CLOUD": "DEFERRED"
+  },
+  "sih_requirements_audit": {
+    "total_evaluated": 30,
+    "complete": 25,
+    "partial": 1,
+    "access_pending": 3,
+    "missing": 0,
+    "deferred": 1
+  },
+  "judge_demonstration": {
+    "readiness": "READY",
+    "demonstrable_requirements_count": 29,
+    "primary_url": "http://localhost:8027/",
+    "steps_documented": 14,
+    "mode_separation_enforced": true
+  },
+  "security_and_governance": {
+    "g_drive_untouched": true,
+    "env_credentials_protected": true,
+    "zero_secrets_exposed": true,
+    "safe_video_processing": true,
+    "safe_subprocess_execution": true,
+    "zero_synthetic_live_rainfall": true,
+    "zero_fabricated_live_outcomes": true,
+    "zero_fake_sms_receipts": true,
+    "ux4g_zero_emoji_compliant": true,
+    "security_audit_result": "PASS"
+  },
+  "regression_results": {
+    "total_tests": 85,
+    "passed_tests": 85,
+    "failed_tests": 0,
+    "pass_rate_percentage": 100.0
+  }
+}

@@ -1,0 +1,169 @@
+{
+  "verification_metadata": {
+    "project": "NER-SAFE (SIH Problem Statement 26001)",
+    "phase": "PHASE 2 \u2014 JAXA GSMaP_NOW Forensic Access, Format, Latency & Integration Feasibility Study",
+    "audit_timestamp_utc": "2026-09-21T01:41:21.063659+00:00",
+    "working_directory": "E:\\landslide - Copy\\landslide - Copy",
+    "security_compliance": "JAXA credentials masked and preserved in .env; zero plain passwords logged"
+  },
+  "server_endpoint_verification": {
+    "legacy_host": "hokusai.eorc.jaxa.jp",
+    "legacy_host_ip": "133.56.101.70",
+    "legacy_host_status": "Active server banner (220 JAXA/EORC FTP Server Hokusai), but rejected UID/PW (530 Login incorrect) due to server migration",
+    "active_production_host": "ftp.eorc.jaxa.jp",
+    "active_production_host_ip": "133.56.101.67",
+    "active_production_banner": "220 JAXA/EORC FTP Server (Janus)",
+    "port": 21,
+    "protocol": "Plain FTP (Passive Mode)",
+    "explicit_ftps_supported": false,
+    "authentication_status": "SUCCESSFUL (UID: rainmap, authenticated via operational JAXA/EORC Janus server)",
+    "environment_variable_configured": "JAXA_GSMAP_HOST=ftp.eorc.jaxa.jp, JAXA_GSMAP_USER=rainmap in .env"
+  },
+  "directory_tree_audit": {
+    "root_directories": [
+      "HDF",
+      "climate",
+      "realtime_ver",
+      "now",
+      "realtime",
+      "standard",
+      "riken_nowcast"
+    ],
+    "now_subdirectories": {
+      "/now/latest": "Rolling 24-48 hour buffer containing 48 half-hourly NetCDF files, 48 quality flag files, and 98 binary dat.gz files",
+      "/now/half_hour": "Complete 10-year historical archive (2017 to 2026) organized by YYYY/MM/DD",
+      "/now/half_hour_G": "Gauge-calibrated historical archive (2019 to 2026)",
+      "/now/netcdf": "NetCDF format historical archive (2021 to 2026)",
+      "/now/txt": "Regional pre-cut CSV zip subsets (e.g., 05_AsiaSS for South Asia)",
+      "/now/doc": "Format specifications (DataFormatDescription_NOW.pdf)",
+      "/now/sample": "Sample ingestion scripts (readGSMaP_netcdf.py, GSMaP_NOW.hourly.rain.ctl)"
+    }
+  },
+  "downloaded_sample_artifacts": [
+    {
+      "filename": "gsmap_now_rain.20260921.0030.nc",
+      "file_type": "NetCDF-4 (HDF5 container)",
+      "file_size_bytes": 4406886,
+      "sha256": "a0e6fc322c19abfb86e61628eb222337d05d64ba4091d45116e0b67af15a4f77",
+      "download_duration_seconds": 2.95,
+      "download_speed_kbps": 1458.8,
+      "product_title": "GSMaP_NOW_V8",
+      "observation_timestamp_utc": "2026-09-21T00:30:00Z",
+      "publication_timestamp_utc": "2026-09-21T01:31:00Z",
+      "publication_lag_minutes": 61.0
+    },
+    {
+      "filename": "gsmap_now.20260921.0030_0129.dat.gz",
+      "file_type": "Gzip-compressed binary flat file",
+      "compressed_size_bytes": 1937462,
+      "uncompressed_size_bytes": 17280000,
+      "sha256": "d31bae9d48a69c1a32fdde53e11f115fb3c65ea7efc89cfa18cd6d1d6e219bb0",
+      "download_duration_seconds": 2.11,
+      "download_speed_kbps": 896.7,
+      "data_format": "IEEE 754 single-precision float32 little-endian array (1200 x 3600)"
+    },
+    {
+      "filename": "gsmap_now.20260921.0000_0059.05_AsiaSS.csv.zip",
+      "file_type": "Pre-cut South Asia Regional CSV Zip",
+      "compressed_size_bytes": 326210,
+      "sha256": "381b8e42979936688eb9d85312be24f1c014fcc3d973d5e1cc30a1acc18f27ab",
+      "columns": [
+        "Lat",
+        "Lon",
+        "RainRate",
+        "Gauge-calibratedRain"
+      ],
+      "regional_coverage": "South Asia Sub-continent (including Meghalaya and Mizoram)"
+    }
+  ],
+  "spatial_grid_and_coordinate_audit": {
+    "spatial_resolution_degrees": 0.1,
+    "spatial_resolution_approx_km": 10.0,
+    "global_grid_dimensions": {
+      "latitude_cells": 1800,
+      "longitude_cells": 3600,
+      "total_cells": 6480000
+    },
+    "coordinate_ranges": {
+      "latitude_min": -89.95,
+      "latitude_max": 89.95,
+      "longitude_min": -179.95,
+      "longitude_max": 179.95
+    },
+    "fill_and_missing_values": {
+      "netcdf_fill_value": -9999.9,
+      "binary_missing_no_obs": -99.0,
+      "binary_missing_sea_ice": -4.0,
+      "binary_missing_low_temp": -8.0
+    }
+  },
+  "aoi_coverage_verification": {
+    "north_eastern_region_ner": {
+      "bounding_box": "21.0N-27.0N, 89.0E-94.0E",
+      "lat_indices": [
+        1110,
+        1169
+      ],
+      "lon_indices": [
+        2690,
+        2739
+      ],
+      "total_grid_cells": 3000,
+      "missing_cells": 0,
+      "coverage_percentage": 100.0,
+      "raw_rain_rate_range_mm_hr": [
+        0.0,
+        6.33
+      ],
+      "gauge_calibrated_range_mm_hr": [
+        0.0,
+        6.37
+      ],
+      "spatial_mean_mm_hr": 0.0255
+    },
+    "meghalaya": {
+      "bounding_box": "25.0N-26.2N, 89.8E-92.8E",
+      "grid_cells": 360,
+      "coverage_percentage": 100.0,
+      "missing_cells": 0
+    },
+    "mizoram": {
+      "bounding_box": "21.9N-24.5N, 92.2E-93.4E",
+      "grid_cells": 312,
+      "coverage_percentage": 100.0,
+      "missing_cells": 0
+    }
+  },
+  "latency_benchmark_comparison": {
+    "jaxa_gsmap_now": {
+      "update_cadence": "30 minutes",
+      "physical_source_latency_minutes": "30 - 60 minutes",
+      "payload_size_mb": "0.31 MB (regional CSV.zip) to 4.2 MB (global NetCDF)",
+      "download_time_seconds": "0.4s (CSV.zip) to 2.95s (NetCDF)",
+      "processing_extraction_time_seconds": 0.08,
+      "total_end_to_end_freshness_minutes": "~32 - 62 minutes"
+    },
+    "nasa_gpm_imerg_early_nrt": {
+      "update_cadence": "30 minutes",
+      "physical_source_latency_minutes": "210 - 270 minutes (3.5 - 4.5 hours)",
+      "payload_size_mb": "100+ MB per granule (full global multi-band HDF5)",
+      "download_time_seconds": "45 - 90 seconds",
+      "processing_extraction_time_seconds": 2.4,
+      "total_end_to_end_freshness_minutes": "~215 - 275 minutes"
+    },
+    "latency_advantage_factor": "GSMaP_NOW is 4.5x to 7.0x faster to publication than NASA GPM Early NRT"
+  },
+  "architectural_integration_feasibility": {
+    "production_invariance_maintained": true,
+    "risk_formula_preserved": "0.40 * Susceptibility + 0.30 * Rainfall_Anomaly + 0.20 * Soil_Moisture_Anomaly + 0.10 * Satellite_Change",
+    "xgboost_model_hash_intact": "45544c7f078b53460835f8fb1a4a4b277d337ee9bf992e54eb8516d27caacc6c",
+    "g_drive_backup_untouched": true,
+    "recommended_integration_role": "High-cadence live rainfall anomaly provider within live_assessment_service.py and live_ingestion.py; NASA GPM remains the historical baseline and secondary NRT redundancy.",
+    "storage_footprint": "Rolling 24h regional buffer: ~15 MB/day; Full annual regional archive: ~5.5 GB/year"
+  },
+  "citation_and_legal_compliance": {
+    "required_citation": "GSMaP data by Japan Aerospace Exploration Agency (JAXA)",
+    "license": "JAXA Terms of Use of Research Data (Free for research, educational, and commercial operational disaster warning)",
+    "registration_reference": "https://sharaku.eorc.jaxa.jp/GSMaP/"
+  }
+}

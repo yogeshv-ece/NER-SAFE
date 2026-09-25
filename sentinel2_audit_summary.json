@@ -1,0 +1,774 @@
+[
+  {
+    "product_id": "S2A_MSIL2A_20241228T042201_R090_T46RDP_20241228T075158",
+    "tile_id": "46RDP",
+    "acq_date": "2024-12-28",
+    "cloud_cover": 3.2e-05,
+    "processing_level": "05.11",
+    "epsg": null,
+    "all_files": [
+      "metadata.json",
+      "rendered_preview.png",
+      "SCL_Classification_20m.tif"
+    ],
+    "band_status": {
+      "B02": null,
+      "B03": null,
+      "B04": null,
+      "B08": null,
+      "B11": null,
+      "B12": null,
+      "SCL": {
+        "filename": "SCL_Classification_20m.tif",
+        "size_bytes": 1808993,
+        "width": 5490,
+        "height": 5490,
+        "crs": "EPSG:32646",
+        "res": [
+          20.0,
+          20.0
+        ]
+      }
+    },
+    "category": "SCL_ONLY"
+  },
+  {
+    "product_id": "S2A_MSIL2A_20241231T043201_R133_T46QCJ_20241231T064847",
+    "tile_id": "46QCJ",
+    "acq_date": "2024-12-31",
+    "cloud_cover": 0.0,
+    "processing_level": "05.11",
+    "epsg": null,
+    "all_files": [
+      "B02_Blue_10m.tif",
+      "B03_Green_10m.tif.tmp",
+      "B04_Red_10m.tif",
+      "B08_NIR_10m.tif",
+      "B11_SWIR1_20m.tif",
+      "B12_SWIR2_20m.tif",
+      "metadata.json",
+      "rendered_preview.png",
+      "SCL_Classification_20m.tif",
+      "visual_10m_RGB.tif"
+    ],
+    "band_status": {
+      "B02": {
+        "filename": "B02_Blue_10m.tif",
+        "size_bytes": 27257174,
+        "width": 10980,
+        "height": 10980,
+        "crs": "EPSG:32646",
+        "res": [
+          10.0,
+          10.0
+        ]
+      },
+      "B03": null,
+      "B04": {
+        "filename": "B04_Red_10m.tif",
+        "size_bytes": 25929412,
+        "width": 10980,
+        "height": 10980,
+        "crs": "EPSG:32646",
+        "res": [
+          10.0,
+          10.0
+        ]
+      },
+      "B08": {
+        "filename": "B08_NIR_10m.tif",
+        "size_bytes": 25848591,
+        "width": 10980,
+        "height": 10980,
+        "crs": "EPSG:32646",
+        "res": [
+          10.0,
+          10.0
+        ]
+      },
+      "B11": {
+        "filename": "B11_SWIR1_20m.tif",
+        "size_bytes": 5953861,
+        "width": 5490,
+        "height": 5490,
+        "crs": "EPSG:32646",
+        "res": [
+          20.0,
+          20.0
+        ]
+      },
+      "B12": {
+        "filename": "B12_SWIR2_20m.tif",
+        "size_bytes": 5597677,
+        "width": 5490,
+        "height": 5490,
+        "crs": "EPSG:32646",
+        "res": [
+          20.0,
+          20.0
+        ]
+      },
+      "SCL": {
+        "filename": "SCL_Classification_20m.tif",
+        "size_bytes": 65448,
+        "width": 5490,
+        "height": 5490,
+        "crs": "EPSG:32646",
+        "res": [
+          20.0,
+          20.0
+        ]
+      }
+    },
+    "category": "OPTICAL_PRESENT"
+  },
+  {
+    "product_id": "S2A_MSIL2A_20250103T044201_R033_T45RYL_20250103T080459",
+    "tile_id": "45RYL",
+    "acq_date": "2025-01-03",
+    "cloud_cover": 0.00359,
+    "processing_level": "05.11",
+    "epsg": null,
+    "all_files": [
+      "B02_Blue_10m.tif",
+      "B04_Red_10m.tif",
+      "B08_NIR_10m.tif.tmp",
+      "B11_SWIR1_20m.tif",
+      "B12_SWIR2_20m.tif",
+      "metadata.json",
+      "rendered_preview.png",
+      "SCL_Classification_20m.tif",
+      "visual_10m_RGB.tif"
+    ],
+    "band_status": {
+      "B02": {
+        "filename": "B02_Blue_10m.tif",
+        "size_bytes": 263277380,
+        "width": 10980,
+        "height": 10980,
+        "crs": "EPSG:32645",
+        "res": [
+          10.0,
+          10.0
+        ]
+      },
+      "B03": null,
+      "B04": {
+        "filename": "B04_Red_10m.tif",
+        "size_bytes": 270532592,
+        "width": 10980,
+        "height": 10980,
+        "crs": "EPSG:32645",
+        "res": [
+          10.0,
+          10.0
+        ]
+      },
+      "B08": null,
+      "B11": {
+        "filename": "B11_SWIR1_20m.tif",
+        "size_bytes": 72603013,
+        "width": 5490,
+        "height": 5490,
+        "crs": "EPSG:32645",
+        "res": [
+          20.0,
+          20.0
+        ]
+      },
+      "B12": {
+        "filename": "B12_SWIR2_20m.tif",
+        "size_bytes": 71621160,
+        "width": 5490,
+        "height": 5490,
+        "crs": "EPSG:32645",
+        "res": [
+          20.0,
+          20.0
+        ]
+      },
+      "SCL": {
+        "filename": "SCL_Classification_20m.tif",
+        "size_bytes": 3423822,
+        "width": 5490,
+        "height": 5490,
+        "crs": "EPSG:32645",
+        "res": [
+          20.0,
+          20.0
+        ]
+      }
+    },
+    "category": "OPTICAL_PRESENT"
+  },
+  {
+    "product_id": "S2B_MSIL2A_20241216T043109_R133_T46RDN_20241216T062606",
+    "tile_id": "46RDN",
+    "acq_date": "2024-12-16",
+    "cloud_cover": 4.6e-05,
+    "processing_level": "05.11",
+    "epsg": null,
+    "all_files": [
+      "metadata.json",
+      "rendered_preview.png",
+      "SCL_Classification_20m.tif"
+    ],
+    "band_status": {
+      "B02": null,
+      "B03": null,
+      "B04": null,
+      "B08": null,
+      "B11": null,
+      "B12": null,
+      "SCL": {
+        "filename": "SCL_Classification_20m.tif",
+        "size_bytes": 1906638,
+        "width": 5490,
+        "height": 5490,
+        "crs": "EPSG:32646",
+        "res": [
+          20.0,
+          20.0
+        ]
+      }
+    },
+    "category": "SCL_ONLY"
+  },
+  {
+    "product_id": "S2B_MSIL2A_20241226T043119_R133_T46RCP_20241226T063518",
+    "tile_id": "46RCP",
+    "acq_date": "2024-12-26",
+    "cloud_cover": 0.006244,
+    "processing_level": "05.11",
+    "epsg": null,
+    "all_files": [
+      "metadata.json",
+      "rendered_preview.png",
+      "SCL_Classification_20m.tif"
+    ],
+    "band_status": {
+      "B02": null,
+      "B03": null,
+      "B04": null,
+      "B08": null,
+      "B11": null,
+      "B12": null,
+      "SCL": {
+        "filename": "SCL_Classification_20m.tif",
+        "size_bytes": 3020014,
+        "width": 5490,
+        "height": 5490,
+        "crs": "EPSG:32646",
+        "res": [
+          20.0,
+          20.0
+        ]
+      }
+    },
+    "category": "SCL_ONLY"
+  },
+  {
+    "product_id": "S2B_MSIL2A_20250211T041819_R090_T46QDJ_20250211T062049",
+    "tile_id": "46QDJ",
+    "acq_date": "2025-02-11",
+    "cloud_cover": 6.3e-05,
+    "processing_level": "05.11",
+    "epsg": null,
+    "all_files": [
+      "B02_Blue_10m.tif.tmp",
+      "B03_Green_10m.tif",
+      "B04_Red_10m.tif",
+      "B08_NIR_10m.tif",
+      "B11_SWIR1_20m.tif",
+      "B12_SWIR2_20m.tif",
+      "metadata.json",
+      "rendered_preview.png",
+      "SCL_Classification_20m.tif",
+      "visual_10m_RGB.tif.tmp"
+    ],
+    "band_status": {
+      "B02": null,
+      "B03": {
+        "filename": "B03_Green_10m.tif",
+        "size_bytes": 267188508,
+        "width": 10980,
+        "height": 10980,
+        "crs": "EPSG:32646",
+        "res": [
+          10.0,
+          10.0
+        ]
+      },
+      "B04": {
+        "filename": "B04_Red_10m.tif",
+        "size_bytes": 265256628,
+        "width": 10980,
+        "height": 10980,
+        "crs": "EPSG:32646",
+        "res": [
+          10.0,
+          10.0
+        ]
+      },
+      "B08": {
+        "filename": "B08_NIR_10m.tif",
+        "size_bytes": 282828990,
+        "width": 10980,
+        "height": 10980,
+        "crs": "EPSG:32646",
+        "res": [
+          10.0,
+          10.0
+        ]
+      },
+      "B11": {
+        "filename": "B11_SWIR1_20m.tif",
+        "size_bytes": 70277917,
+        "width": 5490,
+        "height": 5490,
+        "crs": "EPSG:32646",
+        "res": [
+          20.0,
+          20.0
+        ]
+      },
+      "B12": {
+        "filename": "B12_SWIR2_20m.tif",
+        "size_bytes": 68718578,
+        "width": 5490,
+        "height": 5490,
+        "crs": "EPSG:32646",
+        "res": [
+          20.0,
+          20.0
+        ]
+      },
+      "SCL": {
+        "filename": "SCL_Classification_20m.tif",
+        "size_bytes": 2093082,
+        "width": 5490,
+        "height": 5490,
+        "crs": "EPSG:32646",
+        "res": [
+          20.0,
+          20.0
+        ]
+      }
+    },
+    "category": "OPTICAL_PRESENT"
+  },
+  {
+    "product_id": "S2B_MSIL2A_20250211T041819_R090_T46QDK_20250211T062049",
+    "tile_id": "46QDK",
+    "acq_date": "2025-02-11",
+    "cloud_cover": 0.0,
+    "processing_level": "05.11",
+    "epsg": null,
+    "all_files": [
+      "B02_Blue_10m.tif.tmp",
+      "B04_Red_10m.tif.tmp",
+      "B08_NIR_10m.tif",
+      "metadata.json",
+      "rendered_preview.png",
+      "SCL_Classification_20m.tif",
+      "visual_10m_RGB.tif.tmp"
+    ],
+    "band_status": {
+      "B02": null,
+      "B03": null,
+      "B04": null,
+      "B08": {
+        "filename": "B08_NIR_10m.tif",
+        "size_bytes": 294548901,
+        "width": 10980,
+        "height": 10980,
+        "crs": "EPSG:32646",
+        "res": [
+          10.0,
+          10.0
+        ]
+      },
+      "B11": null,
+      "B12": null,
+      "SCL": {
+        "filename": "SCL_Classification_20m.tif",
+        "size_bytes": 2428665,
+        "width": 5490,
+        "height": 5490,
+        "crs": "EPSG:32646",
+        "res": [
+          20.0,
+          20.0
+        ]
+      }
+    },
+    "category": "OPTICAL_PRESENT"
+  },
+  {
+    "product_id": "S2B_MSIL2A_20250319T043709_R033_T46RBP_20250319T072326",
+    "tile_id": "46RBP",
+    "acq_date": "2025-03-19",
+    "cloud_cover": 0.00402,
+    "processing_level": "05.11",
+    "epsg": null,
+    "all_files": [
+      "metadata.json",
+      "rendered_preview.png",
+      "SCL_Classification_20m.tif"
+    ],
+    "band_status": {
+      "B02": null,
+      "B03": null,
+      "B04": null,
+      "B08": null,
+      "B11": null,
+      "B12": null,
+      "SCL": {
+        "filename": "SCL_Classification_20m.tif",
+        "size_bytes": 1060038,
+        "width": 5490,
+        "height": 5490,
+        "crs": "EPSG:32646",
+        "res": [
+          20.0,
+          20.0
+        ]
+      }
+    },
+    "category": "SCL_ONLY"
+  },
+  {
+    "product_id": "S2C_MSIL2A_20250209T042951_R133_T46QCK_20250209T081809",
+    "tile_id": "46QCK",
+    "acq_date": "2025-02-09",
+    "cloud_cover": 0.001194,
+    "processing_level": "05.11",
+    "epsg": null,
+    "all_files": [
+      "B02_Blue_10m.tif",
+      "B03_Green_10m.tif",
+      "B04_Red_10m.tif",
+      "B08_NIR_10m.tif",
+      "B11_SWIR1_20m.tif",
+      "B12_SWIR2_20m.tif",
+      "metadata.json",
+      "rendered_preview.png",
+      "SCL_Classification_20m.tif",
+      "visual_10m_RGB.tif"
+    ],
+    "band_status": {
+      "B02": {
+        "filename": "B02_Blue_10m.tif",
+        "size_bytes": 162781230,
+        "width": 10980,
+        "height": 10980,
+        "crs": "EPSG:32646",
+        "res": [
+          10.0,
+          10.0
+        ]
+      },
+      "B03": {
+        "filename": "B03_Green_10m.tif",
+        "size_bytes": 152237544,
+        "width": 10980,
+        "height": 10980,
+        "crs": "EPSG:32646",
+        "res": [
+          10.0,
+          10.0
+        ]
+      },
+      "B04": {
+        "filename": "B04_Red_10m.tif",
+        "size_bytes": 162317954,
+        "width": 10980,
+        "height": 10980,
+        "crs": "EPSG:32646",
+        "res": [
+          10.0,
+          10.0
+        ]
+      },
+      "B08": {
+        "filename": "B08_NIR_10m.tif",
+        "size_bytes": 176697639,
+        "width": 10980,
+        "height": 10980,
+        "crs": "EPSG:32646",
+        "res": [
+          10.0,
+          10.0
+        ]
+      },
+      "B11": {
+        "filename": "B11_SWIR1_20m.tif",
+        "size_bytes": 37301981,
+        "width": 5490,
+        "height": 5490,
+        "crs": "EPSG:32646",
+        "res": [
+          20.0,
+          20.0
+        ]
+      },
+      "B12": {
+        "filename": "B12_SWIR2_20m.tif",
+        "size_bytes": 36663427,
+        "width": 5490,
+        "height": 5490,
+        "crs": "EPSG:32646",
+        "res": [
+          20.0,
+          20.0
+        ]
+      },
+      "SCL": {
+        "filename": "SCL_Classification_20m.tif",
+        "size_bytes": 984306,
+        "width": 5490,
+        "height": 5490,
+        "crs": "EPSG:32646",
+        "res": [
+          20.0,
+          20.0
+        ]
+      }
+    },
+    "category": "OPTICAL_PRESENT"
+  },
+  {
+    "product_id": "S2C_MSIL2A_20250209T042951_R133_T46RCN_20250209T081809",
+    "tile_id": "46RCN",
+    "acq_date": "2025-02-09",
+    "cloud_cover": 8.6e-05,
+    "processing_level": "05.11",
+    "epsg": null,
+    "all_files": [
+      "metadata.json",
+      "rendered_preview.png",
+      "SCL_Classification_20m.tif"
+    ],
+    "band_status": {
+      "B02": null,
+      "B03": null,
+      "B04": null,
+      "B08": null,
+      "B11": null,
+      "B12": null,
+      "SCL": {
+        "filename": "SCL_Classification_20m.tif",
+        "size_bytes": 4671546,
+        "width": 5490,
+        "height": 5490,
+        "crs": "EPSG:32646",
+        "res": [
+          20.0,
+          20.0
+        ]
+      }
+    },
+    "category": "SCL_ONLY"
+  },
+  {
+    "product_id": "S2C_MSIL2A_20250226T041801_R090_T46QCL_20250226T075913",
+    "tile_id": "46QCL",
+    "acq_date": "2025-02-26",
+    "cloud_cover": 8e-06,
+    "processing_level": "05.11",
+    "epsg": null,
+    "all_files": [
+      "B02_Blue_10m.tif",
+      "B03_Green_10m.tif",
+      "B04_Red_10m.tif",
+      "B08_NIR_10m.tif",
+      "B11_SWIR1_20m.tif",
+      "metadata.json",
+      "rendered_preview.png",
+      "SCL_Classification_20m.tif",
+      "visual_10m_RGB.tif"
+    ],
+    "band_status": {
+      "B02": {
+        "filename": "B02_Blue_10m.tif",
+        "size_bytes": 112788223,
+        "width": 10980,
+        "height": 10980,
+        "crs": "EPSG:32646",
+        "res": [
+          10.0,
+          10.0
+        ]
+      },
+      "B03": {
+        "filename": "B03_Green_10m.tif",
+        "size_bytes": 114450334,
+        "width": 10980,
+        "height": 10980,
+        "crs": "EPSG:32646",
+        "res": [
+          10.0,
+          10.0
+        ]
+      },
+      "B04": {
+        "filename": "B04_Red_10m.tif",
+        "size_bytes": 117257250,
+        "width": 10980,
+        "height": 10980,
+        "crs": "EPSG:32646",
+        "res": [
+          10.0,
+          10.0
+        ]
+      },
+      "B08": {
+        "filename": "B08_NIR_10m.tif",
+        "size_bytes": 119713551,
+        "width": 10980,
+        "height": 10980,
+        "crs": "EPSG:32646",
+        "res": [
+          10.0,
+          10.0
+        ]
+      },
+      "B11": {
+        "filename": "B11_SWIR1_20m.tif",
+        "size_bytes": 30847955,
+        "width": 5490,
+        "height": 5490,
+        "crs": "EPSG:32646",
+        "res": [
+          20.0,
+          20.0
+        ]
+      },
+      "B12": null,
+      "SCL": {
+        "filename": "SCL_Classification_20m.tif",
+        "size_bytes": 2035073,
+        "width": 5490,
+        "height": 5490,
+        "crs": "EPSG:32646",
+        "res": [
+          20.0,
+          20.0
+        ]
+      }
+    },
+    "category": "OPTICAL_PRESENT"
+  },
+  {
+    "product_id": "S2C_MSIL2A_20250308T041641_R090_T46QCM_20250308T065415",
+    "tile_id": "46QCM",
+    "acq_date": "2025-03-08",
+    "cloud_cover": 0.0,
+    "processing_level": "05.11",
+    "epsg": null,
+    "all_files": [
+      "B02_Blue_10m.tif",
+      "B03_Green_10m.tif.tmp",
+      "B04_Red_10m.tif",
+      "B08_NIR_10m.tif",
+      "B12_SWIR2_20m.tif",
+      "metadata.json",
+      "rendered_preview.png",
+      "SCL_Classification_20m.tif",
+      "visual_10m_RGB.tif"
+    ],
+    "band_status": {
+      "B02": {
+        "filename": "B02_Blue_10m.tif",
+        "size_bytes": 40307053,
+        "width": 10980,
+        "height": 10980,
+        "crs": "EPSG:32646",
+        "res": [
+          10.0,
+          10.0
+        ]
+      },
+      "B03": null,
+      "B04": {
+        "filename": "B04_Red_10m.tif",
+        "size_bytes": 42113528,
+        "width": 10980,
+        "height": 10980,
+        "crs": "EPSG:32646",
+        "res": [
+          10.0,
+          10.0
+        ]
+      },
+      "B08": {
+        "filename": "B08_NIR_10m.tif",
+        "size_bytes": 43602993,
+        "width": 10980,
+        "height": 10980,
+        "crs": "EPSG:32646",
+        "res": [
+          10.0,
+          10.0
+        ]
+      },
+      "B11": null,
+      "B12": {
+        "filename": "B12_SWIR2_20m.tif",
+        "size_bytes": 11010400,
+        "width": 5490,
+        "height": 5490,
+        "crs": "EPSG:32646",
+        "res": [
+          20.0,
+          20.0
+        ]
+      },
+      "SCL": {
+        "filename": "SCL_Classification_20m.tif",
+        "size_bytes": 646952,
+        "width": 5490,
+        "height": 5490,
+        "crs": "EPSG:32646",
+        "res": [
+          20.0,
+          20.0
+        ]
+      }
+    },
+    "category": "OPTICAL_PRESENT"
+  },
+  {
+    "product_id": "S2C_MSIL2A_20250413T043721_R033_T46RBN_20250413T094013",
+    "tile_id": "46RBN",
+    "acq_date": "2025-04-13",
+    "cloud_cover": 0.0,
+    "processing_level": "05.11",
+    "epsg": null,
+    "all_files": [
+      "metadata.json",
+      "rendered_preview.png",
+      "SCL_Classification_20m.tif"
+    ],
+    "band_status": {
+      "B02": null,
+      "B03": null,
+      "B04": null,
+      "B08": null,
+      "B11": null,
+      "B12": null,
+      "SCL": {
+        "filename": "SCL_Classification_20m.tif",
+        "size_bytes": 129038,
+        "width": 5490,
+        "height": 5490,
+        "crs": "EPSG:32646",
+        "res": [
+          20.0,
+          20.0
+        ]
+      }
+    },
+    "category": "SCL_ONLY"
+  }
+]

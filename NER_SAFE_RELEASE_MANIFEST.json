@@ -1,0 +1,961 @@
+{
+  "release_name": "NER-SAFE Judge Demonstration Release Baseline",
+  "release_identifier": "nersafe-judge-demo-baseline-1.0",
+  "release_version": "1.0.0-judge-demo-freeze",
+  "release_date": "2026-09-13",
+  "freeze_status": "FROZEN WITH WARNINGS",
+  "status_justification": "Core scientific models, four-factor fusion, D8 flow-path routing, empirical runout corridors, infrastructure consequence intersections, CAP advisories, mode separation, and zero-emoji dashboard are 100% frozen and verified. Documented warnings address external authenticated satellite downloads (CDSE/Earthdata), pending institutional MoU for IMD weather, air-gapped basemap tile rendering, and unreachable legacy HTML artifacts.",
+  "project_root": "E:\\landslide - Copy\\landslide - Copy",
+  "repository": {
+    "is_git_repository": false,
+    "git_branch": null,
+    "git_commit": null,
+    "working_tree_status": "BASELINE SNAPSHOT \u2014 NON-GIT WORKSPACE (Directory contains uncommitted/untracked development files; not initialized as git repo per preservation instructions)"
+  },
+  "environment": {
+    "os_platform": "Windows-11-10.0.26200-SP0",
+    "os_architecture": "AMD64",
+    "python_executable": "C:\\Users\\hp\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe",
+    "python_version": "3.14.0 (tags/v3.14.0:ebf955d, Oct  7 2025, 10:15:03) [MSC v.1944 64 bit (AMD64)]",
+    "dependencies": {
+      "pip": "25.2",
+      "numpy": "2.5.2",
+      "scipy": "1.18.1",
+      "scikit-learn": "1.9.0",
+      "h5py": "3.16.0",
+      "xgboost": "3.4.1",
+      "rasterio": "1.5.1",
+      "shapely": "2.1.2",
+      "requests": "2.34.2",
+      "cryptography": "50.0.1"
+    }
+  },
+  "server": {
+    "server_script": "server.py",
+    "startup_command": "py server.py",
+    "startup_command_powershell": "& \"C:\\Users\\hp\\AppData\\Local\\Python\\bin\\python.exe\" server.py",
+    "default_port": 8000,
+    "browser_url": "http://localhost:8000",
+    "live_dashboard": "ner_safe_live_dashboard.html",
+    "zero_emoji_compliance": true,
+    "unreachable_legacy_apps": [
+      "ner_safe_citizen_app.html",
+      "ner_safe_early_warning_dashboard.html"
+    ]
+  },
+  "scientific_configuration": {
+    "c10_model": {
+      "algorithm": "RandomForestClassifier with Platt Sigmoid Probability Calibration",
+      "framework": "scikit-learn 1.9.0",
+      "n_estimators": 150,
+      "max_depth": 8,
+      "min_samples_leaf": 3,
+      "class_weight": "balanced",
+      "random_state": 42,
+      "spatial_validation": "5-Fold Spatial Block Cross-Validation (Meghalaya & Mizoram blocks)",
+      "oof_metrics": {
+        "spatial_roc_auc": 0.5654,
+        "spatial_pr_auc": 0.3151,
+        "brier_score_calibrated": 0.2035,
+        "spatial_f1": 0.3265,
+        "spatial_recall": 0.3462,
+        "spatial_precision": 0.309
+      }
+    },
+    "operational_four_factor_fusion": {
+      "formula": "risk_score = 0.40 * susceptibility_baseline + 0.30 * rainfall_anomaly + 0.20 * soil_moisture_anomaly + 0.10 * satellite_change_flag",
+      "weights": {
+        "susceptibility_baseline": 0.4,
+        "rainfall_anomaly": 0.3,
+        "soil_moisture_anomaly": 0.2,
+        "satellite_change_flag": 0.1
+      },
+      "operational_thresholds": {
+        "CRITICAL": ">= 0.65",
+        "HIGH": "0.48 - < 0.65",
+        "MODERATE": "0.32 - < 0.48",
+        "WATCH": "< 0.32"
+      },
+      "threshold_nature": "Prototype / Heuristic Operational Thresholds (Subject to future empirical calibration with state disaster management authorities)",
+      "c10_dynamic_trigger_separation": "The C10 internal empirical dynamic trigger (Combined_Risk = Susceptibility * (0.25 + 0.75 * Dynamic_Trigger)) remains an offline raster derivation strictly separate from the live four-factor operational fusion.",
+      "exposure_separation": "Exposure infrastructure (roads, buildings, settlements, population) represents consequence analysis and is strictly isolated from ML feature vectors.",
+      "satellite_modalities": {
+        "sentinel2": "Optical multispectral surface-change and cloud masking",
+        "sentinel1": "C-band Synthetic Aperture Radar (SAR) backscatter surface-change monitoring (all-weather/cloud-penetrating)",
+        "insar_disclaimer": "Strictly NO InSAR displacement measurement; backscatter amplitude change only."
+      },
+      "flow_path_and_runout_modelling": "D8 steepest descent routing based on SRTM 30m DEM indicates predicted primary hydraulic drainage descent, and alpha-angle geometric envelopes define empirical runout corridors; strictly not guaranteed exact future landslide trajectories or failure moments."
+    }
+  },
+  "deterministic_demo_baseline": {
+    "target_hotspot": "EVT-MEG-001",
+    "nearest_settlement": "Shella",
+    "district": "East Khasi Hills",
+    "state": "Meghalaya",
+    "coordinates": [
+      25.1837,
+      91.6421
+    ],
+    "historical_observation_timestamp": "2024-05-28T06:00:00Z",
+    "four_factor_inputs": {
+      "susceptibility_baseline": 0.6869,
+      "rainfall_anomaly": 0.9217,
+      "soil_moisture_anomaly": 0.7714,
+      "satellite_change_flag": 0.0
+    },
+    "fused_risk_score": 0.7055,
+    "risk_tier": "CRITICAL",
+    "downstream_consequences": {
+      "d8_flow_path_length_m": 267.4,
+      "elevation_drop_m": 73.0,
+      "runout_corridor_area_m2": 29264.6,
+      "exposed_road_segments_count": 2,
+      "exposed_road_length_m": 208.4
+    },
+    "cap_advisory_status": "DEMO / LOCAL TEST",
+    "cap_broadcast_notice": "Local demonstration test advisory; strictly zero public SMS / SACHET broadcast transmission",
+    "citizen_evidence_record": "REP-20260912-MEG-014 / REP-20260913-MEG-002",
+    "citizen_evidence_nature": "Synthetic demonstration report cataloged as supporting qualitative ground observation",
+    "citizen_model_retraining_triggered": false
+  },
+  "operational_freshness_baseline": {
+    "intended_behavior": "When qualifying fresh observations are unavailable, operational assessment strictly returns assessment_mode='OPERATIONAL', assessment_status='NOT_AVAILABLE', current_risk_available=false, and reason='No qualifying fresh observations'.",
+    "safeguards": [
+      "Historical risk scores never masquerade as current risk.",
+      "Demo replay outputs never contaminate operational endpoints.",
+      "Missing observations never convert to low risk (0.0).",
+      "Feeds in DATA_STALE state never convert to FRESH."
+    ]
+  },
+  "test_suites": [
+    {
+      "name": "E2E Demo Workflow Suite",
+      "file": "test_end_to_end_demo_workflow.py",
+      "checks": 44,
+      "historical": "44/44 PASS",
+      "rerun": "44/44 PASS"
+    },
+    {
+      "name": "Observation Integrity & Audit Suite",
+      "file": "test_observation_integrity_audit.py",
+      "checks": 35,
+      "historical": "35/35 PASS",
+      "rerun": "35/35 PASS"
+    },
+    {
+      "name": "Real Observation Ingestion Suite",
+      "file": "test_real_observation_ingestion_suite.py",
+      "checks": 23,
+      "historical": "23/23 PASS",
+      "rerun": "23/23 PASS"
+    },
+    {
+      "name": "C15 Temporal Forecasting Suite",
+      "file": "test_c15_temporal_forecasting_suite.py",
+      "checks": 40,
+      "historical": "40/40 PASS",
+      "rerun": "40/40 PASS"
+    },
+    {
+      "name": "Authentication & RBAC Suite",
+      "file": "test_authentication.py",
+      "checks": 38,
+      "historical": "38/38 PASS",
+      "rerun": "38/38 PASS"
+    },
+    {
+      "name": "Live System REST & Fusion Suite",
+      "file": "test_live_system.py",
+      "checks": 21,
+      "historical": "21/21 PASS",
+      "rerun": "21/21 PASS"
+    },
+    {
+      "name": "Evolution & State Machine Suite",
+      "file": "test_live_monitoring_evolution.py",
+      "checks": 22,
+      "historical": "22/22 PASS",
+      "rerun": "22/22 PASS"
+    },
+    {
+      "name": "Live Satellite Provenance Suite",
+      "file": "test_live_satellite_provenance.py",
+      "checks": 41,
+      "historical": "41/41 PASS",
+      "rerun": "41/41 PASS"
+    },
+    {
+      "name": "End-to-End Runout Workflow Suite",
+      "file": "test_e2e_live_monitoring_workflow.py",
+      "checks": 64,
+      "historical": "64/64 PASS",
+      "rerun": "61/64 PASS (3 elapsed freshness/STAC checks)"
+    },
+    {
+      "name": "Judge Demonstration Reproducibility Suite",
+      "file": "test_judge_demo_reproducibility.py",
+      "checks": 53,
+      "historical": "N/A (New baseline suite)",
+      "rerun": "53/53 PASS"
+    }
+  ],
+  "test_summary": {
+    "historical_9_suites": "328/328 PASS (100%)",
+    "current_rerun_9_suites": "325/328 PASS (99.1%)",
+    "judge_reproducibility_suite": "53/53 PASS (100%)"
+  },
+  "warnings": [
+    {
+      "id": "WARN-01",
+      "title": "Air-Gapped Basemap Tiles",
+      "description": "Online slippy tiles (OpenStreetMap / CartoDB Positron) require internet access. In air-gapped mode, vector flow paths, runout corridors, infrastructure intersections, and hotspot markers render accurately over a neutral cartographic grid."
+    },
+    {
+      "id": "WARN-02",
+      "title": "Legacy HTML Emoji Content",
+      "description": "ner_safe_citizen_app.html (5 emojis) and ner_safe_early_warning_dashboard.html (3 emojis) contain legacy Unicode characters. Both files are completely unreachable in the active judge demonstration workflow and are preserved as historical C12/C13 deliverables. Active dashboard ner_safe_live_dashboard.html has exactly ZERO emojis."
+    }
+  ],
+  "blocked_items": [
+    {
+      "id": "BLOCKED-01",
+      "title": "Sentinel-1 CDSE Radar SAFE Binary Download",
+      "description": "Copernicus Data Space Ecosystem (CDSE) unauthenticated OData API enables automated catalog scene discovery and metadata verification. Downloading full-resolution GRD binary archives requires user-configured OAuth2 credentials (CDSE_CLIENT_ID / CDSE_CLIENT_SECRET). System uses pre-staged local GRD rasters when offline."
+    },
+    {
+      "id": "BLOCKED-02",
+      "title": "NASA Earthdata Full Array Streaming",
+      "description": "NASA CMR enables unauthenticated metadata queries. Direct download/streaming of HDF5 GPM/SMAP arrays requires Earthdata Login (.netrc credentials). Pre-staged regional HDF5/GeoTIFF archives provide local offline execution."
+    },
+    {
+      "id": "BLOCKED-03",
+      "title": "IMD Live AWS Network Feeds",
+      "description": "Real-time telemetry from India Meteorological Department automatic weather stations requires an official institutional MoU / MoES data sharing agreement. Synthetic endpoints rejected; provider honestly reports AWAITING_INSTITUTIONAL_MOU."
+    }
+  ],
+  "excluded_mutable_runtime_items": [
+    ".env, .env.example (Environment variables and secrets)",
+    "credentials.json, credentials.json.json, token.json (User / provider authentication keys)",
+    "NER_SAFE_DATA/DATABASE/ner_safe_shared.db (SQLite dynamic user sessions and mutable report state)",
+    "__pycache__/ (Bytecode caches)",
+    "NER-SAFE/predictions/ (Runtime test snapshot output directories)",
+    "Temporary files, browser session caches, and machine-specific directories"
+  ],
+  "backup_archive": {
+    "created": false,
+    "reason": "Protected GeoTIFF rasters total ~2.34 GB and raw satellite folders are tens of gigabytes. Duplicating multi-gigabyte files locally is avoided in accordance with Phase 13 instructions. The SHA-256 release manifest serves as the authoritative integrity reference."
+  },
+  "protected_artifacts_summary": {
+    "total_count": 101,
+    "total_size_bytes": 2372908958
+  },
+  "protected_artifacts": [
+    {
+      "path": "e2e_demo_engine.py",
+      "category": "CORE_DEMO_OPERATIONAL",
+      "description": "Core 10-stage end-to-end demonstration and operational separation engine",
+      "size_bytes": 21582,
+      "sha256": "8d990d5e532601cfd391bfa1bbd3dc267eacf67dc1fa7862df97fd5a8b9c4787"
+    },
+    {
+      "path": "server.py",
+      "category": "CORE_DEMO_OPERATIONAL",
+      "description": "Multi-threaded REST API server with RBAC authentication and mode separation",
+      "size_bytes": 80387,
+      "sha256": "9db7b365ae75f41369bfc730554a3579542f987cdbd0971a85a7d7beedc6e79d"
+    },
+    {
+      "path": "ner_safe_live_dashboard.html",
+      "category": "CORE_DEMO_OPERATIONAL",
+      "description": "Digital India UX4G 3.0 live monitoring and demonstration dashboard (Zero-Emoji)",
+      "size_bytes": 267928,
+      "sha256": "8f28891aaf64e143836659e700d12c440716df77ec2aedd354ac75996f7a2dd4"
+    },
+    {
+      "path": "NER_SAFE_END_TO_END_DEMO.md",
+      "category": "CORE_DEMO_OPERATIONAL",
+      "description": "End-to-end demonstration protocol and architectural specification",
+      "size_bytes": 19672,
+      "sha256": "d4f7b5ee0a8f205ecf7ef607b97cfeffc1f5c74dec829d1441c82fdfd71d9004"
+    },
+    {
+      "path": "NER_SAFE_FINAL_DEMO_READINESS_AUDIT.md",
+      "category": "CORE_DEMO_OPERATIONAL",
+      "description": "Final demo readiness and baseline reconciliation audit report",
+      "size_bytes": 17529,
+      "sha256": "754bb5d13eaa502bac7a1ea4583340010326180996241374d1a347a75f73a82c"
+    },
+    {
+      "path": "test_end_to_end_demo_workflow.py",
+      "category": "CORE_DEMO_OPERATIONAL",
+      "description": "End-to-end demonstration workflow automated test suite (44 checks)",
+      "size_bytes": 14202,
+      "sha256": "308e2536f323a24d8fc1ebb2eac417880d5e8fe283a34306f44b178d30a34190"
+    },
+    {
+      "path": "test_judge_demo_reproducibility.py",
+      "category": "CORE_DEMO_OPERATIONAL",
+      "description": "Judge demonstration reproducibility & mode separation suite (53 checks)",
+      "size_bytes": 16196,
+      "sha256": "ec30cc77c749003dea4d382451922a68b9e5b7b85100cae2fdaa63b7fd553581"
+    },
+    {
+      "path": "live_ingestion.py",
+      "category": "LIVE_MONITORING_OBSERVATION",
+      "description": "Multi-source decoupled live ingestion and freshness classification engine",
+      "size_bytes": 28763,
+      "sha256": "9e55a7ceb1d90a63fd9282cf17997812d7142cd60b5b10290d2d94b439be492b"
+    },
+    {
+      "path": "weather_provider.py",
+      "category": "LIVE_MONITORING_OBSERVATION",
+      "description": "Multi-source precipitation provider (NASA GPM IMERG and IMD AWS)",
+      "size_bytes": 7940,
+      "sha256": "f4765a246e2f51bc75902a96bf52b9867cef24b7d77cca4a3c7f270842ac9d6c"
+    },
+    {
+      "path": "sentinel1_sar_engine.py",
+      "category": "LIVE_MONITORING_OBSERVATION",
+      "description": "Sentinel-1 C-band SAR backscatter radar engine (surface change only; no InSAR)",
+      "size_bytes": 23981,
+      "sha256": "6422f56c2b1d0d69650e4a4464460deb1be438e056e949af891258f71e8ecbe7"
+    },
+    {
+      "path": "observation_provenance.py",
+      "category": "LIVE_MONITORING_OBSERVATION",
+      "description": "Observation provenance registry with cryptographic SHA-256 envelopes",
+      "size_bytes": 11520,
+      "sha256": "50e3b4f9bdab942a029b50b1b88d13dc296720550549a64f9c2d04a2b01a8680"
+    },
+    {
+      "path": "demo_orchestrator.py",
+      "category": "LIVE_MONITORING_OBSERVATION",
+      "description": "Operational state machine controlling LIVE, REPLAY, and DEMO modes",
+      "size_bytes": 11596,
+      "sha256": "5a7618eb5d4762ffb90f23f4ce4a3e647ffa0fe65a7253717403f2e4a2718c0b"
+    },
+    {
+      "path": "storage_engine.py",
+      "category": "LIVE_MONITORING_OBSERVATION",
+      "description": "Local-first storage engine with truthful cloud sync reporting",
+      "size_bytes": 11558,
+      "sha256": "b7ad40d6810c5ac63d2f37e2d8db0fa412c891509abf22f2cffcc00e969b791f"
+    },
+    {
+      "path": "public_demo_gateway.py",
+      "category": "LIVE_MONITORING_OBSERVATION",
+      "description": "Public demonstration gateway with asset protection and firewall rules",
+      "size_bytes": 7062,
+      "sha256": "14f1378401ebc70f94aefe3ce29c21d3369b6d9c4f4d04a3de332848d2a8d43e"
+    },
+    {
+      "path": "local_ingestion_worker.py",
+      "category": "LIVE_MONITORING_OBSERVATION",
+      "description": "Local autonomous observation ingestion worker",
+      "size_bytes": 8056,
+      "sha256": "e0c57e88690e0225f2ceb7c347314ebd74037e4b02e1dd9b2df0e596823c3646"
+    },
+    {
+      "path": "test_observation_integrity_audit.py",
+      "category": "LIVE_MONITORING_OBSERVATION",
+      "description": "Observation integrity and scientific audit test suite (35 checks)",
+      "size_bytes": 15114,
+      "sha256": "a2205681e6469243275957029d827103c959a1092b1b01f9230113c7118adeeb"
+    },
+    {
+      "path": "test_real_observation_ingestion_suite.py",
+      "category": "LIVE_MONITORING_OBSERVATION",
+      "description": "Real observation ingestion & sensor audit test suite (23 checks)",
+      "size_bytes": 14063,
+      "sha256": "2b8c88037d1c4f3319e31440f85172eeff5bb195ad214b83b0961770c55573b1"
+    },
+    {
+      "path": "test_live_satellite_provenance.py",
+      "category": "LIVE_MONITORING_OBSERVATION",
+      "description": "Live satellite provenance and data integrity suite (41 checks)",
+      "size_bytes": 12225,
+      "sha256": "3bb151194d078ccade2e7d967211af866970c38ba53766dde32149481504b9ac"
+    },
+    {
+      "path": "test_live_monitoring_evolution.py",
+      "category": "LIVE_MONITORING_OBSERVATION",
+      "description": "Live monitoring evolution and demonstrator state suite (22 checks)",
+      "size_bytes": 17117,
+      "sha256": "15a9e33bf019cf23f3fbcf8d06cc329970ffd7a2eafa7954088ca826f61d0331"
+    },
+    {
+      "path": "test_live_system.py",
+      "category": "LIVE_MONITORING_OBSERVATION",
+      "description": "Live multi-source system integration test suite (21 checks)",
+      "size_bytes": 17736,
+      "sha256": "fcdc758f9468704daf79a56946918e858b8e4aee710f2370d93a0039b3eb3ae1"
+    },
+    {
+      "path": "test_e2e_live_monitoring_workflow.py",
+      "category": "LIVE_MONITORING_OBSERVATION",
+      "description": "End-to-end runout and live monitoring workflow suite (64 checks)",
+      "size_bytes": 15888,
+      "sha256": "1642b43591a5ade8875f8c5e6543a05c80b3a2412de109659653fae2730962eb"
+    },
+    {
+      "path": "fusion_engine.py",
+      "category": "SCIENTIFIC_RISK_LOGIC",
+      "description": "Four-factor operational risk fusion calculation module (40/30/20/10)",
+      "size_bytes": 24224,
+      "sha256": "4c4f3b66748909087e4aa71ab1c570081c627261b303c1458569ae1580f00e49"
+    },
+    {
+      "path": "step1_extract_samples.py",
+      "category": "SCIENTIFIC_RISK_LOGIC",
+      "description": "Component 10 training sample extraction module",
+      "size_bytes": 17081,
+      "sha256": "d8f30b841f10f73cad44043e40374206efbab3ede2eae3e57efd5315b4d9f512"
+    },
+    {
+      "path": "step1_extract_initiation_candidates.py",
+      "category": "SCIENTIFIC_RISK_LOGIC",
+      "description": "Component 11 initiation candidate extraction module",
+      "size_bytes": 9442,
+      "sha256": "3ed3b68d11e6b03ea63097d88dc56042f17cb1150b300766fbc65cbb5aa6bcb4"
+    },
+    {
+      "path": "step2_train_and_validate_models.py",
+      "category": "SCIENTIFIC_RISK_LOGIC",
+      "description": "Component 10 Random Forest training and spatial cross-validation module",
+      "size_bytes": 17787,
+      "sha256": "0ecc60457a4bca2a4917aa87a5c5d7062f15cd9f8c37554ec33077390a6c8376"
+    },
+    {
+      "path": "generate_component10_rasters.py",
+      "category": "SCIENTIFIC_RISK_LOGIC",
+      "description": "Component 10 full-resolution GeoTIFF raster generator",
+      "size_bytes": 15465,
+      "sha256": "9fb18aa6527faab51d353f9c41cb695c2042ca8f32730af1d0a9bdac5b5afec7"
+    },
+    {
+      "path": "step4_leakage_and_quality_audit.py",
+      "category": "SCIENTIFIC_RISK_LOGIC",
+      "description": "Component 10 spatial leakage and quality audit script",
+      "size_bytes": 25422,
+      "sha256": "68b6140c9a71014e414b5127485efdb6948c6ccce1717b66e780783714dd2000"
+    },
+    {
+      "path": "step2_trace_flow_paths_and_corridors.py",
+      "category": "SCIENTIFIC_RISK_LOGIC",
+      "description": "Component 11 D8 flow-path routing and alpha-angle corridor tracer",
+      "size_bytes": 12993,
+      "sha256": "172bf69baec6d89610ff72d7b8189b372611e123a9d31e444150b0ad94e60a9b"
+    },
+    {
+      "path": "step3_intersect_exposure_and_prioritize.py",
+      "category": "SCIENTIFIC_RISK_LOGIC",
+      "description": "Component 11 infrastructure exposure intersection and prioritization",
+      "size_bytes": 19141,
+      "sha256": "f5d3c712af50a2536f8c190be553409119833049d75619763816b5f32abc9162"
+    },
+    {
+      "path": "step1_generate_cap_alerts.py",
+      "category": "SCIENTIFIC_RISK_LOGIC",
+      "description": "Component 12 Common Alerting Protocol (ITU-T CAP v1.2) alert generator",
+      "size_bytes": 16353,
+      "sha256": "761ce83ab3f9e414c60decd8ddffa246e20398e4cb3eefbfef3487b78a85e1f0"
+    },
+    {
+      "path": "step2_generate_sdma_bulletins.py",
+      "category": "SCIENTIFIC_RISK_LOGIC",
+      "description": "Component 12 SDMA situation report and bulletin generator",
+      "size_bytes": 14902,
+      "sha256": "fcc14f18a56b79e0b17dfe8a78ec21c949e8633c9a4b8e435f417136da5931ab"
+    },
+    {
+      "path": "step3_simulate_notification_dispatch.py",
+      "category": "SCIENTIFIC_RISK_LOGIC",
+      "description": "Component 12 notification dispatch and delivery state simulator",
+      "size_bytes": 7666,
+      "sha256": "44eee7c7f4dadc636347c21035d617bb64d95953a7b11248b6fece7973e16802"
+    },
+    {
+      "path": "step1_build_citizen_report_schema.py",
+      "category": "SCIENTIFIC_RISK_LOGIC",
+      "description": "Component 13 citizen report schema generator and validator",
+      "size_bytes": 22262,
+      "sha256": "a21b47b5d39dd95b9f38ea1415c57d97836c7205265cc1fe6cbc9d65dace8a09"
+    },
+    {
+      "path": "step2_simulate_offline_sync_and_clustering.py",
+      "category": "SCIENTIFIC_RISK_LOGIC",
+      "description": "Component 13 store-and-forward sync and spatial clustering engine",
+      "size_bytes": 18204,
+      "sha256": "3e884337d622644c4d9e1d05462342a77951000bcf4db9f3914d0fc13847a1fe"
+    },
+    {
+      "path": "step4_validate_component13.py",
+      "category": "SCIENTIFIC_RISK_LOGIC",
+      "description": "Component 13 citizen observation end-to-end validation module",
+      "size_bytes": 29774,
+      "sha256": "7a578c39d09449b13ec4e27857732d6874783fa184ec4f73c2f8156f97309276"
+    },
+    {
+      "path": "c15_forecasting_engine.py",
+      "category": "SCIENTIFIC_RISK_LOGIC",
+      "description": "Component 15 temporal forecasting engine with Shannon entropy uncertainty",
+      "size_bytes": 9200,
+      "sha256": "a4ab8f14c27b503d191e973a47e7c88b0e0ff89616c43e7d1c3f30e3fd765a98"
+    },
+    {
+      "path": "c15_model_comparator.py",
+      "category": "SCIENTIFIC_RISK_LOGIC",
+      "description": "Component 15 comparative evaluation framework (RF vs XGBoost)",
+      "size_bytes": 9897,
+      "sha256": "541df02e0ade3d25844a095f30890e52e5a6a8f1c0f7bb8b0ebddfd92981c7ec"
+    },
+    {
+      "path": "temporal_feature_engine.py",
+      "category": "SCIENTIFIC_RISK_LOGIC",
+      "description": "Multi-window temporal feature extraction engine (1h, 3h, 6h, 24h)",
+      "size_bytes": 10882,
+      "sha256": "4974fc5ea812210805cfbdcd6faa1d8fc5ea024c3d9a4c6eb07f6c337c0ecb48"
+    },
+    {
+      "path": "temporal_label_validator.py",
+      "category": "SCIENTIFIC_RISK_LOGIC",
+      "description": "Temporal label feasibility and co-temporal mismatch validator",
+      "size_bytes": 4947,
+      "sha256": "14c64c17a6ac8ed9eeaa84449290e9151bbddaae92cd07ede90044f4149523e8"
+    },
+    {
+      "path": "temporal_replay_engine.py",
+      "category": "SCIENTIFIC_RISK_LOGIC",
+      "description": "Time-series replay engine with historical timeline scrub",
+      "size_bytes": 2649,
+      "sha256": "a7cd472d8cacb24363b0fdb1494635b60153c603c72b49108fc2a0006f98bf42"
+    },
+    {
+      "path": "alert_safeguard_engine.py",
+      "category": "SCIENTIFIC_RISK_LOGIC",
+      "description": "Operational alert safeguards, false-alarm hysteresis, and deduplication",
+      "size_bytes": 7042,
+      "sha256": "9ecee96ff69345e350639cb726fc8216e60182eb02fec6d2d6a7e4caea6a0ce6"
+    },
+    {
+      "path": "network_state_manager.py",
+      "category": "SCIENTIFIC_RISK_LOGIC",
+      "description": "Store-and-forward offline network state manager",
+      "size_bytes": 7311,
+      "sha256": "655215670ca52ca53a180737fffeb043d39a56851c095c737809cc6b7dcffd0b"
+    },
+    {
+      "path": "test_c15_temporal_forecasting_suite.py",
+      "category": "SCIENTIFIC_RISK_LOGIC",
+      "description": "Component 15 pre-landslide temporal forecasting suite (40 gates)",
+      "size_bytes": 18049,
+      "sha256": "c1955ef4d93587ed7e3cc8ce3b39346cbf4717c9183971c6356596e57e34bba6"
+    },
+    {
+      "path": "spatial_cross_ref.py",
+      "category": "SCIENTIFIC_RISK_LOGIC",
+      "description": "Spatial cross-referencing and reverse geocoding engine",
+      "size_bytes": 5881,
+      "sha256": "09087fba2a963b195d6db491e607d4cb8573d7c1c531176c7eb39fd9b5ea4589"
+    },
+    {
+      "path": "model_metadata.json",
+      "category": "SCIENTIFIC_METADATA_CONFIG",
+      "description": "Component 10 Random Forest hyperparameters, spatial blocks, and OOF metrics",
+      "size_bytes": 3385,
+      "sha256": "e46e581153b852ed033ec33c637734caf1055e56d2b9294ae09954d75e08a994"
+    },
+    {
+      "path": "spatial_grid_metadata.json",
+      "category": "SCIENTIFIC_METADATA_CONFIG",
+      "description": "Master 30m WGS84 spatial grid bounding coordinates and grid dimensions",
+      "size_bytes": 1606,
+      "sha256": "58cc1ba3091bef4e1e6d27b8d9f57779a5bfe4ad9167bb037aa229cfd826d0dd"
+    },
+    {
+      "path": "temporal_alignment_metadata.json",
+      "category": "SCIENTIFIC_METADATA_CONFIG",
+      "description": "Multi-source temporal alignment configuration and timestamp resolution",
+      "size_bytes": 4533,
+      "sha256": "5ad481254f5732dbfa7405edcc5a6296829037251c1e7ddc0fab3c3b3f2b95c3"
+    },
+    {
+      "path": "inventory_metadata.json",
+      "category": "SCIENTIFIC_METADATA_CONFIG",
+      "description": "Landslide inventory metadata, source citations, and spatial distribution",
+      "size_bytes": 869,
+      "sha256": "098dd30fa7cb1f491b9d0924db7d1aa4e76e016d26693d1047c56772fdaba4e7"
+    },
+    {
+      "path": "sentinel2_audit_summary.json",
+      "category": "SCIENTIFIC_METADATA_CONFIG",
+      "description": "Sentinel-2 optical archive audit, scene cloud coverage, and band registry",
+      "size_bytes": 17958,
+      "sha256": "4746f863e7038775653fb35fc104168454606475d2da2a0452dfc4a4762f5e12"
+    },
+    {
+      "path": "feature_importance.csv",
+      "category": "SCIENTIFIC_METADATA_CONFIG",
+      "description": "Component 10 permutation feature importance rankings",
+      "size_bytes": 453,
+      "sha256": "bbdceeb6d2f46262a9f02a7a564e668acd2ef97092c248873ffe3cab9e44b577"
+    },
+    {
+      "path": "feature_manifest.csv",
+      "category": "SCIENTIFIC_METADATA_CONFIG",
+      "description": "Complete spatial feature manifest and normalization parameters",
+      "size_bytes": 2142,
+      "sha256": "84d3287fed441a15883de94bb73452cca40383f78f3595234f0a9e53b6b58c0c"
+    },
+    {
+      "path": "MASTER_GRID_manifest.csv",
+      "category": "SCIENTIFIC_METADATA_CONFIG",
+      "description": "Master spatial grid alignment and CRS registration manifest",
+      "size_bytes": 25727,
+      "sha256": "795f9ebc8e5a2884b5d4b60e3dbee7bb3672a1cdb270637b269b848d353582d7"
+    },
+    {
+      "path": "training_samples.csv",
+      "category": "SCIENTIFIC_METADATA_CONFIG",
+      "description": "Validated training samples (832 rows: 208 landslides, 624 pseudo-absences)",
+      "size_bytes": 233800,
+      "sha256": "bdd3bcfe109b77a02e19353a82abd58f4192573a624dfc9414cc60e888483816"
+    },
+    {
+      "path": "validation_results.csv",
+      "category": "SCIENTIFIC_METADATA_CONFIG",
+      "description": "Out-of-fold spatial cross-validation fold-by-fold results",
+      "size_bytes": 1438,
+      "sha256": "84acb40300afa16548f753c7ed1fa5fee63aa433f40516253003544791b67f44"
+    },
+    {
+      "path": "model_comparison.csv",
+      "category": "SCIENTIFIC_METADATA_CONFIG",
+      "description": "Comparative model evaluation metrics across algorithms",
+      "size_bytes": 673,
+      "sha256": "77e57be1b6f0e215c0b3d3c3a286e8bb7a5051399b955b687ab4f9ba5c19eb16"
+    },
+    {
+      "path": "susceptibility_probability.tif",
+      "category": "PROTECTED_SCIENTIFIC_OUTPUT",
+      "description": "Validated C10 calibrated landslide susceptibility probability raster (30m)",
+      "size_bytes": 719215384,
+      "sha256": "8676b624e75709c84882cb5384d2af840449c45e7f9592278d73de9224b56516"
+    },
+    {
+      "path": "susceptibility_class.tif",
+      "category": "PROTECTED_SCIENTIFIC_OUTPUT",
+      "description": "Validated C10 susceptibility classification raster (5 tiers)",
+      "size_bytes": 24854064,
+      "sha256": "b0e9800b12de7785a55231e776ccbf73a998219d71fff98509541a7ddc638ca4"
+    },
+    {
+      "path": "uncertainty.tif",
+      "category": "PROTECTED_SCIENTIFIC_OUTPUT",
+      "description": "Validated C10 prediction uncertainty raster (Shannon entropy)",
+      "size_bytes": 699159453,
+      "sha256": "e6297bd814381194ee3ab2dbd24e9df4c8ccd22b7739aeaf0fe36f282c286551"
+    },
+    {
+      "path": "dynamic_trigger_index.tif",
+      "category": "PROTECTED_SCIENTIFIC_OUTPUT",
+      "description": "Validated dynamic meteorological-hydrological trigger index raster",
+      "size_bytes": 185034065,
+      "sha256": "ddc15932cad6f8666420d532e2b4b7e7c74f2e977975f6d229e26ef3211d5199"
+    },
+    {
+      "path": "combined_risk_score.tif",
+      "category": "PROTECTED_SCIENTIFIC_OUTPUT",
+      "description": "Validated combined hazard risk score raster",
+      "size_bytes": 722171385,
+      "sha256": "a153c258e0b5a33ea2f2494fbe442f3182027c680a38a7d0b0fe7803d2b6ffbc"
+    },
+    {
+      "path": "risk_class.tif",
+      "category": "PROTECTED_SCIENTIFIC_OUTPUT",
+      "description": "Validated categorical risk tier raster",
+      "size_bytes": 19199628,
+      "sha256": "3c75f33a077525de0c4f3e1f2e17ebb78193dd9084ead5d8d873563803c63632"
+    },
+    {
+      "path": "event_records.csv",
+      "category": "PROTECTED_SCIENTIFIC_OUTPUT",
+      "description": "Component 11 primary monitored hotspot records (48 hotspots, 13009 bytes invariant)",
+      "size_bytes": 13009,
+      "sha256": "f93d61668b9ddeae01b03796754aa423d6b7c220130ba994f70c2c198f0a24fe"
+    },
+    {
+      "path": "event_records.geojson",
+      "category": "PROTECTED_SCIENTIFIC_OUTPUT",
+      "description": "Component 11 monitored hotspot point features GeoJSON",
+      "size_bytes": 77538,
+      "sha256": "1614c504ef1d6009e0b21a4af96accffbb7965e8a3a713917928c30830814d8d"
+    },
+    {
+      "path": "flow_paths.geojson",
+      "category": "PROTECTED_SCIENTIFIC_OUTPUT",
+      "description": "Component 11 D8 steepest-descent predicted drainage flow paths GeoJSON",
+      "size_bytes": 84522,
+      "sha256": "0bd2637cb4c0cbac3825dd4d56fa4abc5547d060c52c8c2577a70a4658455a35"
+    },
+    {
+      "path": "runout_corridors.geojson",
+      "category": "PROTECTED_SCIENTIFIC_OUTPUT",
+      "description": "Component 11 empirical runout corridors polygon footprint GeoJSON",
+      "size_bytes": 1062284,
+      "sha256": "51b8fa6a0c263270be6d4c8514d18539d6b3c23b8789ed6dc589e70bca6c868e"
+    },
+    {
+      "path": "exposure_intersections.geojson",
+      "category": "PROTECTED_SCIENTIFIC_OUTPUT",
+      "description": "Component 11 intersected infrastructure consequence assets GeoJSON",
+      "size_bytes": 48930,
+      "sha256": "4ed8d3060ab511c69c8a3bec713a92f823cd5bc1e69ef5f79a089c493d65207f"
+    },
+    {
+      "path": "initiation_points.geojson",
+      "category": "PROTECTED_SCIENTIFIC_OUTPUT",
+      "description": "Component 11 high-susceptibility initiation seed points GeoJSON",
+      "size_bytes": 50983,
+      "sha256": "b90b691c2e219709fc7dad4b9be351268dc4399566dcf884641e612b3b51097a"
+    },
+    {
+      "path": "impact_summary.csv",
+      "category": "PROTECTED_SCIENTIFIC_OUTPUT",
+      "description": "Component 11 summary of exposed road segments and infrastructure consequence",
+      "size_bytes": 606,
+      "sha256": "7ef16cafc47188710c38f1850d59caf061dd02aa3440cf3ae8521dae21a99d42"
+    },
+    {
+      "path": "cap_alerts.json",
+      "category": "PROTECTED_SCIENTIFIC_OUTPUT",
+      "description": "Component 12 Common Alerting Protocol (CAP v1.2) alert feed JSON",
+      "size_bytes": 197671,
+      "sha256": "c0a9d6a62dd40ff9b2f14b58c9a725b966ba4037c7c274cd139d156539d47037"
+    },
+    {
+      "path": "cap_alerts.xml",
+      "category": "PROTECTED_SCIENTIFIC_OUTPUT",
+      "description": "Component 12 ITU-T CAP v1.2 alert feed XML document",
+      "size_bytes": 201448,
+      "sha256": "3946e9d64c29bbe0e92af68a6222a031e189cdc335d54ce64e9b82e3a0f91368"
+    },
+    {
+      "path": "dispatch_records.csv",
+      "category": "PROTECTED_SCIENTIFIC_OUTPUT",
+      "description": "Component 12 simulated multi-channel notification dispatch records",
+      "size_bytes": 15808,
+      "sha256": "32a2480325a3b7b441a908557fa96a13b2ff06c652bd532ba7f7a24327660c85"
+    },
+    {
+      "path": "dispatch_summary.json",
+      "category": "PROTECTED_SCIENTIFIC_OUTPUT",
+      "description": "Component 12 dispatch summary statistics and channel breakdown",
+      "size_bytes": 984,
+      "sha256": "5a642a363dfe79dd972eb5be4de23c46b9ee50110854984dc5bad8dafee795e9"
+    },
+    {
+      "path": "Lifeline_Corridor_Advisories.md",
+      "category": "PROTECTED_SCIENTIFIC_OUTPUT",
+      "description": "Component 12 lifeline highway corridor civil defense advisories",
+      "size_bytes": 3998,
+      "sha256": "0f3443b2c258a4c76feddc2e38b814e10003576d9704ec2ff82e8afce3743605"
+    },
+    {
+      "path": "SDMA_Meghalaya_Situation_Report.md",
+      "category": "PROTECTED_SCIENTIFIC_OUTPUT",
+      "description": "Component 12 Meghalaya State Disaster Management Authority situation report",
+      "size_bytes": 4199,
+      "sha256": "129a5b329b93624559e624066b6e662e597e3410d824f3cf6a8cc8ed5a1c22f7"
+    },
+    {
+      "path": "SDMA_Mizoram_Situation_Report.md",
+      "category": "PROTECTED_SCIENTIFIC_OUTPUT",
+      "description": "Component 12 Mizoram State Disaster Management Authority situation report",
+      "size_bytes": 3846,
+      "sha256": "e73e48e07edca97bde6993b1ed3249ba66f82543c6f0351153e9aa4739a9a860"
+    },
+    {
+      "path": "auth_security.py",
+      "category": "AUTHENTICATION_SECURITY",
+      "description": "Cryptographic authentication module (PBKDF2-HMAC-SHA256, session management, RBAC)",
+      "size_bytes": 4807,
+      "sha256": "2f0bb6273b98b851fa7be8ed582b8829a6af9cfa6a31332955681392e51ed62d"
+    },
+    {
+      "path": "database.py",
+      "category": "AUTHENTICATION_SECURITY",
+      "description": "SQLite database persistence module for users, sessions, roles, and audit logs",
+      "size_bytes": 52101,
+      "sha256": "c03be410ec9606ca7d8bb20e080b028d95810694aab198d009ba6af8635cb88a"
+    },
+    {
+      "path": "bootstrap_admin.py",
+      "category": "AUTHENTICATION_SECURITY",
+      "description": "Deterministic administrative bootstrap and seed script",
+      "size_bytes": 3581,
+      "sha256": "e0f57c14bb8f0453a91d2c29c1d2a033080d211e9b311f4bb99f6b31209486a4"
+    },
+    {
+      "path": "test_authentication.py",
+      "category": "AUTHENTICATION_SECURITY",
+      "description": "Authentication, session isolation, and RBAC verification test suite (38 checks)",
+      "size_bytes": 29187,
+      "sha256": "b6ff76f5228d1e7eb0e05b8ad5e89c7c0c65fbfd7abb6c34ac8ad2485cb0d1e6"
+    },
+    {
+      "path": "PRD_NER_SAFE.md",
+      "category": "DOCUMENTATION_SPECIFICATION",
+      "description": "Product Requirements Document for NER-SAFE",
+      "size_bytes": 65357,
+      "sha256": "480d417e6edddbeab438603444ffeca9b567802f643a97f8f15f99601e5d179b"
+    },
+    {
+      "path": "PRD_NER_SAFE_COMPLETED_WORK.md",
+      "category": "DOCUMENTATION_SPECIFICATION",
+      "description": "Comprehensive record of completed scientific and operational deliverables",
+      "size_bytes": 58981,
+      "sha256": "cef2ed06c5eaaf207e65a1890db7319d36fad0dbc571d01d9b58b129ea23fb74"
+    },
+    {
+      "path": "NER_SAFE_REAL_OBSERVATION_INTEGRITY_AUDIT.md",
+      "category": "DOCUMENTATION_SPECIFICATION",
+      "description": "Audit report on real observation retrieval, CDSE, IMD, and four-factor fusion",
+      "size_bytes": 23651,
+      "sha256": "fa9470b5948fb2e1872c150189f742aeea4f29ec6f12c9e5d2097f514c2c122b"
+    },
+    {
+      "path": "NER_SAFE_REAL_INGESTION_AUDIT.md",
+      "category": "DOCUMENTATION_SPECIFICATION",
+      "description": "Audit report on live sensor ingestion, GPM, SMAP, and Sentinel feeds",
+      "size_bytes": 19145,
+      "sha256": "4a7aa4896c2b367d5b0ad972b8fef9731c12b457f9d462423db00aebf8b64723"
+    },
+    {
+      "path": "NER_SAFE_CHECKPOINT.md",
+      "category": "DOCUMENTATION_SPECIFICATION",
+      "description": "System technical checkpoint and architecture summary",
+      "size_bytes": 16470,
+      "sha256": "279580aeae875ffb8c68fcc1bfbe33267f65f9fc182fff81f848dac4f7635a1a"
+    },
+    {
+      "path": "NER_SAFE_COMPONENT13_VALIDATION_REPORT.md",
+      "category": "DOCUMENTATION_SPECIFICATION",
+      "description": "Component 13 citizen science and ground observation validation report",
+      "size_bytes": 4241,
+      "sha256": "256e8e52b34efdd1095cd2a3654688a0688360cf12fbd650b1a8537363be5df8"
+    },
+    {
+      "path": "COMPONENT_15_VALIDATION_REPORT.md",
+      "category": "DOCUMENTATION_SPECIFICATION",
+      "description": "Component 15 pre-landslide temporal forecasting validation report",
+      "size_bytes": 10577,
+      "sha256": "57c1a4a4b60bfb70f13ac7459f5f0408c83dae1ae40db8e8085543d4ca023a56"
+    },
+    {
+      "path": "component11_report.md",
+      "category": "DOCUMENTATION_SPECIFICATION",
+      "description": "Component 11 flow-path and runout modelling methodology report",
+      "size_bytes": 3963,
+      "sha256": "846daa7e1961f291109ef4d34499bb0c39499fb3a0c09de049dc664402583936"
+    },
+    {
+      "path": "component11_validation_report.md",
+      "category": "DOCUMENTATION_SPECIFICATION",
+      "description": "Component 11 consequence intersection validation report",
+      "size_bytes": 5532,
+      "sha256": "fd84cd42e244d1595b8aa5721104652f2b11553a131d679261d3b9f43dd4e29f"
+    },
+    {
+      "path": "component12_validation_report.md",
+      "category": "DOCUMENTATION_SPECIFICATION",
+      "description": "Component 12 CAP alert generation and notification validation report",
+      "size_bytes": 6264,
+      "sha256": "6f8924f15a53aa72b70cd1d4a642814b8f47cf301cdad492e90d77fd5593ff7c"
+    },
+    {
+      "path": "COMPONENT_10_VALIDATION_REPORT.txt",
+      "category": "DOCUMENTATION_SPECIFICATION",
+      "description": "Component 10 susceptibility model training and spatial CV audit report",
+      "size_bytes": 4396,
+      "sha256": "39357bcb1f78333119a51fc854d3c7d68c5e5d7665d2c5fdce709702e981e22d"
+    },
+    {
+      "path": "COMPONENT_10_MODEL_READINESS_REPORT.txt",
+      "category": "DOCUMENTATION_SPECIFICATION",
+      "description": "Component 10 model readiness and hyperparameter configuration audit",
+      "size_bytes": 3362,
+      "sha256": "40ead19e82d50faf93254fa314ae1d9d8828b6af894a0c4d2d64ee7ae9d17498"
+    },
+    {
+      "path": "MODEL_SELECTION_REPORT.txt",
+      "category": "DOCUMENTATION_SPECIFICATION",
+      "description": "Machine learning algorithm selection and comparative evaluation report",
+      "size_bytes": 2918,
+      "sha256": "b06c6d3990e998a616ea00a66c888a98fa7a5479dbe3184980d010a15cdaf816"
+    },
+    {
+      "path": "LEAKAGE_AUDIT.txt",
+      "category": "DOCUMENTATION_SPECIFICATION",
+      "description": "Spatial block cross-validation leakage audit report",
+      "size_bytes": 3055,
+      "sha256": "8ea32142e52f72e75e6a779ff311e1a31c686bb5d491a05b25561f3b618bea86"
+    },
+    {
+      "path": "MASTER_GRID_validation_report.txt",
+      "category": "DOCUMENTATION_SPECIFICATION",
+      "description": "Master 30m geographic grid validation report",
+      "size_bytes": 3905,
+      "sha256": "cf9cb7a51aa480b097e9f9ddc6ec612f1bfefefe97adc10f87c429228c78e660"
+    },
+    {
+      "path": "model_card.md",
+      "category": "DOCUMENTATION_SPECIFICATION",
+      "description": "Model card documenting intended use, limitations, metrics, and ethical scope",
+      "size_bytes": 3647,
+      "sha256": "604d4db5d2c60e309bc79a0a64073bc1919a3121db5ab23e980e14b90f776db1"
+    },
+    {
+      "path": "alert_protocol_methodology.md",
+      "category": "DOCUMENTATION_SPECIFICATION",
+      "description": "Operational alert protocol and notification delivery methodology",
+      "size_bytes": 4261,
+      "sha256": "a8c8d4940e5fba6f506839e279f47c97648ecbadd79c40f6aba4cd493bb1ed6d"
+    },
+    {
+      "path": "flow_path_methodology.md",
+      "category": "DOCUMENTATION_SPECIFICATION",
+      "description": "D8 drainage flow-path routing and empirical runout methodology",
+      "size_bytes": 4699,
+      "sha256": "c92ddfc86f7e80cfa6680a2469b664eab8e00c91762f512a4a263587d7fe7c83"
+    },
+    {
+      "path": "NER_SAFE_DATA/COMPONENT_13/data/synthetic_demonstration_reports.json",
+      "category": "REPRODUCIBILITY_FIXTURE",
+      "description": "Deterministic synthetic demonstration citizen reports fixture",
+      "size_bytes": 29424,
+      "sha256": "e3adb9c1544eb5a163c0e9470d3b989430bfc9bfdc8354ea86ca77b9ba652f1b"
+    },
+    {
+      "path": "NER_SAFE_DATA/COMPONENT_13/schema/citizen_report_schema.json",
+      "category": "REPRODUCIBILITY_FIXTURE",
+      "description": "JSON schema definition for qualitative citizen observations",
+      "size_bytes": 6382,
+      "sha256": "662a7287c1f9a48832fbb900303f35eda0fa100c1cb7112b342e0619dbc54145"
+    },
+    {
+      "path": "NER_SAFE_DATA/COMPONENT_13/data/citizen_reports.csv",
+      "category": "REPRODUCIBILITY_FIXTURE",
+      "description": "Tabular export of demonstration citizen ground reports",
+      "size_bytes": 4707,
+      "sha256": "0b1000e5e3a4de26e94a6ae29d4545610d6071c047e92f9c868a8ef91da55769"
+    },
+    {
+      "path": "NER_SAFE_DATA/COMPONENT_13/data/citizen_reports.geojson",
+      "category": "REPRODUCIBILITY_FIXTURE",
+      "description": "GeoJSON export of demonstration citizen ground reports",
+      "size_bytes": 24251,
+      "sha256": "309013ab8750d4e27dbe7178e157242c7f92ecd2f7a77db6274c4696c61cf178"
+    }
+  ]
+}

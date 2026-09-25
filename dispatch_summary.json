@@ -1,0 +1,27 @@
+{
+  "metadata": {
+    "title": "NER-SAFE Sample Advisory Payload & Schema Validation Summary",
+    "version": "1.0-audited",
+    "timestamp": "2026-09-07T16:50:00+05:30",
+    "disclaimer": "All dispatches and endpoints are simulated locally. No real SMS messages were sent and no government APIs were contacted.",
+    "standards": [
+      "OASIS CAP v1.2 Schema",
+      "GSM 7-bit 160-char SMS Format Specification"
+    ]
+  },
+  "channel_breakdown": {
+    "sms_mock_templates": {
+      "total_templates": 48,
+      "tier1_high_concern_templates": 10,
+      "tier2_elevated_templates": 2,
+      "avg_char_length": 123.5,
+      "max_char_length": 149,
+      "compliance_with_160_limit": "100% (All payloads <= 160 characters)"
+    },
+    "mock_api_payloads": {
+      "total_payloads_generated": 48,
+      "tier1_and_tier2_saved_files": 12,
+      "endpoint_architecture": "Local simulation mock (no external government network connectivity claimed)"
+    }
+  }
+}

@@ -1,0 +1,207 @@
+{
+  "title": "NER-SAFE Live Multimodal Model Enhancement & Scientific Evaluation Report",
+  "evaluation_timestamp_utc": "2026-09-18T04:48:03.796333+00:00",
+  "baseline_v1_1_0_sha256": "45544c7f5823879315c5caf244ebdaa85b964fe14a51dafe01c910f50a0acc6c",
+  "sample_count": 832,
+  "positive_events": 208,
+  "spatial_folds": 5,
+  "historical_availability_audit": {
+    "insar": {
+      "feature": "Sentinel-1 InSAR Deformation / Coherence",
+      "historical_coverage": "INSUFFICIENT_REAL_HISTORICAL_COVERAGE",
+      "reason": "Current genuine CDSE Sentinel-1 SLC archive consists of 3 scenes acquired in Aug-Sep 2026. Historical landslide events occurred 2020-2024. No co-temporal interferometric pairs exist for 832 points.",
+      "evaluation_action": "RETAIN_AS_LIVE_RESEARCH_SIGNAL (0.00 operational weight, do not fabricate training history)"
+    },
+    "c15": {
+      "feature": "C15 Pre-Landslide Multi-Window Temporal Forecast",
+      "historical_coverage": "INSUFFICIENT_REAL_HISTORICAL_COVERAGE",
+      "reason": "Sub-daily dynamic antecedent rainfall (1h, 3h, 6h, 12h) is missing for 2020-2024 inventory events. Daily environmental resolution (24h) exists, but fine-scale temporal windows lack ground truth event hours.",
+      "evaluation_action": "RETAIN_AS_LIVE_RESEARCH_FORECAST (Do not fabricate sub-daily rainfall triggers)"
+    },
+    "cnn": {
+      "feature": "Spatial CNN Context Probability",
+      "historical_coverage": "VALIDATED_AVAILABLE",
+      "reason": "All 832 historical training points possess full 8-channel 32x32 spatial context patches extracted from AW3D30 DEM derivatives and co-registered Sentinel-2 optical bands.",
+      "evaluation_action": "EVALUATE_IN_5_FOLD_SPATIAL_CROSS_VALIDATION"
+    }
+  },
+  "model_evaluations": {
+    "model_a_baseline": {
+      "model": "MODEL_A_V1_1_0_BASELINE",
+      "features": 10,
+      "pr_auc": 0.2711,
+      "roc_auc": 0.4669,
+      "brier_score": 0.1984,
+      "ece": 0.1092,
+      "best_f1": 0.4,
+      "fpr_p50": 0.0016,
+      "fnr_p50": 0.9952,
+      "confusion_matrix_p50": {
+        "tp": 1,
+        "fp": 1,
+        "tn": 623,
+        "fn": 207
+      }
+    },
+    "model_c_xgb_plus_cnn": {
+      "model": "MODEL_C_XGBOOST_PLUS_CNN",
+      "features": 11,
+      "pr_auc": 0.299,
+      "roc_auc": 0.4948,
+      "brier_score": 0.1964,
+      "ece": 0.1096,
+      "best_f1": 0.4012,
+      "fpr_p50": 0.0,
+      "fnr_p50": 0.9904,
+      "confusion_matrix_p50": {
+        "tp": 2,
+        "fp": 0,
+        "tn": 624,
+        "fn": 206
+      }
+    },
+    "model_f_ensemble": {
+      "model": "MODEL_F_LEARNED_MULTIMODAL_ENSEMBLE",
+      "optimal_xgb_weight": 0.64,
+      "optimal_cnn_weight": 0.36,
+      "pr_auc": 0.3539,
+      "roc_auc": 0.6297,
+      "brier_score": 0.1861,
+      "ece": 0.0824,
+      "best_f1": 0.455,
+      "fpr_p50": 0.0032,
+      "fnr_p50": 0.976,
+      "confusion_matrix_p50": {
+        "tp": 5,
+        "fp": 2,
+        "tn": 622,
+        "fn": 203
+      }
+    }
+  },
+  "feature_ablation": {
+    "elevation": {
+      "pr_auc_after_shuffling": 0.2814,
+      "importance_delta_pr_auc": 0.0176
+    },
+    "slope": {
+      "pr_auc_after_shuffling": 0.2895,
+      "importance_delta_pr_auc": 0.0095
+    },
+    "aspect_sin": {
+      "pr_auc_after_shuffling": 0.3035,
+      "importance_delta_pr_auc": -0.0045
+    },
+    "aspect_cos": {
+      "pr_auc_after_shuffling": 0.3153,
+      "importance_delta_pr_auc": -0.0163
+    },
+    "profile_curvature": {
+      "pr_auc_after_shuffling": 0.2896,
+      "importance_delta_pr_auc": 0.0094
+    },
+    "twi": {
+      "pr_auc_after_shuffling": 0.2961,
+      "importance_delta_pr_auc": 0.0029
+    },
+    "ndvi_imputed": {
+      "pr_auc_after_shuffling": 0.291,
+      "importance_delta_pr_auc": 0.008
+    },
+    "ndwi_imputed": {
+      "pr_auc_after_shuffling": 0.2346,
+      "importance_delta_pr_auc": 0.0644
+    },
+    "ndmi_imputed": {
+      "pr_auc_after_shuffling": 0.2832,
+      "importance_delta_pr_auc": 0.0158
+    },
+    "sentinel_observed_flag": {
+      "pr_auc_after_shuffling": 0.3077,
+      "importance_delta_pr_auc": -0.0087
+    },
+    "cnn_context_probability": {
+      "pr_auc_after_shuffling": 0.2472,
+      "importance_delta_pr_auc": 0.0518
+    }
+  },
+  "promotion_gates": [
+    {
+      "gate_id": "GATE_01_PR_AUC_PRODUCTION_BENCHMARK",
+      "required": ">= 0.3608",
+      "candidate_c_val": 0.299,
+      "candidate_c_passed": false,
+      "candidate_f_val": 0.3539,
+      "candidate_f_passed": false,
+      "note": "Model F (0.3539) < Established Gate (0.3608) -> FAILS GATE 1"
+    },
+    {
+      "gate_id": "GATE_02_ROC_AUC_PRODUCTION_BENCHMARK",
+      "required": ">= 0.5603",
+      "candidate_c_val": 0.4948,
+      "candidate_c_passed": false,
+      "candidate_f_val": 0.6297,
+      "candidate_f_passed": true,
+      "note": "Model C (0.4948 calibrated) < 0.5603 raw -> FAILS GATE 2"
+    },
+    {
+      "gate_id": "GATE_03_BRIER_SCORE_NON_DEGRADATION",
+      "required": "<= 0.1984",
+      "candidate_c_val": 0.1964,
+      "candidate_c_passed": true,
+      "candidate_f_val": 0.1861,
+      "candidate_f_passed": true,
+      "note": "Both satisfy Brier non-degradation"
+    },
+    {
+      "gate_id": "GATE_04_ECE_CALIBRATION_NON_DEGRADATION",
+      "required": "<= 0.1092",
+      "candidate_c_val": 0.1096,
+      "candidate_c_passed": true,
+      "candidate_f_val": 0.0824,
+      "candidate_f_passed": true,
+      "note": "Both satisfy ECE calibration limits"
+    },
+    {
+      "gate_id": "GATE_05_FALSE_POSITIVE_RATE_CONTROL",
+      "required": "<= 0.40",
+      "candidate_c_val": 0.0,
+      "candidate_c_passed": true,
+      "candidate_f_val": 0.0032,
+      "candidate_f_passed": true,
+      "note": "Both pass FPR constraint"
+    },
+    {
+      "gate_id": "GATE_06_ZERO_TEMPORAL_LEAKAGE",
+      "required": "STRICT_HISTORICAL_ISOLATION",
+      "candidate_c_val": "VERIFIED_SPATIAL_CV",
+      "candidate_c_passed": true,
+      "candidate_f_val": "VERIFIED_SPATIAL_CV",
+      "candidate_f_passed": true,
+      "note": "Spatial isolation confirmed; Model F blending was post-hoc tuned"
+    },
+    {
+      "gate_id": "GATE_07_GENUINE_LIVE_FEAT_AVAILABILITY",
+      "required": "REAL_DATA_PIPELINE_ACTIVE",
+      "candidate_c_val": "CNN_LIVE_INFERENCE_PIPELINE_ACTIVE",
+      "candidate_c_passed": true,
+      "candidate_f_val": "CNN_LIVE_INFERENCE_PIPELINE_ACTIVE",
+      "candidate_f_passed": true,
+      "note": "CNN live inference active"
+    }
+  ],
+  "promotion_decision": {
+    "active_production_model": "CALIBRATED_XGBOOST_V1_1_0_BASELINE",
+    "production_model_path": "E:\\landslide - Copy\\landslide - Copy\\NER_SAFE_DATA\\COMPONENT_10\\models\\calibrated_xgboost_model.joblib",
+    "production_model_sha256": "45544c7f5823879315c5caf244ebdaa85b964fe14a51dafe01c910f50a0acc6c",
+    "candidate_v2_model_path": "E:\\landslide - Copy\\landslide - Copy\\NER_SAFE_DATA\\COMPONENT_10\\models\\calibrated_xgboost_model_v2_multimodal.joblib",
+    "candidate_v2_model_sha256": "ec22c7b4acbcbbda167cd2f9c754bc87263411c5f37bdfb64fa57b8ec83e58e0",
+    "candidate_v2_status": "RESEARCH_CANDIDATE_NOT_PROMOTED",
+    "scientific_finding": "Under established production promotion gates (PR-AUC >= 0.3608, ROC-AUC >= 0.5603), Model C achieves calibrated PR-AUC: 0.2990 and Model F achieves calibrated PR-AUC: 0.3539. Because both 0.2990 and 0.3539 are strictly below the established 0.3608 gate, and Model C per-fold delta (+0.0172) is not statistically significant (p = 0.6508), NEITHER CANDIDATE PASSES THE PROMOTION GATES. Calibrated XGBoost V1.1.0 remains the primary operational production baseline. Candidate V2 is maintained strictly as an experimental shadow research artifact.",
+    "decision_case": "CASE_2_AND_CASE_3_RETAIN_V1_1_0_PRODUCTION_RESEARCH_SIGNALS_DECOUPLED",
+    "operational_risk_formula": "0.40*Susceptibility + 0.30*Rainfall_Anomaly + 0.20*Soil_Moisture_Anomaly + 0.10*Satellite_Change_Flag",
+    "insar_operational_weight": 0.0,
+    "cnn_operational_weight": 0.0,
+    "c15_operational_weight": 0.0
+  }
+}

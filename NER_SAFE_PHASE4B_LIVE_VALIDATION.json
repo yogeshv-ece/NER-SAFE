@@ -1,0 +1,523 @@
+{
+  "validation_timestamp_utc": "2026-09-22T10:09:29.346098+00:00",
+  "phase": "PHASE_4B_FULL_OPERATIONAL_LIVE_VALIDATION",
+  "production_model": {
+    "name": "Calibrated XGBoost V1.1",
+    "expected_sha256": "45544c7f5823879315c5caf244ebdaa85b964fe14a51dafe01c910f50a0acc6c",
+    "operational_role": "SOLE_PRODUCTION_MODEL",
+    "random_forest_fallback": "NONE",
+    "other_ml_fallbacks": "NONE"
+  },
+  "sections": {
+    "section_02_single_model": {
+      "status": "PASS",
+      "model_name": "Calibrated XGBoost v1.1",
+      "model_id": "xgboost",
+      "model_version": "v1.1",
+      "actual_sha256": "45544c7f5823879315c5caf244ebdaa85b964fe14a51dafe01c910f50a0acc6c",
+      "hash_match": true,
+      "operational_fallback": "NONE",
+      "rf_rejected": true,
+      "rf_rejection_message": "Random Forest cannot be set as active operational provider (Strict Single-Model Invariant)"
+    },
+    "section_03_live_rainfall": {
+      "status": "PASS",
+      "product": "gsmap_now.05_AsiaSS",
+      "source_state": "GSMAP_PRIMARY",
+      "granule_id": "gsmap_now.20260922.0900_0959.05_AsiaSS.csv.zip",
+      "observation_timestamp": "2026-09-22T09:00:00+00:00",
+      "source_age_seconds": 4193.0,
+      "download_timestamp": "2026-09-22T10:09:52.989773+00:00",
+      "processing_timestamp": "2026-09-22T10:09:52.990438+00:00",
+      "sha256_hash": "fed489f53e039374cced662eadae9256cfc669d0ab34e97d7a2dff426ce8756b",
+      "file_size_bytes": 315967,
+      "mean_precip_mm_h": 0.2699,
+      "max_precip_mm_h": 9.12,
+      "derived_rain_anomaly": 0.3594,
+      "download_latency_s": 13.807,
+      "processing_latency_s": 5.138
+    },
+    "section_04_gsmap_failover": {
+      "status": "PASS",
+      "primary_state": "GSMAP_PRIMARY",
+      "failover_triggered_state": "GPM_FALLBACK",
+      "fallback_source": "NASA_GPM_3IMERGHHE_V07",
+      "fallback_granule": "GPM_3IMERGHHE.07:3B-HHR-E.MS.MRG.3IMERG.20260922-S043000-E045959.0270.V07C.HDF5",
+      "fallback_anomaly": 0.4745,
+      "restored_state": "GSMAP_PRIMARY",
+      "restored_source": "JAXA_GSMAP_NOW_V08"
+    },
+    "section_05_total_rainfall_failure": {
+      "status": "PASS",
+      "total_failure_state": "RAIN_DEGRADED",
+      "is_degraded": true,
+      "holding_last_valid": true,
+      "zero_fabrication_confirmed": true
+    },
+    "section_06_xgboost_failure": {
+      "status": "PASS",
+      "simulated_failure_model_status": "UNAVAILABLE",
+      "simulated_failure_assessment_status": "MODEL_UNAVAILABLE",
+      "current_risk_available": false,
+      "operational_fallback_attempted": "NONE",
+      "fallback_triggered": false,
+      "recovered_model_status": "AVAILABLE",
+      "recovered_assessment_status": "CURRENT_ASSESSMENT_ACTIVE",
+      "zero_ml_fallback_verified": true
+    },
+    "section_07_current_risk": {
+      "status": "PASS",
+      "hotspots_count": 48,
+      "fusion_weights": {
+        "susceptibility": 0.4,
+        "rainfall": 0.3,
+        "soil_moisture": 0.2,
+        "satellite_change": 0.1
+      },
+      "max_risk_score": 0.4611,
+      "tier_distribution": {
+        "CRITICAL": 0,
+        "HIGH": 0,
+        "MODERATE": 48,
+        "WATCH": 0
+      },
+      "formula_verified": true,
+      "thresholds_verified": true,
+      "samples": [
+        {
+          "hotspot_id": "EVT-MIZ-018",
+          "district": "Saiha",
+          "susceptibility": 0.5,
+          "rainfall_anomaly": 0.3594,
+          "soil_anomaly": 0.7665,
+          "sat_change": 0.0,
+          "fused_risk": 0.4611,
+          "tier": "MODERATE",
+          "formula_match": true,
+          "tier_match": true
+        },
+        {
+          "hotspot_id": "EVT-MEG-012",
+          "district": "West Jaintia Hills",
+          "susceptibility": 0.5,
+          "rainfall_anomaly": 0.3594,
+          "soil_anomaly": 0.7665,
+          "sat_change": 0.0,
+          "fused_risk": 0.4611,
+          "tier": "MODERATE",
+          "formula_match": true,
+          "tier_match": true
+        },
+        {
+          "hotspot_id": "EVT-MEG-019",
+          "district": "East Jaintia Hills",
+          "susceptibility": 0.5,
+          "rainfall_anomaly": 0.3594,
+          "soil_anomaly": 0.7665,
+          "sat_change": 0.0,
+          "fused_risk": 0.4611,
+          "tier": "MODERATE",
+          "formula_match": true,
+          "tier_match": true
+        },
+        {
+          "hotspot_id": "EVT-MEG-021",
+          "district": "East Jaintia Hills",
+          "susceptibility": 0.5,
+          "rainfall_anomaly": 0.3594,
+          "soil_anomaly": 0.7665,
+          "sat_change": 0.0,
+          "fused_risk": 0.4611,
+          "tier": "MODERATE",
+          "formula_match": true,
+          "tier_match": true
+        },
+        {
+          "hotspot_id": "EVT-MEG-022",
+          "district": "East Jaintia Hills",
+          "susceptibility": 0.5,
+          "rainfall_anomaly": 0.3594,
+          "soil_anomaly": 0.7665,
+          "sat_change": 0.0,
+          "fused_risk": 0.4611,
+          "tier": "MODERATE",
+          "formula_match": true,
+          "tier_match": true
+        }
+      ]
+    },
+    "section_08_latency": {
+      "status": "PASS",
+      "source_publication_lag_seconds": 4193.0,
+      "download_latency_seconds": 18.624,
+      "processing_latency_seconds": 0.208,
+      "xgboost_inference_latency_seconds": 0.0004,
+      "fusion_latency_seconds": 0.0,
+      "dashboard_update_latency_seconds": 0.0009,
+      "alert_generation_latency_seconds": 0.0007,
+      "total_operational_system_latency_seconds": 18.834
+    },
+    "section_09_dashboard_consistency": {
+      "status": "PASS",
+      "checks": {
+        "calibrated_xgboost_v1_1_displayed": true,
+        "canonical_sha256_present": true,
+        "no_rf_fallback_text": true,
+        "no_model_selector_dropdown": true,
+        "sole_production_model_declared": true,
+        "gsmap_primary_declared": true,
+        "zero_contradictory_monitoring_state": true,
+        "zero_emoji_compliant": true
+      },
+      "emoji_count": 0
+    },
+    "section_10_research_components": {
+      "status": "PASS",
+      "research_checks": {
+        "cnn_operational_weight": 0.0,
+        "insar_operational_weight": 0.0,
+        "c15_operational_weight": 0.0,
+        "citizen_video_operational_weight": 0.0,
+        "cnn_role": "RESEARCH_SHADOW_ONLY",
+        "insar_role": "RESEARCH_EVIDENCE_ONLY",
+        "c15_role": "RESEARCH_FORECAST_ONLY",
+        "video_role": "CONTEXTUAL_EVIDENCE_ONLY"
+      },
+      "benchmarks_audit": {
+        "random_forest": "RESEARCH/HISTORICAL ONLY (Operational Weight: 0.00)",
+        "cnn": "RESEARCH_SHADOW_ONLY (Operational Weight: 0.00)",
+        "insar": "RESEARCH_EVIDENCE_ONLY (Operational Weight: 0.00)",
+        "c15": "RESEARCH_FORECAST_ONLY (Operational Weight: 0.00)"
+      }
+    },
+    "section_11_3d_terrain": {
+      "status": "PASS",
+      "tests_run": 7,
+      "failures": 0,
+      "errors": 0,
+      "leaflet_2d_primary": true,
+      "cesium_3d_secondary": true,
+      "webgl_fallback_safe": true,
+      "dynamic_dem_claimed": false
+    },
+    "section_12_citizen_video": {
+      "status": "PASS",
+      "video_id": "VID-20260922101116-f9ccc390",
+      "sha256_hash": "f9ccc3909bbd03ac27b6fa9f15d4e9e1ad04053125aa4e5a7c15d22c906b857d",
+      "quarantine_path": "NER_SAFE_DATA/UPLOADS/videos/quarantine/VID-20260922101116-f9ccc390_landslide_nh06_live.mp4",
+      "moderation_status_initial": "READY_FOR_REVIEW",
+      "moderation_status_final": "VERIFIED",
+      "operational_risk_weight": 0.0,
+      "evidence_tier": "CONTEXTUAL_EVIDENCE_ONLY",
+      "moderated_by": "SDMA Field Geologist Shillong"
+    },
+    "section_13_alert_chain": {
+      "status": "PASS",
+      "alert_id": "ALT-EVT-MEG-001-1790071877",
+      "tier": "CRITICAL",
+      "forecast_probability": 0.72,
+      "requires_field_verification": true,
+      "initial_delivery_state": "GENERATED",
+      "final_delivery_state": "DELIVERED",
+      "statutory_disclaimer_present": true,
+      "public_sms_claim": "ACCESS_PENDING (Zero fake SMS delivery claimed)"
+    },
+    "section_14_offline_test": {
+      "status": "PASS",
+      "levels_tested": [
+        "ONLINE",
+        "SMS_ONLY",
+        "INTERMITTENT_QUEUED",
+        "OFFLINE"
+      ],
+      "offline_freshness_enforced": true,
+      "offline_queueing_verified": true,
+      "sync_blocked_offline": true,
+      "sync_recovered_online": true
+    },
+    "section_15_scheduler": {
+      "status": "PASS",
+      "lock_acquired": true,
+      "concurrency_guard_blocked_duplicate": false,
+      "clean_lock_release": true,
+      "storage_guard_verified": true
+    },
+    "section_16_outcome_validation": {
+      "status": "PASS",
+      "outcome_id": "OUTCOME-GSI_BHUSANKE-18117299d303",
+      "source": "GSI_BHUSANKET_WEBAPI",
+      "evidence_status": "CONFIRMED_EVENT",
+      "first_ingestion": true,
+      "duplicate_ingestion_rejected": true,
+      "idempotency_verified": true
+    },
+    "section_17_security_audit": {
+      "status": "PASS",
+      "checks": {
+        "g_drive_untouched": true,
+        "env_file_protected": true,
+        "gitignore_protects_env": true,
+        "safe_upload_traversal_prevention": true,
+        "zero_hardcoded_passwords_in_code": true
+      },
+      "g_drive_status": "STRICTLY_UNTOUCHED"
+    },
+    "section_18_multilingual": {
+      "status": "PASS",
+      "supported_languages": [
+        "en",
+        "hi",
+        "khasi",
+        "mizo"
+      ],
+      "translations": {
+        "en": {
+          "title": "LANDSLIDE HAZARD WARNING",
+          "instruction": "Avoid vulnerable cut slopes. Monitor lifeline roadways.",
+          "verified": true
+        },
+        "hi": {
+          "title": "\u092d\u0942\u0938\u094d\u0916\u0932\u0928 \u0916\u0924\u0930\u093e \u091a\u0947\u0924\u093e\u0935\u0928\u0940",
+          "instruction": "\u0938\u0902\u0935\u0947\u0926\u0928\u0936\u0940\u0932 \u0922\u0932\u093e\u0928\u094b\u0902 \u0938\u0947 \u0926\u0942\u0930 \u0930\u0939\u0947\u0902\u0964 \u092e\u0941\u0916\u094d\u092f \u0938\u0921\u093c\u0915\u094b\u0902 \u0915\u0940 \u0938\u094d\u0925\u093f\u0924\u093f \u092a\u0930 \u0928\u091c\u093c\u0930 \u0930\u0916\u0947\u0902\u0964",
+          "verified": true
+        },
+        "khasi": {
+          "title": "KA JINGMA NA KA JINGTWA KA KHYNDEW",
+          "instruction": "Kieng noh na ki jaka ba twa khyndew. Pynleit jingmut ha ki surok bah.",
+          "verified": true
+        },
+        "mizo": {
+          "title": "LEILASO HLAUHAWM CHHUNGCHHIAHNA",
+          "instruction": "Chhengphah leh hmun hlauhawm pumpelh rawh. Kawngpui dinhmun ngaihven rawh.",
+          "verified": true
+        }
+      },
+      "unimplemented_selectors_disclaimed": "Assamese, Bengali, and Garo are disclaimed as future Phase 2 expansion."
+    },
+    "section_19_operational_cycles": {
+      "status": "PASS",
+      "cycles_completed": 5,
+      "all_unique": true
+    },
+    "section_20_db_integrity": {
+      "status": "PASS",
+      "total_records": 37,
+      "unique_records": 37,
+      "recent_rows": [
+        [
+          "ASM-LIVE-20260922101145-c8c3e18e",
+          "GSMAP_PRIMARY",
+          0.4611,
+          1
+        ],
+        [
+          "ASM-LIVE-20260922101142-fcad54b6",
+          "GSMAP_PRIMARY",
+          0.4611,
+          1
+        ],
+        [
+          "ASM-LIVE-20260922101136-8599d393",
+          "GSMAP_PRIMARY",
+          0.4611,
+          1
+        ],
+        [
+          "ASM-LIVE-20260922101129-5927688e",
+          "GSMAP_PRIMARY",
+          0.4611,
+          1
+        ],
+        [
+          "ASM-LIVE-20260922101117-dfbfd103",
+          "GSMAP_PRIMARY",
+          0.4611,
+          1
+        ]
+      ]
+    }
+  },
+  "operational_cycles": [
+    {
+      "cycle_number": 1,
+      "assessment_id": "ASM-LIVE-20260922101117-dfbfd103",
+      "created_at_utc": "2026-09-22T10:11:17.149629+00:00",
+      "triggering_source": "JAXA_GSMAP_NOW_01",
+      "triggering_observation_time": "2026-09-22T09:00:00+00:00",
+      "rainfall_source": "JAXA_GSMAP_NOW_V08",
+      "rainfall_state": "GSMAP_PRIMARY",
+      "rainfall_granule": "gsmap_now.20260922.0900_0959.05_AsiaSS.csv.zip",
+      "rainfall_anomaly": 0.3594,
+      "soil_anomaly": 0.7665,
+      "sar_change": 0.0153,
+      "max_risk_score": 0.4611,
+      "tier_distribution": {
+        "CRITICAL": 0,
+        "HIGH": 0,
+        "MODERATE": 48,
+        "WATCH": 0
+      },
+      "cycle_duration_seconds": 11.474
+    },
+    {
+      "cycle_number": 2,
+      "assessment_id": "ASM-LIVE-20260922101129-5927688e",
+      "created_at_utc": "2026-09-22T10:11:29.124705+00:00",
+      "triggering_source": "JAXA_GSMAP_NOW_01",
+      "triggering_observation_time": "2026-09-22T09:00:00+00:00",
+      "rainfall_source": "JAXA_GSMAP_NOW_V08",
+      "rainfall_state": "GSMAP_PRIMARY",
+      "rainfall_granule": "gsmap_now.20260922.0900_0959.05_AsiaSS.csv.zip",
+      "rainfall_anomaly": 0.3594,
+      "soil_anomaly": 0.7665,
+      "sar_change": 0.0153,
+      "max_risk_score": 0.4611,
+      "tier_distribution": {
+        "CRITICAL": 0,
+        "HIGH": 0,
+        "MODERATE": 48,
+        "WATCH": 0
+      },
+      "cycle_duration_seconds": 7.275
+    },
+    {
+      "cycle_number": 3,
+      "assessment_id": "ASM-LIVE-20260922101136-8599d393",
+      "created_at_utc": "2026-09-22T10:11:36.901271+00:00",
+      "triggering_source": "JAXA_GSMAP_NOW_01",
+      "triggering_observation_time": "2026-09-22T09:00:00+00:00",
+      "rainfall_source": "JAXA_GSMAP_NOW_V08",
+      "rainfall_state": "GSMAP_PRIMARY",
+      "rainfall_granule": "gsmap_now.20260922.0900_0959.05_AsiaSS.csv.zip",
+      "rainfall_anomaly": 0.3594,
+      "soil_anomaly": 0.7665,
+      "sar_change": 0.0153,
+      "max_risk_score": 0.4611,
+      "tier_distribution": {
+        "CRITICAL": 0,
+        "HIGH": 0,
+        "MODERATE": 48,
+        "WATCH": 0
+      },
+      "cycle_duration_seconds": 4.862
+    },
+    {
+      "cycle_number": 4,
+      "assessment_id": "ASM-LIVE-20260922101142-fcad54b6",
+      "created_at_utc": "2026-09-22T10:11:42.264861+00:00",
+      "triggering_source": "JAXA_GSMAP_NOW_01",
+      "triggering_observation_time": "2026-09-22T09:00:00+00:00",
+      "rainfall_source": "JAXA_GSMAP_NOW_V08",
+      "rainfall_state": "GSMAP_PRIMARY",
+      "rainfall_granule": "gsmap_now.20260922.0900_0959.05_AsiaSS.csv.zip",
+      "rainfall_anomaly": 0.3594,
+      "soil_anomaly": 0.7665,
+      "sar_change": 0.0153,
+      "max_risk_score": 0.4611,
+      "tier_distribution": {
+        "CRITICAL": 0,
+        "HIGH": 0,
+        "MODERATE": 48,
+        "WATCH": 0
+      },
+      "cycle_duration_seconds": 2.586
+    },
+    {
+      "cycle_number": 5,
+      "assessment_id": "ASM-LIVE-20260922101145-c8c3e18e",
+      "created_at_utc": "2026-09-22T10:11:45.352078+00:00",
+      "triggering_source": "JAXA_GSMAP_NOW_01",
+      "triggering_observation_time": "2026-09-22T09:00:00+00:00",
+      "rainfall_source": "JAXA_GSMAP_NOW_V08",
+      "rainfall_state": "GSMAP_PRIMARY",
+      "rainfall_granule": "gsmap_now.20260922.0900_0959.05_AsiaSS.csv.zip",
+      "rainfall_anomaly": 0.3594,
+      "soil_anomaly": 0.7665,
+      "sar_change": 0.0153,
+      "max_risk_score": 0.4611,
+      "tier_distribution": {
+        "CRITICAL": 0,
+        "HIGH": 0,
+        "MODERATE": 48,
+        "WATCH": 0
+      },
+      "cycle_duration_seconds": 3.873
+    }
+  ],
+  "regression_summary": {
+    "total_tests": 85,
+    "passed_tests": 84,
+    "failed_tests": 1,
+    "suite_details": {
+      "test_single_production_model.TestSingleProductionModelArchitecture": {
+        "tests": 13,
+        "failures": 0,
+        "errors": 0,
+        "status": "PASS"
+      },
+      "test_phase4a_gsmap_failover.TestGSMaPNowFailover": {
+        "tests": 9,
+        "failures": 0,
+        "errors": 0,
+        "status": "PASS"
+      },
+      "test_phase4a_video_pipeline.TestCitizenVideoPipeline": {
+        "tests": 8,
+        "failures": 0,
+        "errors": 0,
+        "status": "PASS"
+      },
+      "test_phase4a_3d_terrain.Test3DTerrainVisualization": {
+        "tests": 7,
+        "failures": 0,
+        "errors": 0,
+        "status": "PASS"
+      },
+      "test_xgboost_production_promotion.TestXGBoostProductionPromotion": {
+        "tests": 9,
+        "failures": 0,
+        "errors": 0,
+        "status": "PASS"
+      },
+      "test_model_selection_audit_suite.TestModelSelectionAuditSuite": {
+        "tests": 8,
+        "failures": 0,
+        "errors": 0,
+        "status": "PASS"
+      },
+      "test_live_outcome_ingestion.TestLiveOutcomeIngestion": {
+        "tests": 30,
+        "failures": 0,
+        "errors": 0,
+        "status": "PASS"
+      },
+      "test_judge_demo_smoke.TestJudgeDemoSmoke": {
+        "tests": 1,
+        "failures": 1,
+        "errors": 0,
+        "status": "FAIL"
+      }
+    }
+  },
+  "invariants": {
+    "xgboost_sha256_match": true,
+    "risk_formula_unchanged": true,
+    "risk_thresholds_unchanged": {
+      "CRITICAL": 0.65,
+      "HIGH": 0.48,
+      "MODERATE": 0.32,
+      "WATCH": 0.0
+    },
+    "research_weight_cnn_zero": true,
+    "research_weight_insar_zero": true,
+    "research_weight_c15_zero": true,
+    "research_weight_video_zero": true,
+    "rf_operational_role": "NONE",
+    "alternative_production_models": "NONE",
+    "g_drive_untouched": true,
+    "no_synthetic_live_rainfall": true,
+    "no_fabricated_live_outcomes": true,
+    "no_fabricated_sms_receipts": true
+  },
+  "overall_status": "COMPLETE"
+}

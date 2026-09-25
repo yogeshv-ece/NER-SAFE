@@ -1,0 +1,13 @@
+feature_name,category,type,units,source,imputation,role,leakage_status
+elevation,terrain,continuous,meters,USGS SRTM 1-Arcsecond DEM,None (100% valid in AOI),Static Susceptibility Predictor,PASS (Environmental Factor)
+slope,terrain,continuous,degrees,Component 7 Terrain Derivative,None (100% valid in AOI),Static Susceptibility Predictor,PASS (Environmental Factor)
+aspect_sin,terrain,continuous,"dimensionless [-1, 1]",Sin component of circular aspect,None (Exact vector decomposition),Static Susceptibility Predictor,PASS (Environmental Factor)
+aspect_cos,terrain,continuous,"dimensionless [-1, 1]",Cos component of circular aspect,None (Exact vector decomposition),Static Susceptibility Predictor,PASS (Environmental Factor)
+profile_curvature,terrain,continuous,m^-1,Component 7 Terrain Derivative,None (100% valid in AOI),Static Susceptibility Predictor,PASS (Environmental Factor)
+twi,hydrology_static,continuous,dimensionless,Component 7 Topographic Wetness Index,None (100% valid in AOI),Static Susceptibility Predictor,PASS (Environmental Factor)
+ndvi_imputed,vegetation_context,continuous,"dimensionless [-1, 1]",Sentinel-2 MSI Level-2A Aligned 30m,Median (0.6404) with observed flag,Static Susceptibility Predictor,PASS (Pre-event context)
+ndwi_imputed,moisture_context,continuous,"dimensionless [-1, 1]",Sentinel-2 MSI Level-2A Aligned 30m,Median (-0.6150) with observed flag,Static Susceptibility Predictor,PASS (Pre-event context)
+ndmi_imputed,canopy_moisture_context,continuous,"dimensionless [-1, 1]",Sentinel-2 MSI Level-2A Aligned 30m,Median (0.1433) with observed flag,Static Susceptibility Predictor,PASS (Pre-event context)
+sentinel_observed_flag,observation_quality,binary,0 or 1,Sentinel-2 valid observation mask,None (Binary observation indicator),Quality Indicator Feature,PASS (Contextual Flag)
+distance_to_landslide_m,inventory,continuous,meters,Component 9 Euclidean Distance,N/A,EXCLUDED FROM PREDICTORS (Negative buffer filter only),BLACKLISTED (Target Leakage Prevention)
+target,inventory,binary,0 or 1,Component 9 Standardized Inventory Presence,N/A,GROUND TRUTH TARGET LABEL ONLY,TARGET VARIABLE

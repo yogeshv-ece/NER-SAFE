@@ -1,0 +1,142 @@
+# ==============================================================================
+# NER-SAFE Git Ignore Configuration
+# ==============================================================================
+
+# ------------------------------------------------------------------------------
+# Security, Credentials & Personal Sensitive Tokens
+# ------------------------------------------------------------------------------
+.env
+.env.local
+.env.*
+!.env.example
+*.key
+*.pem
+*.crt
+credentials.json
+credentials*.json
+token.json
+*netrc*
+.netrc
+_netrc
+
+# Machine-specific test scripts with private credential references or local paths
+smap_pass_test.py
+smap_login_test.py
+smap_setup_netrc.py
+smap_cred_test2.py
+smap_cred_check.py
+smap_fix_auth.py
+smap_auth_test.py
+smap_daily_downloader.py
+smap_downloader.py
+smap_validator.py
+smap_smoke_test.py
+test_smap_download.py
+audit_smap.py
+gpm_download_manager.py
+gpm_validator.py
+sentinel_downloader.py
+sentinel_validator.py
+srtm_downloader.py
+srtm_validator.py
+
+# ------------------------------------------------------------------------------
+# Databases, WAL Checkpoints & Storage
+# ------------------------------------------------------------------------------
+*.db
+*.db-wal
+*.db-shm
+*.sqlite
+*.sqlite3
+
+# ------------------------------------------------------------------------------
+# Large Datasets, Raw Satellites, DEM Rasters & Geospatial Archives
+# ------------------------------------------------------------------------------
+NER_SAFE_DATA/
+NER_SAFE_DATA - Copy/
+EXPOSURE/
+GPM_Rainfall/
+test_data_cdse/
+SMAP/
+SENTINEL2/
+TERRAIN/
+LANDSLIDE_INVENTORY/
+
+# Geospatial Raster & Multidimensional Binary Archives
+*.tif
+*.tiff
+*.h5
+*.hdf5
+*.nc
+*.nc4
+*.zip
+*.tar
+*.gz
+*.7z
+*.rar
+
+# Heavy Binary PDF Documentation
+*.pdf
+
+# ------------------------------------------------------------------------------
+# Python Caches, Virtual Environments & Logs
+# ------------------------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+.venv/
+env/
+venv/
+ENV/
+*.log
+.pytest_cache/
+
+# ------------------------------------------------------------------------------
+# Runtime Snapshots & Autonomous Logs
+# ------------------------------------------------------------------------------
+NER-SAFE/predictions/
+NER-SAFE/live/
+NER-SAFE/audit/
+
+# ------------------------------------------------------------------------------
+# Root Diagnostic Images (Preserved in screenshots/ for presentation)
+# ------------------------------------------------------------------------------
+cesium_*.png
+leaflet_*.png
+test_*.png
+
+# ------------------------------------------------------------------------------
+# Temporary Scripts & Duplicate Downloads
+# ------------------------------------------------------------------------------
+temp_*.js
+* (1).*
+* (2).*
+
+# ------------------------------------------------------------------------------
+# OS & IDE Files
+# ------------------------------------------------------------------------------
+.DS_Store
+Thumbs.db
+ehthumbs.db
+desktop.ini
+.idea/
+.vscode/
+*.swp
+*.swo
