@@ -225,10 +225,52 @@ Watch the comprehensive video demonstration illustrating real-time data ingestio
 | **Geospatial Processing** | Shapely 2.0+ / Rasterio 1.3+ | Vector intersection, geometric analysis, and raster affine transformations |
 | **Scientific Computing** | NumPy / Pandas / SciPy | Multi-dimensional matrix operations, hydrological anomaly calculation |
 | **Backend & REST API** | Python `ThreadingHTTPServer` | High-performance, zero-pip-dependency multi-threaded REST API server |
-| **Database & Persistence**| SQLite 3 (WAL Mode) | Serverless relational store with 31 tables, foreign keys, and cryptographic audit trails |
+| **Database & Persistence**| PostgreSQL 16 + PostGIS 3.6 (Primary) / SQLite 3 (Fallback) | Dual-backend operational store with PostGIS geometry types, GiST spatial indexing, and full SQLite fallback |
 | **2D Web Mapping** | Leaflet.js 1.9+ | Fast, mobile-responsive vector and raster web mapping |
 | **3D Topographic Web-GIS**| CesiumJS 1.110+ | Hardware-accelerated WebGL 3D globe with custom terrain elevation tiling |
 | **Alerting Standard** | OASIS CAP v1.2 | Common Alerting Protocol compliant XML/JSON emergency advisory payloads |
+
+---
+
+## 🗄️ Database Architecture
+
+NER-SAFE employs a decoupled, hybrid data architecture separating operational relational/spatial transaction layers from heavy scientific raster computations:
+
+```
+Application data (relational, users, audits, ground truth, vector layers)
+    ↓
+PostgreSQL 16 + PostGIS 3.6 (Operational Spatial Database)
+
+Scientific raster processing (DEM, satellite grids, rainfall & moisture rasters)
+    ↓
+Rasterio / NumPy / GeoTIFF / NetCDF / HDF5 (File-Based Engine)
+
+AI / risk engine (Calibrated XGBoost, multi-factor fusion)
+    ↓
+Python / XGBoost / existing pipelines
+
+GIS frontend (2D web mapping, 3D digital globe)
+    ↓
+Leaflet / Cesium / REST API
+```
+
+### Architectural Separation
+1. **Operational Database Layer (PostgreSQL + PostGIS):**
+   - **Relational Tables:** Manages all 30 core operational tables (users, roles, citizen reports, audit logs, prediction logs, external warnings, monitoring records, and live multi-modal telemetry) with foreign key integrity and transactional safety.
+   - **PostGIS Spatial Vectors:** Stores genuine PostGIS spatial types (`geometry(Point, 4326)`, `geometry(LineString, 4326)`, `geometry(Polygon, 4326)`, `geometry(MultiPolygon, 4326)`) with hardware-accelerated **GiST indexes**.
+   - **Operational Spatial Layers:** Manages run-out corridors (`spatial_corridors`), flowpaths (`spatial_flow_paths`), initiation points (`spatial_initiation_points`), infrastructure exposure intersections (`spatial_exposure_intersections`), settlements (`spatial_settlements`), and administrative district boundaries (`spatial_districts`).
+   - **Spatial Queries:** PostGIS native operations (`ST_Contains`, `ST_Intersects`, `ST_DWithin`, `ST_Distance`) accelerate multi-table cross-referencing and live hazard proximity calculations.
+   - **Automatic Geometry Synchronization:** Database triggers automatically synchronize latitude/longitude attributes into PostGIS `geom` columns on record insertion and modification.
+
+2. **Scientific Raster Processing (File-Based Scientific Engine):**
+   - In accordance with rigorous scientific data standards, large raster products are **not** pushed into database BLOBs or PostGIS rasters.
+   - USGS SRTM 30m elevation grids, Sentinel-1 SAR coherence rasters, Sentinel-2 optical scenes, JAXA GSMaP hourly archives, and NASA SMAP NetCDF/HDF5 arrays remain strictly file-based.
+   - Fast array operations, windowed reads, and physical D8 directional flow accumulations are computed via **Rasterio**, **NumPy**, and **SciPy**.
+
+3. **Dual-Backend Support & Safe Fallback:**
+   - Controlled via the `DATABASE_BACKEND` environment variable (`postgresql` or `sqlite`).
+   - `DATABASE_BACKEND=postgresql`: Primary operational configuration utilizing connection pooling, parameter translation, and PostGIS spatial acceleration. Database configuration failures raise explicit errors without silent degradation.
+   - `DATABASE_BACKEND=sqlite`: Preserved as an offline development, self-contained demonstration, and disaster recovery fallback path using `ner_safe_shared.db`.
 
 ---
 
@@ -323,7 +365,7 @@ In adherence to scientific integrity, the following operational constraints are 
 
 ## 🔮 Future Roadmap
 
-* [ ] **PostGIS Migration:** Transition relational and spatial data to a dedicated PostgreSQL 16+ / PostGIS 3.4+ cluster with spatial indexing.
+* [x] **PostGIS Operational Spatial Layer:** Implemented dual-backend PostgreSQL 16 + PostGIS 3.6 operational database with GiST spatial indexing, spatial cross-referencing, and automatic geometry synchronization.
 * [ ] **Regional Expansion:** Expand baseline training, DEM derivatives, and exposure layers across all 8 North Eastern states (Assam, Arunachal Pradesh, Manipur, Nagaland, Tripura, Sikkim).
 * [ ] **In-Situ Sensor Telemetry:** Ingest IoT piezometer, tiltmeter, and rain-gauge LoRaWAN networks for real-time slope telemetry.
 * [ ] **Edge Deployment:** Package lightweight inference engine for offline deployment on edge field gateways and district emergency operations centers.

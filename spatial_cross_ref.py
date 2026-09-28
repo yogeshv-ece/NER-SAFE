@@ -71,11 +71,87 @@ def spherical_distance_km(lat1, lon1, lat2, lon2):
     c = 2 * math.atan2(math.sqrt(a), math.sqrt(1 - a))
     return 6371.0 * c
 
+def analyze_location_postgis(lat, lon):
+    """Executes high-performance PostGIS GiST spatial queries against operational layers."""
+    try:
+        import database
+        if database.get_db_backend() != "postgresql":
+            return None
+        conn = database.get_db_connection()
+        cur = conn.cursor()
+
+        # 1. State & District containment
+        cur.execute("""
+            SELECT properties->>'state' as state, properties->>'district_name' as district
+            FROM spatial_districts
+            WHERE ST_Contains(geom, ST_SetSRID(ST_MakePoint(%s, %s), 4326))
+            LIMIT 1;
+        """, (lon, lat))
+        row = cur.fetchone()
+        if row:
+            found_state = row['state']
+            found_district = row['district']
+            within_aoi = True
+        else:
+            found_state = "Outside Phase 1 Boundary"
+            found_district = "Unknown"
+            within_aoi = False
+
+        # 2. Nearest settlement via PostGIS KNN GiST index (<->)
+        cur.execute("""
+            SELECT properties->>'name' as name,
+                   round((ST_Distance(geom::geography, ST_SetSRID(ST_MakePoint(%s, %s), 4326)::geography) / 1000.0)::numeric, 1) as dist_km
+            FROM spatial_settlements
+            ORDER BY geom <-> ST_SetSRID(ST_MakePoint(%s, %s), 4326)
+            LIMIT 1;
+        """, (lon, lat, lon, lat))
+        s_row = cur.fetchone()
+        best_settlement = s_row['name'] if s_row else "Unknown"
+        min_dist_km = float(s_row['dist_km']) if s_row else 999999.0
+
+        # 3. Nearest corridor and containment via PostGIS
+        cur.execute("""
+            SELECT feature_id,
+                   ST_Intersects(geom, ST_SetSRID(ST_MakePoint(%s, %s), 4326)) as intersects,
+                   round(ST_Distance(geom::geography, ST_SetSRID(ST_MakePoint(%s, %s), 4326)::geography)::numeric, 1) as dist_m
+            FROM spatial_corridors
+            ORDER BY geom <-> ST_SetSRID(ST_MakePoint(%s, %s), 4326)
+            LIMIT 1;
+        """, (lon, lat, lon, lat, lon, lat))
+        c_row = cur.fetchone()
+        if c_row:
+            nearest_evt_id = c_row['feature_id']
+            min_corridor_dist_m = float(c_row['dist_m'])
+            intersects_corridor = bool(c_row['intersects']) or (min_corridor_dist_m <= 75.0)
+        else:
+            nearest_evt_id = "None"
+            min_corridor_dist_m = 999999.0
+            intersects_corridor = False
+
+        conn.close()
+        return {
+            "within_phase1_aoi": within_aoi,
+            "state": found_state,
+            "district": found_district,
+            "nearest_settlement": best_settlement,
+            "settlement_distance_km": round(min_dist_km, 1),
+            "intersects_c11_runout": intersects_corridor,
+            "nearest_c11_event_id": nearest_evt_id,
+            "distance_to_runout_m": round(min_corridor_dist_m, 1)
+        }
+    except Exception:
+        return None
+
 def analyze_location(lat, lon):
     """
     Validates coordinates, identifies state and district, derives nearest settlement,
     and checks containment/proximity to Component 11 runout corridors.
+    First evaluates against PostGIS operational spatial database, with seamless Shapely fallback.
     """
+    pg_result = analyze_location_postgis(lat, lon)
+    if pg_result is not None:
+        return pg_result
+
     _load_geometries()
     pt = Point(lon, lat)
     

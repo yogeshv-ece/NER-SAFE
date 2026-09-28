@@ -634,7 +634,31 @@ class NERSafeRequestHandler(SimpleHTTPRequestHandler):
             evt_filter = query_params.get("event_id", [None])[0]
             qual_filter = query_params.get("qualifying", ["0"])[0] in ("1", "true", "True")
 
-            if os.path.exists(C11_CORRIDORS_PATH):
+            loaded_from_postgis = False
+            if database.get_db_backend() == "postgresql":
+                try:
+                    conn = database.get_db_connection()
+                    cur = conn.cursor()
+                    if evt_filter:
+                        cur.execute("SELECT feature_id, properties, ST_AsGeoJSON(geom)::json FROM spatial_corridors WHERE feature_id = %s;", (evt_filter,))
+                    else:
+                        cur.execute("SELECT feature_id, properties, ST_AsGeoJSON(geom)::json FROM spatial_corridors;")
+                    rows = cur.fetchall()
+                    conn.close()
+                    if rows:
+                        features = [{"type": "Feature", "id": r[0], "properties": r[1], "geometry": r[2]} for r in rows]
+                        data = {"type": "FeatureCollection", "features": features}
+                        if qual_filter:
+                            hotspots = fusion_engine.compute_fused_hotspots()
+                            qual_ids = {h["id"] for h in hotspots["features"] if h["properties"].get("qualifies_for_runout")}
+                            data["features"] = [f for f in data["features"] if (f.get("properties", {}).get("event_id") or f.get("id")) in qual_ids]
+                        loaded_from_postgis = True
+                        self._send_json(data)
+                        return
+                except Exception:
+                    loaded_from_postgis = False
+
+            if not loaded_from_postgis and os.path.exists(C11_CORRIDORS_PATH):
                 with open(C11_CORRIDORS_PATH, "r", encoding="utf-8") as f:
                     data = json.load(f)
 
@@ -655,7 +679,7 @@ class NERSafeRequestHandler(SimpleHTTPRequestHandler):
                     data["features"] = filtered
 
                 self._send_json(data)
-            else:
+            elif not loaded_from_postgis:
                 self._send_json({"type": "FeatureCollection", "features": []})
             return
 
@@ -665,7 +689,31 @@ class NERSafeRequestHandler(SimpleHTTPRequestHandler):
             evt_filter = query_params.get("event_id", [None])[0]
             qual_filter = query_params.get("qualifying", ["0"])[0] in ("1", "true", "True")
 
-            if os.path.exists(C11_FLOWPATHS_PATH):
+            loaded_from_postgis = False
+            if database.get_db_backend() == "postgresql":
+                try:
+                    conn = database.get_db_connection()
+                    cur = conn.cursor()
+                    if evt_filter:
+                        cur.execute("SELECT feature_id, properties, ST_AsGeoJSON(geom)::json FROM spatial_flow_paths WHERE feature_id = %s;", (evt_filter,))
+                    else:
+                        cur.execute("SELECT feature_id, properties, ST_AsGeoJSON(geom)::json FROM spatial_flow_paths;")
+                    rows = cur.fetchall()
+                    conn.close()
+                    if rows:
+                        features = [{"type": "Feature", "id": r[0], "properties": r[1], "geometry": r[2]} for r in rows]
+                        data = {"type": "FeatureCollection", "features": features}
+                        if qual_filter:
+                            hotspots = fusion_engine.compute_fused_hotspots()
+                            qual_ids = {h["id"] for h in hotspots["features"] if h["properties"].get("qualifies_for_runout")}
+                            data["features"] = [f for f in data["features"] if (f.get("properties", {}).get("event_id") or f.get("id")) in qual_ids]
+                        loaded_from_postgis = True
+                        self._send_json(data)
+                        return
+                except Exception:
+                    loaded_from_postgis = False
+
+            if not loaded_from_postgis and os.path.exists(C11_FLOWPATHS_PATH):
                 with open(C11_FLOWPATHS_PATH, "r", encoding="utf-8") as f:
                     data = json.load(f)
 
@@ -686,7 +734,7 @@ class NERSafeRequestHandler(SimpleHTTPRequestHandler):
                     data["features"] = filtered
 
                 self._send_json(data)
-            else:
+            elif not loaded_from_postgis:
                 self._send_json({"type": "FeatureCollection", "features": []})
             return
 
@@ -872,6 +920,11 @@ class NERSafeRequestHandler(SimpleHTTPRequestHandler):
         # 6d. Dual-Backend Storage Diagnostic (Local + Google Drive / Google One)
         if path == "/api/storage/status":
             self._send_json(storage_engine.get_status())
+            return
+
+        # 6d-bis. Relational & Spatial Database Status (PostgreSQL + PostGIS Operational Layer)
+        if path in ("/api/database/status", "/api/gis/postgis/status"):
+            self._send_json(database.get_postgis_status())
             return
 
         # 6e. Scientific Transparency & Pipeline Methodology

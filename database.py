@@ -11,10 +11,19 @@ Schema:
 """
 
 import os
+import sys
 import sqlite3
 import json
+import re
 from datetime import datetime, timedelta, timezone
 from typing import Dict, Any, List, Optional, Tuple
+
+try:
+    import psycopg2
+    import psycopg2.extras
+    PSYCOPG2_AVAILABLE = True
+except ImportError:
+    PSYCOPG2_AVAILABLE = False
 
 PROJECT_ROOT = os.environ.get("NER_SAFE_ROOT", os.path.abspath(os.path.dirname(__file__)))
 DB_DIR = os.path.join(PROJECT_ROOT, "NER_SAFE_DATA", "DATABASE")
@@ -26,10 +35,251 @@ os.makedirs(UPLOADS_DIR, exist_ok=True)
 
 SYNTHETIC_DATA_PATH = os.path.join(PROJECT_ROOT, "NER_SAFE_DATA", "COMPONENT_13", "data", "synthetic_demonstration_reports.json")
 
+# Database Backend Configuration
+# Supported: "postgresql" (primary operational default), "sqlite" (development/rollback fallback)
+DATABASE_BACKEND = os.environ.get("DATABASE_BACKEND", "postgresql").lower().strip()
+DATABASE_URL = os.environ.get("DATABASE_URL")
+PGHOST = os.environ.get("PGHOST", "127.0.0.1")
+PGPORT = int(os.environ.get("PGPORT", "5432"))
+PGDATABASE = os.environ.get("PGDATABASE", "ner_safe")
+PGUSER = os.environ.get("PGUSER", "postgres")
+PGPASSWORD = os.environ.get("PGPASSWORD", "")
+
+def get_db_backend() -> str:
+    """Returns the currently active database backend ('postgresql' or 'sqlite')."""
+    return DATABASE_BACKEND
+
+def convert_placeholders(sql: str) -> str:
+    """Converts '?' parameter placeholders to '%s' outside single quotes for PostgreSQL."""
+    pattern = r"('(?:''|[^'])*')|(\?)"
+    return re.sub(pattern, lambda m: m.group(1) if m.group(1) else "%s", sql)
+
+class PostgresCursorWrapper:
+    """Wraps psycopg2 DictCursor to provide seamless sqlite3.Row compatibility."""
+    def __init__(self, cur, conn):
+        self._cur = cur
+        self._conn = conn
+        self.lastrowid = None
+
+    @property
+    def connection(self):
+        """PEP 249 attribute referencing the parent Connection object."""
+        return self._conn
+
+    @property
+    def rowcount(self):
+        return self._cur.rowcount
+
+    @property
+    def description(self):
+        return self._cur.description
+
+    def execute(self, sql, params=None):
+        clean_sql = sql.strip()
+
+        # 1. Handle PRAGMA table_info(table) - Return 6-tuple (cid, name, type, notnull, dflt_value, pk)
+        m = re.match(r"^PRAGMA\s+table_info\((['\"]?)([a-zA-Z0-9_]+)\1\)", clean_sql, re.IGNORECASE)
+        if m:
+            tbl = m.group(2)
+            clean_sql = """
+                SELECT ordinal_position - 1 AS cid, 
+                       column_name AS name, 
+                       data_type AS type, 
+                       CASE WHEN is_nullable = 'NO' THEN 1 ELSE 0 END AS notnull, 
+                       column_default AS dflt_value, 
+                       0 AS pk 
+                FROM information_schema.columns 
+                WHERE table_name = %s 
+                ORDER BY ordinal_position;
+            """
+            params = (tbl,)
+            self._cur.execute(clean_sql, params)
+            return self
+
+        # 2. Handle PRAGMA foreign_keys
+        if re.match(r"^PRAGMA\s+foreign_keys", clean_sql, re.IGNORECASE):
+            return self
+
+        # Emulate sqlite_master for table listing/counting
+        if re.search(r"sqlite_master", clean_sql, re.IGNORECASE):
+            clean_sql = re.sub(
+                r"FROM\s+sqlite_master\s+WHERE\s+type\s*=\s*['\"]table['\"]",
+                "FROM information_schema.tables WHERE table_schema = 'public' AND table_type = 'BASE TABLE'",
+                clean_sql,
+                flags=re.IGNORECASE
+            )
+            clean_sql = re.sub(
+                r"FROM\s+sqlite_master",
+                "FROM information_schema.tables WHERE table_schema = 'public'",
+                clean_sql,
+                flags=re.IGNORECASE
+            )
+
+        # 3. Handle SQLite-style GROUP BY without aggregate in live_multimodal_features
+        if re.search(r"SELECT\s+\*\s+FROM\s+live_multimodal_features\s+GROUP\s+BY\s+hotspot_id", clean_sql, re.IGNORECASE):
+            clean_sql = re.sub(
+                r"SELECT\s+\*\s+FROM\s+live_multimodal_features\s+GROUP\s+BY\s+hotspot_id\s+ORDER\s+BY\s+hotspot_id\s+ASC",
+                "SELECT DISTINCT ON (hotspot_id) * FROM live_multimodal_features ORDER BY hotspot_id ASC, id DESC",
+                clean_sql,
+                flags=re.IGNORECASE
+            )
+
+        # Disambiguate outcome_classification in ON CONFLICT DO UPDATE SET
+        clean_sql = re.sub(
+            r"previous_outcome_classification\s*=\s*outcome_classification\b",
+            "previous_outcome_classification = prediction_outcomes.outcome_classification",
+            clean_sql,
+            flags=re.IGNORECASE
+        )
+
+        # 4. Handle SQLite-specific INSERT OR IGNORE / INSERT OR REPLACE
+        if re.search(r"INSERT\s+OR\s+IGNORE\s+INTO", clean_sql, re.IGNORECASE):
+            clean_sql = re.sub(r"INSERT\s+OR\s+IGNORE\s+INTO", "INSERT INTO", clean_sql, flags=re.IGNORECASE)
+            clean_sql = clean_sql.rstrip().rstrip(";") + " ON CONFLICT DO NOTHING"
+
+        m_rep = re.match(r"INSERT\s+OR\s+REPLACE\s+INTO\s+([a-zA-Z0-9_]+)\s*\(([^)]+)\)\s*VALUES\s*\(([^)]+)\)", clean_sql, re.IGNORECASE | re.DOTALL)
+        if m_rep:
+            tbl_name = m_rep.group(1).lower()
+            cols = [c.strip() for c in m_rep.group(2).split(',')]
+            vals = m_rep.group(3)
+            tbl_keys = {
+                'citizen_reports': 'report_id',
+                'users': 'email',
+                'sessions': 'id',
+                'alert_delivery': 'alert_id',
+                'live_assessments': 'assessment_id',
+                'external_sources': 'source_id',
+                'external_warnings': 'external_warning_id',
+                'external_landslide_events': 'canonical_event_id',
+                'osint_sources': 'source_id',
+                'osint_observations': 'osint_observation_id',
+                'canonical_osint_events': 'canonical_osint_event_id',
+                'prediction_outcomes': 'prediction_id',
+                'citizen_videos': 'video_id',
+            }
+            conf_key = tbl_keys.get(tbl_name, 'id')
+            updates = ', '.join([f'{c} = EXCLUDED.{c}' for c in cols if c.strip('\"') != conf_key])
+            clean_sql = f"INSERT INTO {m_rep.group(1)} ({m_rep.group(2)}) VALUES ({vals}) ON CONFLICT ({conf_key}) DO UPDATE SET {updates}"
+
+        # 5. Adapt DDL keywords if initializing tables
+        if re.match(r"^CREATE\s+TABLE", clean_sql, re.IGNORECASE):
+            clean_sql = re.sub(r"INTEGER\s+PRIMARY\s+KEY\s+AUTOINCREMENT", "SERIAL PRIMARY KEY", clean_sql, flags=re.IGNORECASE)
+            clean_sql = re.sub(r"\bAUTOINCREMENT\b", "", clean_sql, flags=re.IGNORECASE)
+
+        # 6. Convert placeholders (? -> %s for tuples/lists, :key -> %(key)s for dicts)
+        if params is not None and isinstance(params, dict):
+            clean_sql = re.sub(r":([a-zA-Z0-9_]+)", r"%(\1)s", clean_sql)
+        else:
+            clean_sql = convert_placeholders(clean_sql)
+
+        # 6. Check if INSERT without RETURNING
+        is_insert = clean_sql.strip().upper().startswith("INSERT INTO")
+        has_returning = "RETURNING" in clean_sql.upper()
+        added_returning = False
+        if is_insert and not has_returning:
+            clean_sql = clean_sql.rstrip(";") + " RETURNING id;"
+            added_returning = True
+
+        if params is not None:
+            self._cur.execute(clean_sql, params)
+        else:
+            self._cur.execute(clean_sql)
+
+        if added_returning:
+            try:
+                row = self._cur.fetchone()
+                if row:
+                    self.lastrowid = row[0]
+            except Exception:
+                self.lastrowid = None
+        return self
+
+    def executemany(self, sql, seq_of_params):
+        clean_sql = convert_placeholders(sql)
+        return self._cur.executemany(clean_sql, seq_of_params)
+
+    def fetchone(self):
+        return self._cur.fetchone()
+
+    def fetchall(self):
+        return self._cur.fetchall()
+
+    def fetchmany(self, size=None):
+        return self._cur.fetchmany(size) if size is not None else self._cur.fetchmany()
+
+    def close(self):
+        return self._cur.close()
+
+    def __iter__(self):
+        return iter(self._cur)
+
+class PostgresConnectionWrapper:
+    """Wraps psycopg2 connection with transaction context management and execute() helper."""
+    def __init__(self, pg_conn):
+        self._conn = pg_conn
+
+    def cursor(self):
+        cur = self._conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
+        return PostgresCursorWrapper(cur, self._conn)
+
+    def execute(self, sql, params=None):
+        cur = self.cursor()
+        cur.execute(sql, params)
+        return cur
+
+    def commit(self):
+        return self._conn.commit()
+
+    def rollback(self):
+        return self._conn.rollback()
+
+    def close(self):
+        return self._conn.close()
+
+    def __enter__(self):
+        return self
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        if exc_type is not None:
+            self.rollback()
+        else:
+            self.commit()
+
 def get_db_connection():
+    """
+    Returns a unified connection object to either PostgreSQL or SQLite.
+    Per strict requirements:
+    - If DATABASE_BACKEND == 'postgresql', connects to PostgreSQL/PostGIS.
+    - If connection fails, raises ConnectionError immediately (NO silent fallback).
+    - If DATABASE_BACKEND == 'sqlite', connects to SQLite DB_PATH.
+    """
+    if DATABASE_BACKEND == "postgresql":
+        if not PSYCOPG2_AVAILABLE:
+            raise RuntimeError(
+                "NER-SAFE Database Error: DATABASE_BACKEND='postgresql' configured, "
+                "but psycopg2 is not installed. Silent fallback to SQLite is strictly disabled."
+            )
+        try:
+            if DATABASE_URL:
+                raw_conn = psycopg2.connect(DATABASE_URL)
+            else:
+                raw_conn = psycopg2.connect(
+                    dbname=PGDATABASE,
+                    user=PGUSER,
+                    host=PGHOST,
+                    port=PGPORT,
+                    password=PGPASSWORD
+                )
+            return PostgresConnectionWrapper(raw_conn)
+        except Exception as e:
+            raise ConnectionError(
+                f"NER-SAFE Database Error: Failed to connect to PostgreSQL backend at {PGHOST}:{PGPORT}/{PGDATABASE} "
+                f"({e}). Silent fallback to SQLite is strictly disabled to prevent stale data execution."
+            ) from e
+
+    # Fallback to SQLite (only when explicitly configured)
     conn = sqlite3.connect(DB_PATH)
     conn.row_factory = sqlite3.Row
-    # Enable foreign keys
     conn.execute("PRAGMA foreign_keys = ON;")
     return conn
 
@@ -1286,6 +1536,80 @@ def get_latest_multimodal_features(hotspot_id: Optional[str] = None) -> List[Dic
                 pass
         results.append(d)
     return results
+
+def get_postgis_status() -> Dict[str, Any]:
+    """Returns the operational status of PostgreSQL and PostGIS."""
+    if DATABASE_BACKEND != "postgresql":
+        return {
+            "backend": "sqlite",
+            "postgis_enabled": False,
+            "status": "SQLITE_FALLBACK_ACTIVE"
+        }
+    try:
+        conn = get_db_connection()
+        cur = conn.cursor()
+        cur.execute("SELECT version();")
+        pg_ver = cur.fetchone()[0]
+        cur.execute("SELECT PostGIS_Full_Version();")
+        gis_ver = cur.fetchone()[0]
+        cur.execute("SELECT count(*) FROM information_schema.tables WHERE table_schema='public';")
+        tbl_count = cur.fetchone()[0]
+        conn.close()
+        return {
+            "backend": "postgresql",
+            "postgis_enabled": True,
+            "postgresql_version": pg_ver,
+            "postgis_version": gis_ver,
+            "tables_count": tbl_count,
+            "database_name": PGDATABASE,
+            "status": "OPERATIONAL"
+        }
+    except Exception as e:
+        return {
+            "backend": "postgresql",
+            "postgis_enabled": False,
+            "status": "ERROR",
+            "error": str(e)
+        }
+
+def get_citizen_reports_near_corridor(corridor_id: str, distance_m: float = 1000.0) -> List[Dict[str, Any]]:
+    """Performs a PostGIS spatial query to find citizen reports near a runout corridor."""
+    conn = get_db_connection()
+    cur = conn.cursor()
+    if DATABASE_BACKEND == "postgresql":
+        cur.execute("""
+            SELECT cr.id, cr.report_id, cr.latitude, cr.longitude, cr.category, cr.verification_status,
+                   round(ST_Distance(cr.geom::geography, c.geom::geography)::numeric, 1) as distance_to_corridor_m
+            FROM citizen_reports cr
+            JOIN spatial_corridors c ON c.feature_id = ?
+            WHERE cr.geom IS NOT NULL AND ST_DWithin(cr.geom::geography, c.geom::geography, ?)
+            ORDER BY distance_to_corridor_m ASC;
+        """, (corridor_id, distance_m))
+        rows = [dict(r) for r in cur.fetchall()]
+    else:
+        # SQLite fallback: return all reports matching corridor nearest_c11_event_id
+        cur.execute("SELECT id, report_id, latitude, longitude, category, verification_status, distance_to_runout_m FROM citizen_reports WHERE nearest_c11_event_id = ?;", (corridor_id,))
+        rows = [dict(r) for r in cur.fetchall()]
+    conn.close()
+    return rows
+
+def get_settlements_near_point(latitude: float, longitude: float, radius_km: float = 5.0) -> List[Dict[str, Any]]:
+    """Performs a PostGIS spatial query to find settlements within a radius of coordinates."""
+    conn = get_db_connection()
+    cur = conn.cursor()
+    if DATABASE_BACKEND == "postgresql":
+        cur.execute("""
+            SELECT s.id, s.properties->>'name' as name, s.properties->>'district' as district,
+                   round((ST_Distance(s.geom::geography, ST_SetSRID(ST_MakePoint(?, ?), 4326)::geography) / 1000.0)::numeric, 2) as distance_km
+            FROM spatial_settlements s
+            WHERE ST_DWithin(s.geom, ST_SetSRID(ST_MakePoint(?, ?), 4326), ?)
+            ORDER BY distance_km ASC;
+        """, (longitude, latitude, longitude, latitude, radius_km * 0.01))
+        rows = [dict(r) for r in cur.fetchall()]
+    else:
+        rows = []
+    conn.close()
+    return rows
 
 if __name__ == "__main__":
     init_db()
