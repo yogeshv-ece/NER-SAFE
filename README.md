@@ -300,6 +300,17 @@ python verify_e2e_sih_master_control.py
 
 ---
 
+## 📚 Documentation & Technical Reports
+
+Complete architecture blueprints, validation suites, and forensic audit reports are organized in the [`docs/`](docs/) directory:
+
+* 🏛️ **[System Architecture](docs/architecture/)** — High-level architecture, dynamic heatmap specifications, and sensor hardware specs.
+* 🔬 **[Scientific Validation](docs/validation/)** — 3-way machine learning benchmarks, InSAR interferometry, SMAP/GSMaP live verification.
+* 📖 **[Operational Guides & Runbooks](docs/guides/)** — Judge demonstration runbooks, quick-start guides, and release manifests.
+* 🔍 **[System Audits & Evidence Logs](docs/audits/)** — Data source registries, latency benchmarks, and forensic evidence logs.
+
+---
+
 ## ⚖️ Scientific Limitations
 
 In adherence to scientific integrity, the following operational constraints are documented:
